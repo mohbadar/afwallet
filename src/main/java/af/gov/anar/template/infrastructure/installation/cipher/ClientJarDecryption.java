@@ -1,4 +1,4 @@
-package af.gov.anar.template.infrastructure.cipher.service;
+package af.gov.anar.template.infrastructure.installation.cipher;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -29,9 +29,9 @@ import af.gov.anar.lib.cryptojce.util.CryptoUtil;
 import af.gov.anar.lib.cryptojce.util.CryptoUtils;
 import af.gov.anar.lib.cryptojce.util.SecurityExceptionCodeConstant;
 import af.gov.anar.lib.logger.Logger;
-import af.gov.anar.template.infrastructure.cipher.tpm.asymmetric.AsymmetricDecryptionService;
-import af.gov.anar.template.infrastructure.cipher.tpm.asymmetric.AsymmetricEncryptionService;
-import af.gov.anar.template.infrastructure.cipher.tpm.initailize.TPMInitialization;
+import af.gov.anar.template.infrastructure.installation.tpm.asymmetric.AsymmetricDecryptionService;
+import af.gov.anar.template.infrastructure.installation.tpm.asymmetric.AsymmetricEncryptionService;
+import af.gov.anar.template.infrastructure.installation.tpm.initailize.TPMInitialization;
 import af.gov.anar.template.infrastructure.constant.ApplicationGenericConstants;
 import af.gov.anar.template.infrastructure.installation.SoftwareInstallationHandler;
 import af.gov.anar.template.infrastructure.util.LoggerFactory;
@@ -403,7 +403,7 @@ public class ClientJarDecryption extends Application {
 
                                 }
 
-                            } catch (IOException | af.gov.anar.lang.infrastructure.exception.common.IOException exception) {
+                            } catch (IOException | af.gov.anar.lang.infrastructure.exception.common.IOException | af.gov.anar.lib.file.exception.IOException exception) {
                                 LOGGER.error(ApplicationGenericConstants.CLIENT_JAR_DECRYPTION, ApplicationGenericConstants.APPLICATION_NAME,
                                         ApplicationGenericConstants.APPLICATION_ID,
                                         exception.getMessage() + ExceptionUtils.getStackTrace(exception));

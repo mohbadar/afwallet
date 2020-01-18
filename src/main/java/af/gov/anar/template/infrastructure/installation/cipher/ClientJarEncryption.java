@@ -1,4 +1,4 @@
-package af.gov.anar.template.infrastructure.cipher.service;
+package af.gov.anar.template.infrastructure.installation.cipher;
 
 import java.io.File;
 import java.io.FileInputStream;

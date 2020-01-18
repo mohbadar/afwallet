@@ -20,6 +20,7 @@ import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 
 import af.gov.anar.lang.infrastructure.exception.common.ExceptionUtils;
+import af.gov.anar.lib.file.FileUtility;
 import af.gov.anar.lib.hmac.HMACUtility;
 import af.gov.anar.lib.logger.Logger;
 import af.gov.anar.template.infrastructure.constant.ApplicationGenericConstants;
@@ -30,22 +31,22 @@ import org.springframework.stereotype.Component;
  * Update the Application
  *
  */
-@Component
+//@Component
 public class SoftwareInstallationHandler {
 
     public SoftwareInstallationHandler() throws IOException {
         try (InputStream keyStream = SoftwareInstallationHandler.class.getClassLoader()
-                .getResourceAsStream("props/mosip-application.properties")) {
+                .getResourceAsStream("application.properties")) {
 
             Properties properties = new Properties();
             properties.load(keyStream);
 
-            serverRegClientURL = properties.getProperty("mosip.reg.client.url");
+            serverRegClientURL = properties.getProperty("anar.reg.client.url");
 
-            latestVersion = properties.getProperty("mosip.reg.version");
+            latestVersion = properties.getProperty("anar.reg.version");
 
             LOGGER.info(ApplicationGenericConstants.SOFTWARE_INSTALLATION_HANDLER, ApplicationGenericConstants.APPLICATION_NAME,
-                    ApplicationGenericConstants.APPLICATION_ID, "Loading mosip-application.properties completed");
+                    ApplicationGenericConstants.APPLICATION_ID, "Loading anar-application.properties completed");
 
             getLocalManifest();
 
@@ -71,7 +72,7 @@ public class SoftwareInstallationHandler {
 
     private Manifest serverManifest;
 
-    private String mosip = "mosip";
+    private String anar = "anar";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SoftwareInstallationHandler.class);
 
@@ -99,7 +100,7 @@ public class SoftwareInstallationHandler {
         return currentVersion;
     }
 
-    public void installJars() throws IOException, af.gov.anar.lang.infrastructure.exception.common.IOException {
+    public void installJars() throws IOException, af.gov.anar.lang.infrastructure.exception.common.IOException, af.gov.anar.lib.file.exception.IOException {
 
         LOGGER.info(ApplicationGenericConstants.CLIENT_JAR_DECRYPTION, ApplicationGenericConstants.APPLICATION_NAME,
                 ApplicationGenericConstants.APPLICATION_ID, "Started installing jars");
@@ -184,7 +185,7 @@ public class SoftwareInstallationHandler {
 
                     try {
 
-                        String folder = jarFile.contains(mosip) ? binFolder : libFolder;
+                        String folder = jarFile.contains(anar) ? binFolder : libFolder;
 
                         File jarInFolder = new File(folder + jarFile);
                         if (!jarInFolder.exists() || (!isCheckSumValid(jarInFolder,
@@ -230,7 +231,7 @@ public class SoftwareInstallationHandler {
 
     }
 
-    private void deleteJars(List<String> deletableJars) throws IOException {
+    private void deleteJars(List<String> deletableJars) throws IOException, af.gov.anar.lib.file.exception.IOException {
 
         for (String jarName : deletableJars) {
             deleteJar(jarName);
@@ -238,14 +239,14 @@ public class SoftwareInstallationHandler {
 
     }
 
-    private void deleteJar(String jarName) throws IOException {
+    private void deleteJar(String jarName) throws IOException, af.gov.anar.lib.file.exception.IOException {
 
         LOGGER.info(ApplicationGenericConstants.CLIENT_JAR_DECRYPTION, ApplicationGenericConstants.APPLICATION_NAME,
                 ApplicationGenericConstants.APPLICATION_ID, "Started Deleting : " + jarName);
 
         File deleteFile = null;
 
-        String deleteFolder = jarName.contains(mosip) ? binFolder : libFolder;
+        String deleteFolder = jarName.contains(anar) ? binFolder : libFolder;
 
         deleteFile = new File(deleteFolder + jarName);
 
@@ -334,7 +335,7 @@ public class SoftwareInstallationHandler {
     private boolean checkLocalJars(List<String> jarList) {
         for (String jarFile : jarList) {
 
-            File jar = jarFile.contains(mosip) ? new File(binFolder + SLASH + jarFile)
+            File jar = jarFile.contains(anar) ? new File(binFolder + SLASH + jarFile)
                     : new File(libFolder + SLASH + jarFile);
 
             if (!(jar.exists()) || !isCheckSumValid(jar, localManifest)) {
@@ -370,7 +371,7 @@ public class SoftwareInstallationHandler {
                         ApplicationGenericConstants.APPLICATION_ID, "Deleting : " + jarFile.getName());
 
                 FileUtility.forceDelete(jarFile);
-            } catch (af.gov.anar.lang.infrastructure.exception.common.IOException exception) {
+            } catch (af.gov.anar.lib.file.exception.IOException exception) {
 
                 LOGGER.error(ApplicationGenericConstants.CLIENT_JAR_DECRYPTION, ApplicationGenericConstants.APPLICATION_NAME,
                         ApplicationGenericConstants.APPLICATION_ID,
@@ -457,7 +458,7 @@ public class SoftwareInstallationHandler {
                 ApplicationGenericConstants.APPLICATION_ID, "Deletion of un-necessary jars completed");
     }
 
-    private void deleteFiles(List<File> deletableJars) throws io.mosip.kernel.core.exception.IOException {
+    private void deleteFiles(List<File> deletableJars) throws af.gov.anar.lang.infrastructure.exception.common.IOException, af.gov.anar.lib.file.exception.IOException {
         for (File jar : deletableJars) {
 
 
@@ -474,8 +475,8 @@ public class SoftwareInstallationHandler {
         for (File jar : jarFiles) {
 
             if (!(jar.getName().contains("run") && folder.equals(binFolder))
-                    && ((jar.getName().contains(mosip) && folder.equals(libFolder))
-                    || (!jar.getName().contains(mosip)) && folder.equals(binFolder)
+                    && ((jar.getName().contains(anar) && folder.equals(libFolder))
+                    || (!jar.getName().contains(anar)) && folder.equals(binFolder)
                     || localManifestAttributes == null
                     || !localManifestAttributes.containsKey(jar.getName()))) {
                 if(!jar.getName().contains("identy"))

@@ -1,4 +1,4 @@
-package af.gov.anar.template.infrastructure.cipher.tpm.initailize;
+package af.gov.anar.template.infrastructure.installation.tpm.initailize;
 
 import java.io.IOException;
 
