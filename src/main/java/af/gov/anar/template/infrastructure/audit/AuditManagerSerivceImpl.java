@@ -15,7 +15,13 @@ import java.util.stream.Collectors;
 import af.gov.anar.lang.Application;
 import af.gov.anar.lang.infrastructure.exception.common.ExceptionUtils;
 import af.gov.anar.lib.audit.builder.AuditRequestBuilder;
+import af.gov.anar.lib.audit.data.AuditRequestDto;
+import af.gov.anar.lib.audit.handler.AuditHandler;
+import af.gov.anar.lib.date.DateUtility;
 import af.gov.anar.lib.logger.Logger;
+import af.gov.anar.template.infrastructure.audit.control.entity.AuditLogControl;
+import af.gov.anar.template.infrastructure.audit.control.service.AuditLogControlDAO;
+import af.gov.anar.template.infrastructure.audit.control.service.BaseService;
 import af.gov.anar.template.infrastructure.constant.ApplicationGenericConstants;
 import af.gov.anar.template.infrastructure.dto.ResponseDTO;
 import af.gov.anar.template.infrastructure.enumeration.AuditEvent;
@@ -24,29 +30,9 @@ import af.gov.anar.template.infrastructure.service.HostService;
 import af.gov.anar.template.infrastructure.service.UserService;
 import af.gov.anar.template.infrastructure.util.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
-
-import io.mosip.kernel.auditmanager.builder.AuditRequestBuilder;
-import io.mosip.kernel.auditmanager.request.AuditRequestDto;
-import io.mosip.kernel.core.auditmanager.spi.AuditHandler;
-import io.mosip.kernel.core.exception.ExceptionUtils;
-import io.mosip.kernel.core.logger.spi.Logger;
-import io.mosip.kernel.core.util.DateUtils;
-import io.mosip.registration.config.AppConfig;
-import io.mosip.registration.constants.AuditEvent;
-import io.mosip.registration.constants.Components;
-import io.mosip.registration.constants.LoggerConstants;
-import io.mosip.registration.constants.ApplicationGenericConstants;
-import io.mosip.registration.context.ApplicationContext;
-import io.mosip.registration.context.SessionContext;
-import io.mosip.registration.dao.AuditLogControlDAO;
-import io.mosip.registration.dao.RegistrationDAO;
-import io.mosip.registration.dto.ResponseDTO;
-import io.mosip.registration.entity.AuditLogControl;
-import io.mosip.registration.entity.Registration;
-import io.mosip.registration.service.BaseService;
-import io.mosip.registration.service.packet.RegPacketStatusService;
 
 /**
  * Class to Audit the events of Registration Client.
@@ -60,9 +46,19 @@ import io.mosip.registration.service.packet.RegPacketStatusService;
  *
  */
 @Service
-public class AuditManagerSerivceImpl implements AuditManagerService {
+public class AuditManagerSerivceImpl  extends BaseService implements AuditManagerService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuditManagerSerivceImpl.class);
+
+    @Autowired
+    private AuditHandler<AuditRequestDto> auditHandler;
+
+    @Value(ApplicationGenericConstants.AUDIT_LOG_DELETION_CONFIGURED_DAYS)
+    private String auditLogDeletionConfiuredDays;
+
+
+    @Autowired
+    private AuditLogControlDAO auditLogControlDAO;
 
     @Autowired
     private HostService hostService;
@@ -70,12 +66,6 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private AuditHandler<AuditRequestDto> auditHandler;
-
-
-    @Autowired
-    private AuditLogControlDAO auditLogControlDAO;
 
     /*
      * (non-Javadoc)
@@ -84,7 +74,6 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
      * constants.AuditEvent, io.mosip.registration.constants.Components,
      * java.lang.String, java.lang.String)
      */
-    @Override
     public void audit(AuditEvent auditEventEnum, Components appModuleEnum, String refId, String refIdType) {
 
         String hostIP = hostService.SERVICE_HOST;
@@ -112,6 +101,11 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
         auditHandler.addAudit(auditRequestBuilder.build());
     }
 
+    @Override
+    public void audit(af.gov.anar.lib.audit.util.sample.AuditEvent auditEventEnum, Components appModuleEnum, String refId, String refIdType) {
+
+    }
+
     /*
      * (non-Javadoc)
      *
@@ -125,11 +119,9 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
 
         ResponseDTO responseDTO = new ResponseDTO();
 
-        String val = getGlobalConfigValueOf(ApplicationGenericConstants.AUDIT_LOG_DELETION_CONFIGURED_DAYS);
-
-        if (val != null) {
+        if (auditLogDeletionConfiuredDays != null) {
             try {
-                int auditDeletionConfiguredDays = Integer.parseInt(val);
+                int auditDeletionConfiguredDays = Integer.parseInt(auditLogDeletionConfiuredDays);
 
                 /* Get Calendar instance */
                 Calendar cal = Calendar.getInstance();
@@ -154,15 +146,11 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
                 }).collect(Collectors.toList());
 
                 /* Fetch Registartions to be deleted */
-                List<Registration> registrations = registrationDAO.get(regIds);
-
-                /* Delete Registrations */
-                regPacketStatusService.deleteRegistrations(registrations);
 
                 setSuccessResponse(responseDTO, ApplicationGenericConstants.AUDIT_LOGS_DELETION_SUCESS_MSG, null);
 
             } catch (RuntimeException runtimeException) {
-                LOGGER.error(LoggerConstants.AUDIT_SERVICE_LOGGER_TITLE, ApplicationGenericConstants.APPLICATION_NAME,
+                LOGGER.error(ApplicationGenericConstants.AUDIT_SERVICE_LOGGER_TITLE, ApplicationGenericConstants.APPLICATION_NAME,
                         ApplicationGenericConstants.APPLICATION_ID, runtimeException.getMessage());
 
                 setErrorResponse(responseDTO, ApplicationGenericConstants.AUDIT_LOGS_DELETION_FLR_MSG, null);
@@ -173,7 +161,7 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
             setErrorResponse(responseDTO, ApplicationGenericConstants.AUDIT_LOGS_DELETION_FLR_MSG, null);
         }
 
-        LOGGER.info(LoggerConstants.AUDIT_SERVICE_LOGGER_TITLE, ApplicationGenericConstants.APPLICATION_NAME,
+        LOGGER.info(ApplicationGenericConstants.AUDIT_SERVICE_LOGGER_TITLE, ApplicationGenericConstants.APPLICATION_NAME,
                 ApplicationGenericConstants.APPLICATION_ID, "Deletion of Audit Logs Completed");
 
         return responseDTO;
