@@ -1,6 +1,7 @@
 package af.gov.anar.template.infrastructure.audit;
 
 import af.gov.anar.lib.audit.util.sample.AuditEvent;
+import af.gov.anar.template.infrastructure.enumeration.Components;
 import org.springframework.data.auditing.AuditingHandler;
 
 import io.mosip.kernel.auditmanager.builder.AuditRequestBuilder;
