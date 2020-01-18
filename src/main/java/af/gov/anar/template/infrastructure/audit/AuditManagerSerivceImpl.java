@@ -25,7 +25,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
- * Class to Audit the events of Registration Client.
+ * Class to Audit the events of Client.
  * <p>
  * This class creates a wrapper around {@link AuditRequestBuilder} class. This
  * class creates a {@link AuditRequestBuilder} object for each audit event and
@@ -33,7 +33,7 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public class AuditManagerSerivceImpl{
+public class AuditManagerSerivceImpl extends BaseService implements AuditManagerService{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuditManagerSerivceImpl.class);
 
@@ -57,8 +57,7 @@ public class AuditManagerSerivceImpl{
     /*
      * (non-Javadoc)
      *
-     * @see io.mosip.registration.audit.AuditFactory#audit(io.mosip.registration.
-     * constants.AuditEvent, io.mosip.registration.constants.Components,
+     * @see iAuditFactory#audit(AuditEvent, Components,
      * java.lang.String, java.lang.String)
      */
     public void audit(AuditEvent auditEventEnum, Components appModuleEnum, String refId, String refIdType) {
