@@ -1,13 +1,9 @@
 package af.gov.anar.template.infrastructure.audit;
 
 import af.gov.anar.lib.audit.util.sample.AuditEvent;
+import af.gov.anar.template.infrastructure.dto.ResponseDTO;
 import af.gov.anar.template.infrastructure.enumeration.Components;
 import org.springframework.data.auditing.AuditingHandler;
-
-import io.mosip.kernel.auditmanager.builder.AuditRequestBuilder;
-import io.mosip.registration.constants.AuditEvent;
-import io.mosip.registration.constants.Components;
-import io.mosip.registration.dto.ResponseDTO;
 
 /**
  * The wrapper interface to log the audits
@@ -20,7 +16,7 @@ public interface AuditManagerService {
      * This method takes {@link AuditEvent}, {@link Components}, audit
      * description, refId and refIdType as inputs, other values from Session Context object
      * namely createdBy, sessionUserId and sessionUserName to build the
-     * {@link AuditRequestBuilder} object. This {@link AuditRequestBuilder} object will be passed
+     * {@link af.gov.anar.lib.audit.builder.AuditRequestBuilder} object. This {@link af.gov.anar.lib.audit.builder.AuditRequestBuilder} object will be passed
      * to the {@link AuditingHandler} which will persist the audit event in
      * database.
      *

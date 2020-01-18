@@ -1,17 +1,17 @@
-package af.gov.anar.template.data.dto;
-import java.util.Map;
+package af.gov.anar.template.infrastructure.dto;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Map;
+
+
 /**
- * The DTO Class ErrorResponseDTO.
+ * The Class SuccessResponseDTO.
  */
 @Getter
 @Setter
-public class ErrorResponseDTO {
-
+public class SuccessResponseDTO {
     private String code;
     private String message;
     private Map<String, Object> otherAttributes;

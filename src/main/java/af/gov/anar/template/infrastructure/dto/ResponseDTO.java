@@ -1,4 +1,4 @@
-package af.gov.anar.template.data.dto;
+package af.gov.anar.template.infrastructure.dto;
 
 import java.util.List;
 
