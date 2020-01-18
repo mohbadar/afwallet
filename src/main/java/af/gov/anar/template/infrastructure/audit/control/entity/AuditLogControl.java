@@ -1,4 +1,4 @@
-package af.gov.anar.template.infrastructure.entity;
+package af.gov.anar.template.infrastructure.audit.control.entity;
 
 import java.sql.Timestamp;
 
