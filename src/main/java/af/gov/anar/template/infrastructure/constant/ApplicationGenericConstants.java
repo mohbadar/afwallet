@@ -22,4 +22,10 @@ public class ApplicationGenericConstants {
     public static  Integer  APPENDER_MAX_HISTORY  = 10;
     public static  boolean  APPENDER_IMMEDIATE_FLUSH = true;
     public static  boolean  APPENDER_PRUDENT = true;
+
+    private static final String SYNC = APP_NAME + "SYNC - ";
+    public static final String AUDIT_SERVICE_LOGGER_TITLE = SYNC + "AUDIT_MANAGER_SERVICE";
+    public static final String AUDIT_LOG_DELETION_CONFIGURED_DAYS = "anar.servicetemplate.audit_log_deletion_configured_days";
+
+
 }

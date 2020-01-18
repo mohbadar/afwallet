@@ -12,13 +12,16 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import af.gov.anar.lang.Application;
 import af.gov.anar.lang.infrastructure.exception.common.ExceptionUtils;
 import af.gov.anar.lib.audit.builder.AuditRequestBuilder;
 import af.gov.anar.lib.logger.Logger;
 import af.gov.anar.template.infrastructure.constant.ApplicationGenericConstants;
+import af.gov.anar.template.infrastructure.dto.ResponseDTO;
 import af.gov.anar.template.infrastructure.enumeration.AuditEvent;
 import af.gov.anar.template.infrastructure.enumeration.Components;
 import af.gov.anar.template.infrastructure.service.HostService;
+import af.gov.anar.template.infrastructure.service.UserService;
 import af.gov.anar.template.infrastructure.util.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -34,7 +37,7 @@ import io.mosip.registration.config.AppConfig;
 import io.mosip.registration.constants.AuditEvent;
 import io.mosip.registration.constants.Components;
 import io.mosip.registration.constants.LoggerConstants;
-import io.mosip.registration.constants.RegistrationConstants;
+import io.mosip.registration.constants.ApplicationGenericConstants;
 import io.mosip.registration.context.ApplicationContext;
 import io.mosip.registration.context.SessionContext;
 import io.mosip.registration.dao.AuditLogControlDAO;
@@ -65,6 +68,9 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
     private HostService hostService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private AuditHandler<AuditRequestDto> auditHandler;
 
 
@@ -81,14 +87,16 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
     @Override
     public void audit(AuditEvent auditEventEnum, Components appModuleEnum, String refId, String refIdType) {
 
-        // Getting Host IP Address and Name
         String hostIP = hostService.SERVICE_HOST;
         String hostName = hostService.SERVICE_HOST;
+
         try {
-            hostIP = InetAddress.getLocalHost().getHostAddress();
-            hostName = InetAddress.getLocalHost().getHostName();
+        // Getting Host IP Address and Name
+         hostIP = hostService.getDefaultIP();
+         hostName = hostService.getDefaultHostName();
+
         } catch (UnknownHostException unknownHostException) {
-            LOGGER.info("REGISTRATION-AUDIT_FACTORY-AUDIT", APPLICATION_NAME, APPLICATION_ID,
+            LOGGER.info("SERVICETE-TEMPLATE-AUDIT_FACTORY-AUDIT", APPLICATION_NAME, APPLICATION_ID,
                     ExceptionUtils.getStackTrace(unknownHostException));
         }
 
@@ -96,11 +104,11 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
         auditRequestBuilder.setActionTimeStamp(LocalDateTime.now(ZoneOffset.UTC))
                 .setApplicationId(String.valueOf(APPLICATION_ID))
                 .setApplicationName(String.valueOf(APPLICATION_NAME))
-                .setCreatedBy(SessionContext.userName()).setDescription(auditEventEnum.getDescription())
+                .setCreatedBy(userService.getPreferredUsername()).setDescription(auditEventEnum.getDescription())
                 .setEventId(auditEventEnum.getId()).setEventName(auditEventEnum.getName())
                 .setEventType(auditEventEnum.getType()).setHostIp(hostIP).setHostName(hostName).setId(refId)
                 .setIdType(refIdType).setModuleId(appModuleEnum.getId()).setModuleName(appModuleEnum.getName())
-                .setSessionUserId(SessionContext.userId()).setSessionUserName(SessionContext.userName());
+                .setSessionUserId(userService.getId()).setSessionUserName(userService.getPreferredUsername());
         auditHandler.addAudit(auditRequestBuilder.build());
     }
 
@@ -112,12 +120,12 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
     @Override
     public synchronized ResponseDTO deleteAuditLogs() {
 
-        LOGGER.info(LoggerConstants.AUDIT_SERVICE_LOGGER_TITLE, RegistrationConstants.APPLICATION_NAME,
-                RegistrationConstants.APPLICATION_ID, "Deletion of Audit Logs Started");
+        LOGGER.info(ApplicationGenericConstants.AUDIT_SERVICE_LOGGER_TITLE, ApplicationGenericConstants.APPLICATION_NAME,
+                ApplicationGenericConstants.APPLICATION_ID, "Deletion of Audit Logs Started");
 
         ResponseDTO responseDTO = new ResponseDTO();
 
-        String val = getGlobalConfigValueOf(RegistrationConstants.AUDIT_LOG_DELETION_CONFIGURED_DAYS);
+        String val = getGlobalConfigValueOf(ApplicationGenericConstants.AUDIT_LOG_DELETION_CONFIGURED_DAYS);
 
         if (val != null) {
             try {
@@ -125,7 +133,7 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
 
                 /* Get Calendar instance */
                 Calendar cal = Calendar.getInstance();
-                cal.setTime(Timestamp.valueOf(DateUtils.getUTCCurrentDateTime()));
+                cal.setTime(Timestamp.valueOf(DateUtility.getUTCCurrentDateTime()));
                 cal.add(Calendar.DATE, -auditDeletionConfiguredDays);
 
                 /* To-Date */
@@ -137,7 +145,7 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
                 if (isNull(auditLogControls) || isEmpty(auditLogControls)) {
 
                     /* No Audit Logs Found */
-                    return setSuccessResponse(responseDTO, RegistrationConstants.AUDIT_LOGS_DELETION_EMPTY_MSG, null);
+                    return setSuccessResponse(responseDTO, ApplicationGenericConstants.AUDIT_LOGS_DELETION_EMPTY_MSG, null);
 
                 }
 
@@ -151,22 +159,22 @@ public class AuditManagerSerivceImpl implements AuditManagerService {
                 /* Delete Registrations */
                 regPacketStatusService.deleteRegistrations(registrations);
 
-                setSuccessResponse(responseDTO, RegistrationConstants.AUDIT_LOGS_DELETION_SUCESS_MSG, null);
+                setSuccessResponse(responseDTO, ApplicationGenericConstants.AUDIT_LOGS_DELETION_SUCESS_MSG, null);
 
             } catch (RuntimeException runtimeException) {
-                LOGGER.error(LoggerConstants.AUDIT_SERVICE_LOGGER_TITLE, RegistrationConstants.APPLICATION_NAME,
-                        RegistrationConstants.APPLICATION_ID, runtimeException.getMessage());
+                LOGGER.error(LoggerConstants.AUDIT_SERVICE_LOGGER_TITLE, ApplicationGenericConstants.APPLICATION_NAME,
+                        ApplicationGenericConstants.APPLICATION_ID, runtimeException.getMessage());
 
-                setErrorResponse(responseDTO, RegistrationConstants.AUDIT_LOGS_DELETION_FLR_MSG, null);
+                setErrorResponse(responseDTO, ApplicationGenericConstants.AUDIT_LOGS_DELETION_FLR_MSG, null);
 
             }
 
         } else {
-            setErrorResponse(responseDTO, RegistrationConstants.AUDIT_LOGS_DELETION_FLR_MSG, null);
+            setErrorResponse(responseDTO, ApplicationGenericConstants.AUDIT_LOGS_DELETION_FLR_MSG, null);
         }
 
-        LOGGER.info(LoggerConstants.AUDIT_SERVICE_LOGGER_TITLE, RegistrationConstants.APPLICATION_NAME,
-                RegistrationConstants.APPLICATION_ID, "Deletion of Audit Logs Completed");
+        LOGGER.info(LoggerConstants.AUDIT_SERVICE_LOGGER_TITLE, ApplicationGenericConstants.APPLICATION_NAME,
+                ApplicationGenericConstants.APPLICATION_ID, "Deletion of Audit Logs Completed");
 
         return responseDTO;
     }
