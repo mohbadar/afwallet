@@ -9,6 +9,7 @@ It is used to develop services for Anar framework.
 - Clone the repository 
 - Rename the service directory name to `anar-servicename`
 - Rename artifactId to your service artifactId
+- Change the github remote address to the new service URL. 
 - Add the required library as a module in service
 - Start implementing awesome features
 
