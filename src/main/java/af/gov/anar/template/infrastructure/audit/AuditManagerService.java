@@ -1,7 +1,7 @@
 package af.gov.anar.template.infrastructure.audit;
 
-import af.gov.anar.lib.audit.util.sample.AuditEvent;
 import af.gov.anar.template.infrastructure.dto.ResponseDTO;
+import af.gov.anar.template.infrastructure.enumeration.AuditEvent;
 import af.gov.anar.template.infrastructure.enumeration.Components;
 import org.springframework.data.auditing.AuditingHandler;
 
@@ -34,11 +34,5 @@ public interface AuditManagerService {
     void audit(AuditEvent auditEventEnum, Components appModuleEnum, String refId,
                String refIdType);
 
-    /**
-     * Delete Audit Logs
-     *
-     * @return response of deletion
-     */
-    ResponseDTO deleteAuditLogs();
 
 }
