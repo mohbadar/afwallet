@@ -61,6 +61,12 @@
 			<version>${project.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>af.gov.anar.lib</groupId>
+			<artifactId>anar-lib-workflow</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
