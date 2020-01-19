@@ -4,6 +4,7 @@ import java.util.Collections;
 
 import af.gov.anar.lib.cors.service.CorsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @Configuration
+@ConditionalOnBean(value = CorsService.class)
 public class CORSConfig{
 
     @Autowired

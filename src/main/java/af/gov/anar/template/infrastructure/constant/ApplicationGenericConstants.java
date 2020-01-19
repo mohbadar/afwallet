@@ -55,4 +55,12 @@ public class ApplicationGenericConstants {
     public static final String AUDIT_LOGS_DELETION_FLR_MSG = "Audit Logs Deleted Failed";
     public static final String AUDIT_LOGS_DELETION_EMPTY_MSG = "AUDIT_LOGS_DELETION_EMPTY_MSG";
 
+
+    //****************************MutltiThreading Config Params ********************//
+    public static final Integer CORE_POOLING_SIZE = 2;
+    public static final Integer MAX_POOLING_SIZE = 2;
+    public static final Integer QUEUE_CAPACITY = 1000;
+    public static final String DEFAULT_PREFIX = "ASMIS-THREAD-SERVICE -> ";
+
+
 }
