@@ -126,31 +126,43 @@ public class SpringKeycloakSecurityConfiguration {
      */
     public static class CommonSpringKeycloakTutorialsSecuritAdapter extends AbstractHttpConfigurer<CommonSpringKeycloakTutorialsSecuritAdapter, HttpSecurity> {
 
+        private static final String[] AUTH_WHITE_LIST = {
+                "/api/test/**"
+        };
+
         @Override
         public void init(HttpSecurity http) throws Exception {
             // any method that adds another configurer
             // must be done in the init method
-            http
-                    // disable csrf because of API mode
-                    .csrf().disable()
-                    .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
-                    .and()
-                    // manage routes securisation here
-                    .authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
-
-                    // manage routes securisation here
-                    .and()
+            http.antMatcher("/api/**")
                     .authorizeRequests()
-                    .antMatchers(HttpMethod.OPTIONS).permitAll()
+                    .antMatchers(AUTH_WHITE_LIST).permitAll()
+                    .anyRequest().authenticated()
+                    .and()
+                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-
-                    .antMatchers("/logout", "/", "/unsecured").permitAll()
-                    .antMatchers("/user").hasRole("USER")
-                    .antMatchers("/admin").hasRole("ADMIN")
-
-                    .anyRequest().denyAll();
+//            http
+//                    // disable csrf because of API mode
+//                    .csrf().disable()
+//                    .sessionManagement()
+//                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//
+//                    .and()
+//                    // manage routes securisation here
+//                    .authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
+//
+//                    // manage routes securisation here
+//                    .and()
+//                    .authorizeRequests()
+//                    .antMatchers(HttpMethod.OPTIONS).permitAll()
+//
+//
+//                    .antMatchers("/logout", "/", "/unsecured").permitAll()
+//                    .antMatchers("/user").hasRole("USER")
+//                    .antMatchers("/admin").hasRole("ADMIN")
+//
+//                    .anyRequest().denyAll();
 
         }
 
