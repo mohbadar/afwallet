@@ -27,9 +27,9 @@ public class MultitenantConfiguration extends KeycloakAutoConfiguration {
 
     @Autowired
     @Override
-    public void setKeycloakSpringBootProperties(final KeycloakSpringBootProperties keycloakProperties) {
+    public void setKeycloakSpringBootProperties(final KeycloakSpringBootProperties keycloakProperties, KeycloakSpringBootConfigResolver resolver) {
         m_keycloakProperties = keycloakProperties;
-        super.setKeycloakSpringBootProperties(keycloakProperties);
+        super.setKeycloakSpringBootProperties(keycloakProperties, resolver);
         HeaderBasedConfigResolver.setAdapterConfig(keycloakProperties);	}
 
     @Bean
