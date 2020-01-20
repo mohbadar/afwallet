@@ -4,7 +4,7 @@
 It is used to develop services for Anar framework. 
 
 
-#### Multenancy 
+#### Multitenancy 
 
 You need add the `realm` property in header of your requests.
 
@@ -16,6 +16,8 @@ curl -X GET \
      -H "realm: ORGA1" http://localhost:7001/api/user
 
 ```
+
+You also need to add `TenantName-keycloak.json` file in resources directory. 
 
 #### Usage Guide
 
