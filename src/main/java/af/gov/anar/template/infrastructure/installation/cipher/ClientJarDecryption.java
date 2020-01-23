@@ -23,9 +23,8 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.xml.parsers.ParserConfigurationException;
 
 import af.gov.anar.lang.infrastructure.exception.common.ExceptionUtils;
-import af.gov.anar.lib.cryptojce.exception.crypto.exception.InvalidDataException;
-import af.gov.anar.lib.cryptojce.exception.crypto.exception.InvalidKeyException;
-import af.gov.anar.lib.cryptojce.util.CryptoUtil;
+import af.gov.anar.lib.cryptojce.exception.InvalidDataException;
+import af.gov.anar.lib.cryptojce.exception.InvalidKeyException;import af.gov.anar.lib.cryptojce.util.CryptoUtil;
 import af.gov.anar.lib.cryptojce.util.CryptoUtils;
 import af.gov.anar.lib.cryptojce.util.SecurityExceptionCodeConstant;
 import af.gov.anar.lib.logger.Logger;
@@ -403,7 +402,7 @@ public class ClientJarDecryption extends Application {
 
                                 }
 
-                            } catch (IOException | af.gov.anar.lang.infrastructure.exception.common.IOException | af.gov.anar.lib.file.exception.IOException exception) {
+                            } catch (IOException | af.gov.anar.lang.infrastructure.exception.common.IOException exception) {
                                 LOGGER.error(ApplicationGenericConstants.CLIENT_JAR_DECRYPTION, ApplicationGenericConstants.APPLICATION_NAME,
                                         ApplicationGenericConstants.APPLICATION_ID,
                                         exception.getMessage() + ExceptionUtils.getStackTrace(exception));

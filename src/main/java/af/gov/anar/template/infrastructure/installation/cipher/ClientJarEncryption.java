@@ -27,8 +27,8 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import af.gov.anar.lib.cryptojce.exception.crypto.exception.InvalidDataException;
-import af.gov.anar.lib.cryptojce.exception.crypto.exception.InvalidKeyException;
+import af.gov.anar.lib.cryptojce.exception.InvalidDataException;
+import af.gov.anar.lib.cryptojce.exception.InvalidKeyException;
 import af.gov.anar.lib.cryptojce.util.CryptoUtils;
 import af.gov.anar.lib.cryptojce.util.HMACUtils;
 import af.gov.anar.lib.cryptojce.util.SecurityExceptionCodeConstant;

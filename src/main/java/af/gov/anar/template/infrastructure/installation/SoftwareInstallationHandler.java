@@ -100,7 +100,7 @@ public class SoftwareInstallationHandler {
         return currentVersion;
     }
 
-    public void installJars() throws IOException, af.gov.anar.lang.infrastructure.exception.common.IOException, af.gov.anar.lib.file.exception.IOException {
+    public void installJars() throws IOException, af.gov.anar.lang.infrastructure.exception.common.IOException, af.gov.anar.lang.infrastructure.exception.common.IOException {
 
         LOGGER.info(ApplicationGenericConstants.CLIENT_JAR_DECRYPTION, ApplicationGenericConstants.APPLICATION_NAME,
                 ApplicationGenericConstants.APPLICATION_ID, "Started installing jars");
@@ -231,7 +231,7 @@ public class SoftwareInstallationHandler {
 
     }
 
-    private void deleteJars(List<String> deletableJars) throws IOException, af.gov.anar.lib.file.exception.IOException {
+    private void deleteJars(List<String> deletableJars) throws IOException, af.gov.anar.lang.infrastructure.exception.common.IOException {
 
         for (String jarName : deletableJars) {
             deleteJar(jarName);
@@ -239,7 +239,7 @@ public class SoftwareInstallationHandler {
 
     }
 
-    private void deleteJar(String jarName) throws IOException, af.gov.anar.lib.file.exception.IOException {
+    private void deleteJar(String jarName) throws IOException, af.gov.anar.lang.infrastructure.exception.common.IOException {
 
         LOGGER.info(ApplicationGenericConstants.CLIENT_JAR_DECRYPTION, ApplicationGenericConstants.APPLICATION_NAME,
                 ApplicationGenericConstants.APPLICATION_ID, "Started Deleting : " + jarName);
@@ -371,7 +371,7 @@ public class SoftwareInstallationHandler {
                         ApplicationGenericConstants.APPLICATION_ID, "Deleting : " + jarFile.getName());
 
                 FileUtility.forceDelete(jarFile);
-            } catch (af.gov.anar.lib.file.exception.IOException exception) {
+            } catch (af.gov.anar.lang.infrastructure.exception.common.IOException exception) {
 
                 LOGGER.error(ApplicationGenericConstants.CLIENT_JAR_DECRYPTION, ApplicationGenericConstants.APPLICATION_NAME,
                         ApplicationGenericConstants.APPLICATION_ID,
@@ -458,7 +458,7 @@ public class SoftwareInstallationHandler {
                 ApplicationGenericConstants.APPLICATION_ID, "Deletion of un-necessary jars completed");
     }
 
-    private void deleteFiles(List<File> deletableJars) throws af.gov.anar.lang.infrastructure.exception.common.IOException, af.gov.anar.lib.file.exception.IOException {
+    private void deleteFiles(List<File> deletableJars) throws af.gov.anar.lang.infrastructure.exception.common.IOException, af.gov.anar.lang.infrastructure.exception.common.IOException {
         for (File jar : deletableJars) {
 
 
