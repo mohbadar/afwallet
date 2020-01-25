@@ -3,6 +3,8 @@ package af.gov.anar.template.sample.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
@@ -15,7 +17,7 @@ import javax.persistence.*;
 @Builder
 @EqualsAndHashCode
 @ToString
-
+@Audited
 /**
  * You can use the @ApiModelProperty annotation to describe the properties of the Product model. With @ApiModelProperty, you can also document a property as required.
  */
@@ -29,5 +31,6 @@ public class SampleEntity {
     private long id;
 
     @ApiModelProperty(notes = "The name property of sample entity")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED) // if you don't want to audit this field
     private String name;
 }
