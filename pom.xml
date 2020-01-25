@@ -20,15 +20,25 @@
 		<java.version>1.8</java.version>
 		<tss.version>0.3.0</tss.version>
 		<keycloak.version>8.0.1</keycloak.version>
+		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
 	</properties>
 
 	<dependencies>
+
+
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
 			<artifactId>anar-lib-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>af.gov.anar.lib</groupId>
+			<artifactId>anar-lib-metrics</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
 			<artifactId>anar-lib-crypto-jce</artifactId>
@@ -99,6 +109,14 @@
 <!--			<groupId>org.springframework.boot</groupId>-->
 <!--			<artifactId>spring-boot-starter-validation</artifactId>-->
 <!--		</dependency>-->
+
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox-swagger2.version}</version>
+		</dependency>
+
 
 		<!-- spring-data-envers -->
 		<dependency>
