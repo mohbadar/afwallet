@@ -15,6 +15,20 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
+    /**
+     * After the Docket bean is defined, its select() method returns an instance of ApiSelectorBuilder, which provides a way to control the endpoints exposed by Swagger.
+     *
+     * Predicates for selection of RequestHandlers can be configured with the help of RequestHandlerSelectors and PathSelectors. Using any() for both will make documentation for your entire API available through Swagger.
+     *
+     * Within Swagger’s response is a list of all controllers defined in your application. Clicking on any of them will list the valid HTTP methods (DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT).
+     *
+     * Expanding each method provides additional useful data, such as response status, content-type, and a list of parameters. It is also possible to try each method using the UI.
+     *
+     * Swagger’s ability to be synchronized with your code base is crucial. To demonstrate this, you can add a new controller to your application.
+     *
+     * @return
+     */
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -23,4 +37,40 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build();
     }
+
+    /**
+     * Advance Configuration
+     *
+     *
+     * @Bean
+     * public Docket api() {
+     *     return new Docket(DocumentationType.SWAGGER_2)
+     *       .select()
+     *       .apis(RequestHandlerSelectors.basePackage("af.gov.anar.servicetemplate.object.api"))
+     *       .paths(PathSelectors.ant("/foos/*"))
+     *       .build();
+     * }
+     * OR
+     *
+     *
+     *
+     @Bean
+     public Docket postsApi() {
+     return new Docket(DocumentationType.SWAGGER_2).groupName("public-api")
+     .apiInfo(apiInfo()).select().paths(postPaths()).build();
+     }
+
+     private Predicate<String> postPaths() {
+     return or(regex("/api/posts.*"), regex("/api/servocetemplate.*"));
+     }
+
+     private ApiInfo apiInfo() {
+     return new ApiInfoBuilder().title("Anar Template PI")
+     .description("API reference for developers")
+     .termsOfServiceUrl("http://anar.gov.af")
+     .contact("admin@gmail.com").license("MIT")
+     .licenseUrl("admin@gmail.com").version("1.0").build();
+     }
+
+     */
 }
