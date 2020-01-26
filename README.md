@@ -4,21 +4,6 @@
 It is used to develop services for Anar framework. 
 
 
-#### Multitenancy 
-
-You need add the `realm` property in header of your requests.
-
-
-```curl
-
-curl -X GET \
-     -H "Authorization: Bearer ${TOKEN} \
-     -H "realm: ORGA1" http://localhost:7001/api/user
-
-```
-
-You also need to add `TenantName-keycloak.json` file in resources directory. 
-
 #### Usage Guide
 
 - Clone the repository 
