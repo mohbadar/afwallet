@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar</groupId>
-	<artifactId>anar-servicetemplate</artifactId>
+	<artifactId>ebreshna</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-servicetemplate</name>
-	<description>Service Template for Developing Services for Anar Framework</description>
+	<name>ebreshna</name>
+	<description>eBreshna Experimental System</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -1,2 +1,0 @@
-2020-01-18T11:22:35+04:30 - [af.gov.anar.template.infrastructure.installation.SoftwareInstallationHandler] - INFO  - REGISTRATION - SOFTWARE_INSTALLATION_HANDLER - SERVICE_TEMPLATE - SER_TEMP - Loading anar-application.properties completed
-2020-01-18T11:22:35+04:30 - [af.gov.anar.template.infrastructure.installation.SoftwareInstallationHandler] - INFO  - REGISTRATION - CLIENT_JAR_DECRYPTION -  - SERVICE_TEMPLATE - SER_TEMP - Deletion of un-necessary jars started
