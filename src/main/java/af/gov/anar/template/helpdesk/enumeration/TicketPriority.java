@@ -7,9 +7,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum TicketPriority {
 
-    CRITICAL ("CRITICAL"),
-    IMPORTANT ("IMPORTANT"),
-    NORMAL ("NORMAL"),
+    URGENT ("URGENT"),
+    HIGH ("HIGH"),
+    MEDIUM ("MEDIUM"),
     LOW("LOW");
 
     private String content;
