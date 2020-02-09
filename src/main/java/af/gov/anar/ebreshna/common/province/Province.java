@@ -1,5 +1,6 @@
-package af.gov.anar.ebreshna.common.model;
+package af.gov.anar.ebreshna.common.province;
 
+import af.gov.anar.ebreshna.common.model.BaseEntity;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -16,7 +17,7 @@ import java.util.Collection;
 @ToString
 @EqualsAndHashCode
 @Table(schema = Schema.CORE_SCHEMA, name = "province")
-public class Province extends  BaseEntity {
+public class Province extends BaseEntity {
 
     @Column(name = "name", nullable = false)
     private String name;

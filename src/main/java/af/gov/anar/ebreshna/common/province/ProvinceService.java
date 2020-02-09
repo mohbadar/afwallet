@@ -1,7 +1,5 @@
-package af.gov.anar.ebreshna.common.service;
+package af.gov.anar.ebreshna.common.province;
 
-import af.gov.anar.ebreshna.common.model.Province;
-import af.gov.anar.ebreshna.common.repository.ProvinceRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

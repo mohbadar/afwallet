@@ -1,8 +1,6 @@
-package af.gov.anar.ebreshna.common.api;
+package af.gov.anar.ebreshna.common.province;
 
 
-import af.gov.anar.ebreshna.common.model.Province;
-import af.gov.anar.ebreshna.common.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
