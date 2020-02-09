@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "ticket_type", schema = Schema.HELP_DESK_DB_SCHEMA)
+@Table(name = "ticket_history", schema = Schema.HELP_DESK_DB_SCHEMA)
 @Getter
 @Setter
 @AllArgsConstructor
