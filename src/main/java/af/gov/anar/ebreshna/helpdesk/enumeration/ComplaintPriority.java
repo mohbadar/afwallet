@@ -5,13 +5,12 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum TicketStatus {
+public enum ComplaintPriority {
 
-    APPROVED("APPROVED"),
-    REJECTED("REJECTED"),
-    INVALID("INVALID"),
-    SUSPENDED("SUSPENDED"),
-    PENDING("PENDING");
+    URGENT ("URGENT"),
+    HIGH ("HIGH"),
+    MEDIUM ("MEDIUM"),
+    LOW("LOW");
 
     private String content;
 }

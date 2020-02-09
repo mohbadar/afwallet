@@ -3,11 +3,12 @@ package af.gov.anar.ebreshna.helpdesk.enumeration;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
-public enum TicketPriority {
+@Getter
+public enum  ComplaintComplexity {
 
-    URGENT ("URGENT"),
+
+    CRITICAL ("CRITICAL"),
     HIGH ("HIGH"),
     MEDIUM ("MEDIUM"),
     LOW("LOW");

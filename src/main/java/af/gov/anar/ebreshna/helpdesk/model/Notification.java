@@ -35,8 +35,5 @@ public class Notification extends BaseEntity {
     private String title;
     private String message;
     private NotificationType notificationType;
-    @Lob
-    @Column
-    private byte[] data;
     private boolean unread =true;
 }

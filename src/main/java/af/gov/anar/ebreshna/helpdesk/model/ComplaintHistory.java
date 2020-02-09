@@ -21,7 +21,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class TicketHistory extends BaseEntity {
+public class ComplaintHistory extends BaseEntity {
 
     /**
      *   action: { type: String, required: true },
@@ -35,7 +35,6 @@ public class TicketHistory extends BaseEntity {
     private Date date;
     @Column(nullable = false)
     private String desciption;
-
 
     @PrePersist
     public void setDate()

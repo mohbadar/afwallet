@@ -1,8 +1,7 @@
 package af.gov.anar.ebreshna.helpdesk.model;
 
 import af.gov.anar.ebreshna.common.model.BaseEntity;
-import af.gov.anar.ebreshna.helpdesk.enumeration.TicketPriority;
-import af.gov.anar.ebreshna.infrastructure.util.Schema;
+import af.gov.anar.ebreshna.helpdesk.enumeration.ComplaintPriority;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
@@ -11,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ticket_type", schema = Schema.HELP_DESK_DB_SCHEMA)
+@Table(name = "complaint")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,13 +19,12 @@ import javax.persistence.Table;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class TicketType extends BaseEntity {
+public class ComplaintType extends BaseEntity {
 
     @Column(unique = true, nullable = false)
     private String name;
     @Column(nullable = true)
     private String description;
     @Column(nullable = false)
-    private TicketPriority ticketPriority;
-
+    private ComplaintPriority complaintPriority;
 }
