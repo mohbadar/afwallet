@@ -16,7 +16,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class Ticket{
+public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

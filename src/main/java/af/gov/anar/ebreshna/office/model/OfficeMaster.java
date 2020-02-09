@@ -37,6 +37,6 @@ public class OfficeMaster extends BaseEntity {
     private String phone3;
     private String fax;
     private String email;
-//    private
+//    private String hodOfJunction;
 
 }
