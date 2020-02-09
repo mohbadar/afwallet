@@ -47,7 +47,7 @@ public class Complaint  extends BaseEntity {
 
     private String attachmentPath;
 
-    private String content;
+    private String remarks;
 
     @OneToMany(mappedBy = "complaint", fetch = FetchType.LAZY)
     @JsonIgnore
