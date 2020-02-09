@@ -4,10 +4,11 @@ import af.gov.anar.ebreshna.helpdesk.model.Comment;
 import af.gov.anar.ebreshna.helpdesk.repository.CommentRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-
+@Service
 public class CommentService {
 
     @Autowired
