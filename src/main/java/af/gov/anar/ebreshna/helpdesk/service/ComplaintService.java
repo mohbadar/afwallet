@@ -42,4 +42,9 @@ public class ComplaintService {
         obj.setDeletedAt(new Date());
         save(obj);
     }
+
+    public List<Complaint> findByAssignee(String userId)
+    {
+            return repository.findByAssignee(userId);
+    }
 }

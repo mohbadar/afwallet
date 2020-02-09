@@ -1,6 +1,6 @@
 package af.gov.anar.ebreshna.helpdesk.model;
 
-import af.gov.anar.ebreshna.common.model.BaseEntity;
+import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.common.province.Province;
 import af.gov.anar.ebreshna.helpdesk.enumeration.ModuleType;
 import af.gov.anar.lib.workflow.model.Workflow;
@@ -57,5 +57,8 @@ public class Complaint  extends BaseEntity {
     @OneToMany(mappedBy = "complaint", fetch = FetchType.LAZY)
     @JsonIgnore
     private Collection<ComplaintHistory> complaintHistories;
+
+    @Column
+    private String assignee;
 
 }

@@ -1,5 +1,6 @@
-package af.gov.anar.ebreshna.common.model;
+package af.gov.anar.ebreshna.common.station.model;
 
+import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class StationType extends  BaseEntity {
+public class StationType extends BaseEntity {
 
     private String name;
 }

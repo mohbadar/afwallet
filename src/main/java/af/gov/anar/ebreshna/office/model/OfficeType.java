@@ -1,6 +1,6 @@
 package af.gov.anar.ebreshna.office.model;
 
-import af.gov.anar.ebreshna.common.model.BaseEntity;
+import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;

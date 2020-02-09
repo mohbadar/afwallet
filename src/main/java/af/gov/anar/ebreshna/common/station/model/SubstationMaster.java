@@ -1,6 +1,7 @@
-package af.gov.anar.ebreshna.common.model;
+package af.gov.anar.ebreshna.common.station.model;
 
-import af.gov.anar.ebreshna.common.enumeration.SubstationCapacity;
+import af.gov.anar.ebreshna.common.base.BaseEntity;
+import af.gov.anar.ebreshna.common.station.enumeration.SubstationCapacity;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;

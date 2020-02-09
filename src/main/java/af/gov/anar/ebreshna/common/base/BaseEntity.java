@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.common.model;
+package af.gov.anar.ebreshna.common.base;
 
 import lombok.Getter;
 import lombok.Setter;
