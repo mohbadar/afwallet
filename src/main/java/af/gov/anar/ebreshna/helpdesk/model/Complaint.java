@@ -4,11 +4,12 @@ import af.gov.anar.ebreshna.common.model.BaseEntity;
 import af.gov.anar.ebreshna.common.province.Province;
 import af.gov.anar.ebreshna.helpdesk.enumeration.ModuleType;
 import af.gov.anar.lib.workflow.model.Workflow;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "complaint")
@@ -26,8 +27,12 @@ public class Complaint  extends BaseEntity {
 
     private String email;
 
+    @OneToOne(targetEntity = Workflow.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "workflow_id")
     private Workflow workflow;
 
+    @OneToOne(targetEntity = Province.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "province_id")
     private Province province;
 
     private String junction;
@@ -40,6 +45,8 @@ public class Complaint  extends BaseEntity {
 
     private String content;
 
-
+    @OneToMany(mappedBy = "complaint", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Collection<Comment> comments;
 
 }
