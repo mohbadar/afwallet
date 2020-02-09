@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.helpdesk.enumeration;
+package af.gov.anar.ebreshna.common.notifcation;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

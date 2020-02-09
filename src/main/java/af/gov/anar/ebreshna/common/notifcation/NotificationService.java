@@ -1,9 +1,5 @@
-package af.gov.anar.ebreshna.helpdesk.service;
+package af.gov.anar.ebreshna.common.notifcation;
 
-import af.gov.anar.ebreshna.helpdesk.model.Comment;
-import af.gov.anar.ebreshna.helpdesk.model.Notification;
-import af.gov.anar.ebreshna.helpdesk.repository.CommentRepository;
-import af.gov.anar.ebreshna.helpdesk.repository.NotificationRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +38,11 @@ public class NotificationService {
         obj.setUserId(userService.getId());
         obj.setDeletedAt(new Date());
         save(obj);
+    }
+
+    public List<Notification> findByNotificationStatus(NotificationStatus status)
+    {
+        return repository.findByNotificationStatus(status);
     }
 
 }

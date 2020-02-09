@@ -35,6 +35,10 @@ public class Complaint  extends BaseEntity {
     @JoinColumn(nullable = true, name = "province_id")
     private Province province;
 
+    @OneToOne(targetEntity = Province.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "complaint_type_id")
+    private ComplaintType complaintType;
+
     private String junction;
 
     private ModuleType moduleType;
@@ -48,5 +52,10 @@ public class Complaint  extends BaseEntity {
     @OneToMany(mappedBy = "complaint", fetch = FetchType.LAZY)
     @JsonIgnore
     private Collection<Comment> comments;
+
+
+    @OneToMany(mappedBy = "complaint", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Collection<ComplaintHistory> complaintHistories;
 
 }

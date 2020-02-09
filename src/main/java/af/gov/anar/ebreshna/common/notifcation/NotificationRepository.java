@@ -1,9 +1,12 @@
-package af.gov.anar.ebreshna.helpdesk.repository;
+package af.gov.anar.ebreshna.common.notifcation;
 
-import af.gov.anar.ebreshna.helpdesk.model.Notification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification,Long> {
+
+    public List<Notification> findByNotificationStatus(NotificationStatus status);
 }

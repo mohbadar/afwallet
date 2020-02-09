@@ -36,6 +36,8 @@ public class ComplaintHistory extends BaseEntity {
     @Column(nullable = false)
     private String desciption;
 
+
+
     @PrePersist
     public void setDate()
     {
