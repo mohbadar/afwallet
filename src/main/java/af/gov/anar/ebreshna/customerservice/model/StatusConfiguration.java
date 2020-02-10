@@ -28,4 +28,6 @@ public class StatusConfiguration extends BaseEntity {
     private boolean skipable;
     private boolean displayStatus;
     private boolean mandatory;
+
+
 }
