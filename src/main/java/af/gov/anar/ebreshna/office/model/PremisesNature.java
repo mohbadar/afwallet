@@ -19,11 +19,11 @@ import javax.persistence.*;
 @Audited
 public class PremisesNature extends BaseEntity {
 
-    @OneToOne(targetEntity = PremisesCategory.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = PremisesCategory.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "premises_category_id")
     private PremisesCategory premisesCategory;
 
-    @OneToOne(targetEntity = PremisesCategory.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = PremisesCategory.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "premises_sub_category_id")
     private PremisesSubCategory premisesSubCategory;
 

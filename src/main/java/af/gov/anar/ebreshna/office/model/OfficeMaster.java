@@ -39,4 +39,5 @@ public class OfficeMaster extends BaseEntity {
     private String email;
 //    private String hodOfJunction;
 
+
 }
