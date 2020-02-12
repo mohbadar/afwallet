@@ -2,13 +2,11 @@ package af.gov.anar.ebreshna.helpdesk.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -23,12 +21,7 @@ import java.util.Date;
 @Audited
 public class ComplaintHistory extends BaseEntity {
 
-    /**
-     *   action: { type: String, required: true },
-     *   date: { type: Date, default: Date.now, required: true },
-     *   owner: { type: mongoose.Schema.Types.ObjectId, ref: 'accounts' },
-     *   description: { type: String }
-     */
+
     @Column(nullable = false)
     private String action;
     @Column
@@ -36,7 +29,10 @@ public class ComplaintHistory extends BaseEntity {
     @Column(nullable = false)
     private String desciption;
 
-
+    @ManyToOne(targetEntity = Complaint.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "complaint_id", nullable = false)
+    @JsonIgnore
+    private Complaint complaint;
 
     @PrePersist
     public void setDate()
