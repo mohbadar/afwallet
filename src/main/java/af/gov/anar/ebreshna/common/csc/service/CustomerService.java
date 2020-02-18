@@ -1,9 +1,7 @@
-package af.gov.anar.ebreshna.customerservice.service;
+package af.gov.anar.ebreshna.common.csc.service;
 
-import af.gov.anar.ebreshna.customerservice.model.Customer;
-import af.gov.anar.ebreshna.customerservice.repository.CustomerRepository;
-import af.gov.anar.ebreshna.helpdesk.model.Comment;
-import af.gov.anar.ebreshna.helpdesk.repository.CommentRepository;
+import af.gov.anar.ebreshna.common.csc.model.Customer;
+import af.gov.anar.ebreshna.common.csc.repository.CustomerRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

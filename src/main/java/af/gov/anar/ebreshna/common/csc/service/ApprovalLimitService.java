@@ -1,6 +1,6 @@
-package af.gov.anar.ebreshna.customerservice.service;
+package af.gov.anar.ebreshna.common.csc.service;
 
-import af.gov.anar.ebreshna.customerservice.model.ApprovalLimit;
+import af.gov.anar.ebreshna.common.csc.model.ApprovalLimit;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

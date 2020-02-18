@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.customerservice.model;
+package af.gov.anar.ebreshna.common.csc.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.common.province.Province;

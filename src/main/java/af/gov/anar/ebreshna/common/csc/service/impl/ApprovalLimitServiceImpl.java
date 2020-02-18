@@ -1,8 +1,8 @@
-package af.gov.anar.ebreshna.customerservice.service.impl;
+package af.gov.anar.ebreshna.common.csc.service.impl;
 
-import af.gov.anar.ebreshna.customerservice.model.ApprovalLimit;
-import af.gov.anar.ebreshna.customerservice.repository.ApprovalLimitRepository;
-import af.gov.anar.ebreshna.customerservice.service.ApprovalLimitService;
+import af.gov.anar.ebreshna.common.csc.model.ApprovalLimit;
+import af.gov.anar.ebreshna.common.csc.repository.ApprovalLimitRepository;
+import af.gov.anar.ebreshna.common.csc.service.ApprovalLimitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

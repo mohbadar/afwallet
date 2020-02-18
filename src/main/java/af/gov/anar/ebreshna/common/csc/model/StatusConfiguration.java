@@ -1,8 +1,7 @@
-package af.gov.anar.ebreshna.customerservice.model;
+package af.gov.anar.ebreshna.common.csc.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.helpdesk.enumeration.ComplaintStatus;
-import af.gov.anar.ebreshna.helpdesk.model.ComplaintType;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
