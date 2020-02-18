@@ -7,6 +7,7 @@ import af.gov.anar.lib.workflow.model.Workflow;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -29,14 +30,17 @@ public class Complaint  extends BaseEntity {
 
     @OneToOne(targetEntity = Workflow.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "workflow_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Workflow workflow;
 
     @OneToOne(targetEntity = Province.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "province_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Province province;
 
     @OneToOne(targetEntity = Province.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "complaint_type_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private ComplaintType complaintType;
 
     private String junction;
@@ -51,11 +55,13 @@ public class Complaint  extends BaseEntity {
 
     @OneToMany(mappedBy = "complaint", fetch = FetchType.LAZY)
     @JsonIgnore
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Collection<Comment> comments;
 
 
     @OneToMany(mappedBy = "complaint", fetch = FetchType.LAZY)
     @JsonIgnore
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Collection<ComplaintHistory> complaintHistories;
 
     @Column

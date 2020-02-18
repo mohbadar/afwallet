@@ -26,7 +26,19 @@
 
 	<dependencies>
 
+		<!-- https://mvnrepository.com/artifact/com.documents4j/documents4j-api -->
+		<dependency>
+			<groupId>com.documents4j</groupId>
+			<artifactId>documents4j-api</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.documents4j/documents4j-local -->
+		<dependency>
+			<groupId>com.documents4j</groupId>
+			<artifactId>documents4j-local</artifactId>
+			<version>0.2.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>

@@ -1,11 +1,11 @@
-package af.gov.anar.ebreshna.office.model;
+package af.gov.anar.ebreshna.common.office.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
-import af.gov.anar.ebreshna.common.province.Province;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
-import af.gov.anar.ebreshna.office.enumeration.Gender;
+import af.gov.anar.ebreshna.common.office.enumeration.Gender;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
@@ -23,10 +23,12 @@ public class FieldStaff extends BaseEntity {
 
     @OneToOne(targetEntity = OfficeMaster.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "office_master_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private OfficeMaster officeMaster;
 
     @OneToOne(targetEntity = DesignationMaster.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "designation_master_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private DesignationMaster designationMaster;
 
     @Column(unique = true)

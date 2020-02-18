@@ -2,9 +2,9 @@ package af.gov.anar.ebreshna.customerservice.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.common.province.Province;
-import af.gov.anar.ebreshna.office.model.PremisesCategory;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -27,6 +27,7 @@ public class ApprovalLimit extends BaseEntity {
 
     @ManyToOne(targetEntity = Province.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "province_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Province province;
 
     private BigDecimal amount;

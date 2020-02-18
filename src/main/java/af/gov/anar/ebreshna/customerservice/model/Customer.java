@@ -1,7 +1,7 @@
 package af.gov.anar.ebreshna.customerservice.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
-import af.gov.anar.ebreshna.office.model.PremisesCategory;
+import af.gov.anar.ebreshna.common.office.model.PremisesCategory;
 import lombok.*;
 import org.hibernate.envers.Audited;
 

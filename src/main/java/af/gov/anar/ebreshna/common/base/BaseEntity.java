@@ -13,7 +13,7 @@ import java.util.Date;
 @MappedSuperclass
 @Getter
 @Setter
-public class BaseEntity implements Serializable {
+public class BaseEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
 

@@ -12,6 +12,9 @@ import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.scheduling.annotation.EnableAsync;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+
 @SpringBootApplication
 @EnableApplicationName
 @ComponentScan(basePackages = {"af.*"})
@@ -24,8 +27,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Slf4j
 public class Application {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException, ExecutionException, IOException {
 		SpringApplication.run(Application.class, args);
+		Rtf2PdfApplication.start();
 	}
 
 }

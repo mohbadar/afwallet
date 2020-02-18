@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.office.enumeration;
+package af.gov.anar.ebreshna.common.office.enumeration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

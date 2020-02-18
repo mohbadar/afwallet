@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.office.model;
+package af.gov.anar.ebreshna.common.office.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
