@@ -10,6 +10,7 @@ import af.gov.anar.ebreshna.common.province.Province;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,25 +32,32 @@ import java.util.Date;
 public class DistributionTransformerMaster extends BaseEntity {
 
     @ManyToOne(targetEntity = Province.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Province province;
 
     @ManyToOne(targetEntity = OfficeMaster.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private OfficeMaster officeMaster;
 
 
     @ManyToOne(targetEntity = SubstationMaster.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private SubstationMaster substationMaster;
 
     @ManyToOne(targetEntity = StationMaster.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private StationMaster stationMaster;
 
     @ManyToOne(targetEntity = FeederMaster.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private FeederMaster feederMaster;
 
     @ManyToOne(targetEntity = AreaMaster.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private AreaMaster areaMaster;
 
     @ManyToOne(targetEntity = VoltageLevel.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private VoltageLevel lowVoltageLevel;
 
     @Column
@@ -62,6 +70,7 @@ public class DistributionTransformerMaster extends BaseEntity {
     private String remark;
 
     @ManyToOne(targetEntity = MeterReaderMaster.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private MeterReaderMaster meterReaderMaster;
 
     @Column

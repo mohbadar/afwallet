@@ -6,6 +6,7 @@ import af.gov.anar.ebreshna.common.office.model.OfficeMaster;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,9 +26,11 @@ import javax.persistence.Table;
 public class PTRMaster extends BaseEntity {
 
     @ManyToOne(targetEntity = SubstationMaster.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private SubstationMaster substationMaster;
 
     @ManyToOne(targetEntity = FeederMaster.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private FeederMaster feederMaster;
 
 

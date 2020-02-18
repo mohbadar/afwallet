@@ -29,7 +29,6 @@ public class Application {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException, IOException {
 		SpringApplication.run(Application.class, args);
-		Rtf2PdfApplication.start();
 	}
 
 }

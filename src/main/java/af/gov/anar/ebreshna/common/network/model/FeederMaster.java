@@ -7,6 +7,7 @@ import af.gov.anar.ebreshna.common.province.Province;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,9 +27,11 @@ import javax.persistence.Table;
 public class FeederMaster extends BaseEntity {
 
     @ManyToOne(targetEntity = StationType.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private StationType stationType;
 
     @ManyToOne(targetEntity = StationMaster.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private StationMaster stationMaster;
 
     @Column
@@ -62,6 +65,7 @@ public class FeederMaster extends BaseEntity {
     private String maxLoad;
 
     @ManyToOne(targetEntity = VoltageLevel.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private VoltageLevel voltageLevel;
 
     @Column

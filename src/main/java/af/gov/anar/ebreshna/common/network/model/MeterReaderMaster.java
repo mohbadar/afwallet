@@ -7,6 +7,7 @@ import af.gov.anar.ebreshna.common.province.Province;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,9 +27,11 @@ import javax.persistence.Table;
 public class MeterReaderMaster extends BaseEntity {
 
     @ManyToOne(targetEntity = Province.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Province province;
 
     @ManyToOne(targetEntity = OfficeMaster.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private OfficeMaster officeMaster;
 
     @Column
