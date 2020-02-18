@@ -1,4 +1,10 @@
 package af.gov.anar.ebreshna.common.network.repository;
 
-public interface SubstationMasterRepository {
+import af.gov.anar.ebreshna.common.network.model.AreaMaster;
+import af.gov.anar.ebreshna.common.network.model.SubstationMaster;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface SubstationMasterRepository extends JpaRepository<SubstationMaster, Long> {
 }
