@@ -88,7 +88,7 @@ public class DistributionTransformerMaster extends BaseEntity {
     @Column
     private String secondaryVoltage;
 
-    @Column
+    @Column(name = "transformer_location")
     private DTRLocation DTRLocation;
 
     @Column
