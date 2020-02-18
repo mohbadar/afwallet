@@ -61,6 +61,10 @@ public class FeederMaster extends BaseEntity {
     @Column
     private String maxLoad;
 
+    @ManyToOne(targetEntity = VoltageLevel.class)
+    private VoltageLevel voltageLevel;
 
+    @Column
+    private String ain;
 
 }
