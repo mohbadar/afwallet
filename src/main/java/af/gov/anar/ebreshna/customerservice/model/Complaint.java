@@ -77,4 +77,8 @@ public class Complaint extends BaseEntity {
 
     @Column
     private String workflowCurrentStep;
+
+
+    @Column
+    private String workflowStepTransationContent;
 }
