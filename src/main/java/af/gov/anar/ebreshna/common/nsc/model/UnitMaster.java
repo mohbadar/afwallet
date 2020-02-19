@@ -31,6 +31,11 @@ public class UnitMaster extends BaseEntity {
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private SupplyVoltage supplyVoltage;
 
+    @ManyToOne(targetEntity = UnitType.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "unit_type_id", nullable = false)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private UnitType unitType;
+
     @Column
     private String ratingValue;
 
