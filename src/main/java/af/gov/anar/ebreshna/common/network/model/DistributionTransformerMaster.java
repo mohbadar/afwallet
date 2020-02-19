@@ -4,9 +4,8 @@ import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.common.network.enumeration.DTRLocation;
 import af.gov.anar.ebreshna.common.network.enumeration.EnergyMeterSide;
 import af.gov.anar.ebreshna.common.network.enumeration.TypeOfMounting;
-import af.gov.anar.ebreshna.common.office.model.DesignationMaster;
 import af.gov.anar.ebreshna.common.office.model.OfficeMaster;
-import af.gov.anar.ebreshna.common.province.Province;
+import af.gov.anar.ebreshna.common.base.province.Province;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;
@@ -16,7 +15,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.awt.geom.Area;
 import java.util.Date;
 
 @Entity

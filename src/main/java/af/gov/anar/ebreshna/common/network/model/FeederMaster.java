@@ -3,7 +3,6 @@ package af.gov.anar.ebreshna.common.network.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.common.network.enumeration.*;
-import af.gov.anar.ebreshna.common.province.Province;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;

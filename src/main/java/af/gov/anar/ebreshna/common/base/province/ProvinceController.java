@@ -1,4 +1,5 @@
-package af.gov.anar.ebreshna.common.notifcation;
+package af.gov.anar.ebreshna.common.base.province;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -8,29 +9,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/notifications")
-public class NotifcationController {
+@RequestMapping(value = "/api/provinces")
+public class ProvinceController {
+
 
     @Autowired
-    private NotificationService service;
+    private ProvinceService service;
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<Notification>> findall()
+    ResponseEntity<List<Province>> findall()
     {
         return ResponseEntity.ok(service.findall());
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<Notification> findOne(@PathVariable(name = "id", required = true) long id)
+    ResponseEntity<Province> findOne(@PathVariable(name = "id", required = true) long id)
     {
         return ResponseEntity.ok(service.findOne(id));
     }
 
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<Notification> update(@PathVariable(name = "id", required = true) long id, @RequestBody(required = true) Notification obj)
+    ResponseEntity<Province> update(@PathVariable(name = "id", required = true) long id, @RequestBody(required = true) Province obj)
     {
         obj.setId(id);
         return ResponseEntity.ok(service.save(obj));
@@ -38,14 +40,8 @@ public class NotifcationController {
 
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<Notification> save(@RequestBody(required = true) Notification obj)
+    ResponseEntity<Province> save(@RequestBody(required = true) Province obj)
     {
         return ResponseEntity.ok(service.save(obj));
-    }
-
-    @GetMapping(value = "/status/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity<List<Notification>> findByStatus (@PathVariable(value = "status", required = true) NotificationStatus status)
-    {
-        return ResponseEntity.ok(service.findByNotificationStatus(status));
     }
 }

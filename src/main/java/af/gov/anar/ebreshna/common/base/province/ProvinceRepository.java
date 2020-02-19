@@ -1,6 +1,5 @@
-package af.gov.anar.ebreshna.common.province;
+package af.gov.anar.ebreshna.common.base.province;
 
-import af.gov.anar.ebreshna.common.province.Province;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

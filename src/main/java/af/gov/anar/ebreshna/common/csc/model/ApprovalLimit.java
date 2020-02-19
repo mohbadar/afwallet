@@ -1,7 +1,7 @@
 package af.gov.anar.ebreshna.common.csc.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
-import af.gov.anar.ebreshna.common.province.Province;
+import af.gov.anar.ebreshna.common.base.province.Province;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;

@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.common.notifcation;
+package af.gov.anar.ebreshna.common.base.notifcation;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;

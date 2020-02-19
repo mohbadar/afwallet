@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.common.notifcation;
+package af.gov.anar.ebreshna.common.base.notifcation;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

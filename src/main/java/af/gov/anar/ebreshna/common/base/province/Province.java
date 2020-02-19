@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.common.province;
+package af.gov.anar.ebreshna.common.base.province;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;

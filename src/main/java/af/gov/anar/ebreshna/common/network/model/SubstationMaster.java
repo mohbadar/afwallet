@@ -2,9 +2,7 @@ package af.gov.anar.ebreshna.common.network.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.common.network.enumeration.SubstationCapacity;
-import af.gov.anar.ebreshna.common.office.model.DesignationMaster;
 import af.gov.anar.ebreshna.common.office.model.OfficeMaster;
-import af.gov.anar.ebreshna.common.province.Province;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;

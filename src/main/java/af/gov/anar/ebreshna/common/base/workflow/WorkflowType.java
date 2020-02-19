@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.common.workflow;
+package af.gov.anar.ebreshna.common.base.workflow;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

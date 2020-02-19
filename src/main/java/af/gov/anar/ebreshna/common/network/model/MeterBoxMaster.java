@@ -5,7 +5,7 @@ import af.gov.anar.ebreshna.common.network.enumeration.MeterBoxModeType;
 import af.gov.anar.ebreshna.common.network.enumeration.MeterBoxType;
 import af.gov.anar.ebreshna.common.network.enumeration.TypeOfMounting;
 import af.gov.anar.ebreshna.common.office.model.OfficeMaster;
-import af.gov.anar.ebreshna.common.province.Province;
+import af.gov.anar.ebreshna.common.base.province.Province;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;
