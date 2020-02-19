@@ -1,8 +1,8 @@
 package af.gov.anar.ebreshna.common.nsc.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
-import af.gov.anar.ebreshna.common.nsc.enumeration.ItemHead;
 import lombok.*;
+import org.checkerframework.checker.units.qual.C;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.Column;
@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "nsc_material_estimate_master")
+@Table(name = "nsc_unit_type")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,10 +19,8 @@ import javax.persistence.Table;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class MaterialEstimateMaster extends BaseEntity {
+public class UnitType extends BaseEntity {
 
-    @Column
-    private ItemHead itemHead;
-
-
+    @Column(nullable = false, unique = true)
+    private String name;
 }
