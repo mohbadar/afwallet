@@ -1,6 +1,7 @@
 package af.gov.anar.ebreshna.common.nsc.service;
 
 import af.gov.anar.ebreshna.common.nsc.model.UnitType;
+import af.gov.anar.ebreshna.common.nsc.repository.UnitTypeRepository;
 import af.gov.anar.ebreshna.common.office.model.DesignationMaster;
 import af.gov.anar.ebreshna.common.office.repository.DesignationMasterRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
@@ -14,7 +15,7 @@ import java.util.List;
 public class UnitTypeService {
 
     @Autowired
-    private UnitTypeService repository;
+    private UnitTypeRepository repository;
 
     @Autowired
     private UserService userService;
