@@ -1,12 +1,10 @@
 package af.gov.anar.ebreshna.customerservice.ecall.model;
 
-
 import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.common.base.province.Province;
-import af.gov.anar.ebreshna.common.base.workflowdata.WorkflowTransitionData;
 import af.gov.anar.ebreshna.common.csc.model.Request;
 import af.gov.anar.ebreshna.common.csc.model.RequestType;
-import af.gov.anar.lib.workflow.model.Workflow;
+import af.gov.anar.ebreshna.common.office.model.OfficeMaster;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
@@ -15,7 +13,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "customerservice_ivr_call")
+@Table(name = "customerservice_ivr_call_feedback")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,7 +22,13 @@ import java.util.Date;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class IvrCall extends BaseEntity {
+public class Feedback extends BaseEntity {
+
+    @ManyToOne(targetEntity = IvrCall.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ivr_call_id", nullable = false)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private IvrCall ivrCall;
+
 
     @ManyToOne(targetEntity = RequestType.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "request_type_id", nullable = false)
@@ -60,22 +64,9 @@ public class IvrCall extends BaseEntity {
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Province province;
 
-
-
-
-    @ManyToOne(targetEntity = Workflow.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "workflow_id", nullable = false)
+    @ManyToOne(targetEntity = OfficeMaster.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "office_master_id", nullable = false)
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    private Workflow workflow;
-
-    @Column
-    private String workflowCurrentStep;
-
-
-    @ManyToOne(targetEntity = WorkflowTransitionData.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "workflow_transition_data_id", nullable = false)
-    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    private WorkflowTransitionData workflowTransitionData;
-
+    private OfficeMaster officeMaster;
 
 }
