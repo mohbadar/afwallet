@@ -3,6 +3,7 @@ package af.gov.anar.ebreshna.customerservice.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
 import af.gov.anar.ebreshna.common.base.province.Province;
+import af.gov.anar.ebreshna.common.base.workflowdata.WorkflowTransitionData;
 import af.gov.anar.ebreshna.common.csc.model.Request;
 import af.gov.anar.ebreshna.common.csc.model.RequestType;
 import af.gov.anar.ebreshna.common.network.model.DtrCategory;
@@ -79,6 +80,10 @@ public class Complaint extends BaseEntity {
     private String workflowCurrentStep;
 
 
-    @Column
-    private String workflowStepTransationContent;
+    @ManyToOne(targetEntity = WorkflowTransitionData.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "workflow_transition_data_id", nullable = false)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private WorkflowTransitionData workflowTransitionData;
+
+
 }
