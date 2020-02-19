@@ -1,6 +1,7 @@
 package af.gov.anar.ebreshna.common.nsc.model;
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
+import af.gov.anar.ebreshna.common.nsc.enumeration.ModuleType;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
@@ -26,5 +27,15 @@ public class ActivityMaster extends BaseEntity {
     @Column
     private String serviceLevel;
 
+    @Column
+    private ModuleType moduleType;
 
+    @Column
+    private boolean skippable;
+
+    @Column
+    private boolean displayStatus;
+
+    @Column
+    private boolean mandatory;
 }
