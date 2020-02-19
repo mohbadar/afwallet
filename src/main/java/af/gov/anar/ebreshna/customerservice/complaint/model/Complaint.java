@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.customerservice.model;
+package af.gov.anar.ebreshna.customerservice.complaint.model;
 
 
 import af.gov.anar.ebreshna.common.base.BaseEntity;
@@ -6,7 +6,6 @@ import af.gov.anar.ebreshna.common.base.province.Province;
 import af.gov.anar.ebreshna.common.base.workflowdata.WorkflowTransitionData;
 import af.gov.anar.ebreshna.common.csc.model.Request;
 import af.gov.anar.ebreshna.common.csc.model.RequestType;
-import af.gov.anar.ebreshna.common.network.model.DtrCategory;
 import af.gov.anar.lib.workflow.model.Workflow;
 import lombok.*;
 import org.hibernate.envers.Audited;
