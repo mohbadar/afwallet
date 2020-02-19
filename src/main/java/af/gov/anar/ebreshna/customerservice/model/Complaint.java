@@ -6,6 +6,7 @@ import af.gov.anar.ebreshna.common.base.province.Province;
 import af.gov.anar.ebreshna.common.csc.model.Request;
 import af.gov.anar.ebreshna.common.csc.model.RequestType;
 import af.gov.anar.ebreshna.common.network.model.DtrCategory;
+import af.gov.anar.lib.workflow.model.Workflow;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
@@ -69,6 +70,11 @@ public class Complaint extends BaseEntity {
     private String customerAccountBookDocument;
 
 
+    @ManyToOne(targetEntity = Workflow.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "workflow_id", nullable = false)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private Workflow workflow;
 
-
+    @Column
+    private String workflowCurrentStep;
 }
