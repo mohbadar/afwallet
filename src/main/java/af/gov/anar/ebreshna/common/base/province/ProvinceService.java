@@ -16,6 +16,15 @@ public class ProvinceService {
     @Autowired
     private UserService userService;
 
+    public Province findByName(String name){
+        return  repository.findByName(name);
+    }
+
+    public Province findByProvinceCode(String code)
+    {
+        return repository.findByProviceCode(code);
+    }
+
     public Province save(Province obj)
     {
         return repository.save(obj);

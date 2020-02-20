@@ -24,7 +24,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class Complaint extends BaseEntity {
+public class ComplaintRequest extends BaseEntity {
 
     @ManyToOne(targetEntity = RequestType.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "request_type_id", nullable = false)

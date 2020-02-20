@@ -19,10 +19,10 @@ import javax.persistence.*;
 @Audited
 public class ComplaintModification extends BaseEntity {
 
-    @ManyToOne(targetEntity = Complaint.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = ComplaintRequest.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "complaint_id", nullable = false)
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    private Complaint complaint;
+    private ComplaintRequest complaint;
 
     @Column
     private String action;

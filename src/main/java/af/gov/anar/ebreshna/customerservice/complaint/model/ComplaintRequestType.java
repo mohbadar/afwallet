@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class ComplaintType extends BaseEntity {
+public class ComplaintRequestType extends BaseEntity {
 
     @Column(nullable = false, unique = true)
     private String name;
