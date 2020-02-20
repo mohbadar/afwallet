@@ -22,7 +22,7 @@ public class ProvinceService {
 
     public Province findByProvinceCode(String code)
     {
-        return repository.findByProviceCode(code);
+        return repository.findByProvinceCode(code);
     }
 
     public Province save(Province obj)

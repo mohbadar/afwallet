@@ -49,7 +49,11 @@ public class ProvinceController {
     public @ResponseBody
     ResponseEntity<Province> update(@PathVariable(name = "id", required = true) long id, @RequestBody(required = true) Province obj)
     {
-        obj.setId(id);
+        System.out.println("ID: "+ id + "   Province: "+ obj);
+        Province item  = service.findOne(id);
+        item.setName(obj.getName());
+        item.setProvinceCode(obj.getProvinceCode());
+
         return ResponseEntity.ok(service.save(obj));
     }
 
@@ -59,4 +63,13 @@ public class ProvinceController {
     {
         return ResponseEntity.ok(service.save(obj));
     }
+
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    ResponseEntity<Void> delete(@PathVariable(name = "id", required = true) long id){
+
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
