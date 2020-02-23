@@ -3,7 +3,7 @@
   "realm": "ebreshna",
   "displayName": "eBreshna System",
   "displayNameHtml": "eBreshna System",
-  "notBefore": 0,
+  "notBefore": 1582439875,
   "revokeRefreshToken": false,
   "refreshTokenMaxReuse": 0,
   "accessTokenLifespan": 300,
