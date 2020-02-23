@@ -19,4 +19,7 @@ import javax.persistence.Table;
 @ToString
 @Audited
 public class BankBranch extends BaseEntity {
+
+
+
 }
