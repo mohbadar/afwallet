@@ -10,6 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -48,7 +50,7 @@ public class OfficeTypeController {
 
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<OfficeType> save(@RequestBody(required = true) OfficeType obj)
+    ResponseEntity<OfficeType> save(@Valid  @RequestBody(required = true) OfficeType obj)
     {
         return ResponseEntity.ok(service.save(obj));
     }
