@@ -6,4 +6,4 @@
 #### Documentation
 
 Refer to this repository **Wiki** section.
-https://github.com/Anar-Framework/eBreshna/wiki
+https://github.com/nsia-infosys/eBreshna/wiki
