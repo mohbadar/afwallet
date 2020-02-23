@@ -67,4 +67,7 @@ public class Complaint  extends BaseEntity {
     @Column
     private String assignee;
 
+    @Column
+    private boolean suggestion;
+
 }
