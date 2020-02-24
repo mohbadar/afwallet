@@ -1,6 +1,7 @@
 package af.gov.anar.ebreshna.configuration.payment.model;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
+import af.gov.anar.ebreshna.configuration.common.fee.model.FeeType;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.configuration.common.tariff.model.TariffCategory;
 import af.gov.anar.ebreshna.configuration.csc.model.Request;
@@ -12,6 +13,7 @@ import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "payment_fee_penalty_configuration", schema = Schema.CORE_SCHEMA)
@@ -54,6 +56,19 @@ public class FeePenaltyConfiguration extends BaseEntity {
 
     @Column
     private String phase;
+
+
+    @OneToOne(targetEntity = FeeType.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "fee_type_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private FeeType feeType;
+
+    @Column
+    private Date effectiveDate;
+
+    @Column
+    private boolean taxApplicable;
+
 
 
 }
