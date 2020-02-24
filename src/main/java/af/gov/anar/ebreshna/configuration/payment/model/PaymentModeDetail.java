@@ -5,6 +5,7 @@ import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -19,4 +20,12 @@ import javax.persistence.Table;
 @ToString
 @Audited
 public class PaymentModeDetail extends BaseEntity {
+
+    @Column
+    private String paymentMode;
+
+    @Column
+    private boolean paymentModeStatus;
+
+
 }
