@@ -5,6 +5,7 @@ import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -19,4 +20,10 @@ import javax.persistence.Table;
 @ToString
 @Audited
 public class CycleConfiguration extends BaseEntity {
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String code;
 }
