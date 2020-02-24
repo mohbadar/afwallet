@@ -3,6 +3,7 @@ package af.gov.anar.ebreshna.configuration.payment.model;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.configuration.common.tariff.model.TariffCategory;
+import af.gov.anar.ebreshna.configuration.metering.model.CycleConfiguration;
 import af.gov.anar.ebreshna.configuration.office.model.DesignationMaster;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
@@ -29,24 +30,21 @@ public class InstallmentPanelty extends BaseEntity {
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Province province;
 
+
+    @OneToOne(targetEntity = CycleConfiguration.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "cycle_configuration_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private CycleConfiguration cycleConfiguration;
+
+    @Column
+    private double penaltyPrecentage;
+
     @OneToOne(targetEntity = TariffCategory.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "tariff_category_id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private TariffCategory tariffCategory;
 
-
-    @OneToOne(targetEntity = DesignationMaster.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = true, name = "designation_id")
-    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    private DesignationMaster designationMaster;
-
-    @Column(nullable = false)
-    private int numberOfInstallment;
-
     @Column
-    private BigDecimal amount;
-
-    @Column
-    private int installmentGraceDays;
+    private int year;
 
 }
