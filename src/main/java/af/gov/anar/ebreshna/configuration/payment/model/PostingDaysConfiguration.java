@@ -19,7 +19,7 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class PostingDaysConfig extends BaseEntity {
+public class PostingDaysConfiguration extends BaseEntity {
 
 
     @OneToOne(targetEntity = BankBranch.class, fetch = FetchType.EAGER)
