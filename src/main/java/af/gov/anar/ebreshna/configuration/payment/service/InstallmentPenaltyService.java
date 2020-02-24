@@ -1,8 +1,6 @@
 package af.gov.anar.ebreshna.configuration.payment.service;
 
-import af.gov.anar.ebreshna.configuration.payment.model.CounterMaster;
-import af.gov.anar.ebreshna.configuration.payment.model.InstallmentPanelty;
-import af.gov.anar.ebreshna.configuration.payment.repository.CounterRepository;
+import af.gov.anar.ebreshna.configuration.payment.model.InstallmentPenalty;
 import af.gov.anar.ebreshna.configuration.payment.repository.InstallmentPenalyRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,24 +18,24 @@ public class InstallmentPenaltyService {
     @Autowired
     private UserService userService;
 
-    public InstallmentPanelty save(InstallmentPanelty obj)
+    public InstallmentPenalty save(InstallmentPenalty obj)
     {
         return repository.save(obj);
     }
 
-    public List<InstallmentPanelty> findall()
+    public List<InstallmentPenalty> findall()
     {
         return repository.findAll();
     }
 
-    public InstallmentPanelty findOne(long id)
+    public InstallmentPenalty findOne(long id)
     {
         return repository.getOne(id);
     }
 
     public void delete(long id)
     {
-        InstallmentPanelty obj = repository.getOne(id);
+        InstallmentPenalty obj = repository.getOne(id);
         obj.setDeleted(true);
         obj.setUserId(userService.getId());
         obj.setDeletedAt(new Date());

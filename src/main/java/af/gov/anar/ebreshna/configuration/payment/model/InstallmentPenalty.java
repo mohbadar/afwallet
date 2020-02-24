@@ -23,7 +23,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class InstallmentPanelty extends BaseEntity {
+public class InstallmentPenalty extends BaseEntity {
 
     @OneToOne(targetEntity = Province.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "province_id")
