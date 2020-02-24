@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "payment_bank_master", schema = Schema.CORE_SCHEMA)
+@Table(name = "payment_bank_branch", schema = Schema.CORE_SCHEMA)
 @Getter
 @Setter
 @AllArgsConstructor
