@@ -21,7 +21,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class ThridPartyPayment extends BaseEntity {
+public class ThirdPartyPayment extends BaseEntity {
 
     @Column
     private String vendorName;
