@@ -1,6 +1,6 @@
 package af.gov.anar.ebreshna.customerservice.complaint.model;
 
-import af.gov.anar.ebreshna.common.base.BaseEntity;
+import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import lombok.*;
 import org.hibernate.envers.Audited;
 

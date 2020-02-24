@@ -1,11 +1,11 @@
 package af.gov.anar.ebreshna.customerservice.complaint.model;
 
 
-import af.gov.anar.ebreshna.common.base.BaseEntity;
-import af.gov.anar.ebreshna.common.base.province.Province;
-import af.gov.anar.ebreshna.common.base.workflowdata.WorkflowTransitionData;
-import af.gov.anar.ebreshna.common.csc.model.Request;
-import af.gov.anar.ebreshna.common.csc.model.RequestType;
+import af.gov.anar.ebreshna.configuration.common.BaseEntity;
+import af.gov.anar.ebreshna.configuration.common.province.Province;
+import af.gov.anar.ebreshna.configuration.common.workflowdata.WorkflowTransitionData;
+import af.gov.anar.ebreshna.configuration.csc.model.Request;
+import af.gov.anar.ebreshna.configuration.csc.model.RequestType;
 import af.gov.anar.lib.workflow.model.Workflow;
 import lombok.*;
 import org.hibernate.envers.Audited;

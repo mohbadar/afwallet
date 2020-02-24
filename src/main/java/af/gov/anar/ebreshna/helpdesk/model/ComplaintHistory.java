@@ -1,6 +1,6 @@
 package af.gov.anar.ebreshna.helpdesk.model;
 
-import af.gov.anar.ebreshna.common.base.BaseEntity;
+import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
