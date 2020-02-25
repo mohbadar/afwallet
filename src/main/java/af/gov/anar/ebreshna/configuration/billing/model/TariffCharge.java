@@ -1,5 +1,9 @@
 package af.gov.anar.ebreshna.configuration.billing.model;
 
+import af.gov.anar.ebreshna.configuration.billing.enumeration.TariffChargeCurrency;
+import af.gov.anar.ebreshna.configuration.billing.enumeration.TariffChargeMaximumType;
+import af.gov.anar.ebreshna.configuration.billing.enumeration.TariffChargePeriod;
+import af.gov.anar.ebreshna.configuration.billing.enumeration.TariffChargeType;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.configuration.metering.model.CycleConfiguration;
@@ -39,4 +43,31 @@ public class TariffCharge extends BaseEntity {
 
     @Column
     private int year;
+
+    @Column
+    private String name;
+
+    @Column
+    private double minimum;
+
+    @Column
+    private double maximum;
+
+    @Column
+    private double rate;
+
+    @Column
+    private TariffChargeType tariffChargeType;
+
+    @Column
+    private TariffChargeMaximumType tariffChargeMaximumType;
+
+    @Column
+    private TariffChargePeriod tariffChargePeriod;
+
+    @Column
+    private TariffChargeCurrency tariffChargeCurrency;
+
+
+
 }
