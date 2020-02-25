@@ -23,7 +23,7 @@ import javax.persistence.*;
 public class TariffCategoryMaster extends BaseEntity {
 
     @ManyToOne(targetEntity = TariffCategoryTypeMaster.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = true, name = "tariff_category_master_id")
+    @JoinColumn(nullable = true, name = "tariff_category_type_id")
     private TariffCategoryTypeMaster tariffCategoryTypeMaster;
 
     @Column
