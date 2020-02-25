@@ -3,6 +3,7 @@ package af.gov.anar.ebreshna.configuration.billing.model;
 import af.gov.anar.ebreshna.configuration.billing.enumeration.TariffModifyCategory;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.csc.model.ApprovalLimit;
+import af.gov.anar.ebreshna.configuration.metering.model.MeteringType;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
@@ -33,5 +34,13 @@ public class TariffCategoryMaster extends BaseEntity {
     @Column
     private String tariffCode;
 
+    @Column
+    private String orderInReport;
 
+    @Column
+    private boolean meterRequired;
+
+    @ManyToOne(targetEntity = MeteringType.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "metering_type_id")
+    private MeteringType meteringType;
 }
