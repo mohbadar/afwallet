@@ -20,10 +20,10 @@ import javax.persistence.*;
 public class BehaviourConfiguration extends BaseEntity {
 
     @Column
-    private String behaviourName;
+    private String name;
 
     @Column
-    private String behaviourCode;
+    private String code;
 
     @Column
     private String remark;
