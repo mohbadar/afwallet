@@ -2,8 +2,10 @@ package af.gov.anar.ebreshna.configuration.billing.model;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import lombok.*;
+import org.checkerframework.checker.units.qual.C;
 import org.hibernate.envers.Audited;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -18,4 +20,23 @@ import javax.persistence.Table;
 @ToString
 @Audited
 public class CustomerGroupMaster extends BaseEntity {
+
+    @Column
+    private String groupCode;
+
+    @Column
+    private String groupName;
+
+    @Column
+    private String address1;
+
+    @Column
+    private String address2;
+
+    @Column
+    private String address3;
+
+    @Column
+    private String address4;
+
 }
