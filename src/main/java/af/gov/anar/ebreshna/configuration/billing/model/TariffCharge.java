@@ -47,27 +47,6 @@ public class TariffCharge extends BaseEntity {
     @Column
     private String name;
 
-    @Column
-    private double minimum;
-
-    @Column
-    private double maximum;
-
-    @Column
-    private double rate;
-
-    @Column
-    private TariffChargeType tariffChargeType;
-
-    @Column
-    private TariffChargeMaximumType tariffChargeMaximumType;
-
-    @Column
-    private TariffChargePeriod tariffChargePeriod;
-
-    @Column
-    private TariffChargeCurrency tariffChargeCurrency;
-
 
 
 }
