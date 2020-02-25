@@ -5,6 +5,7 @@ import af.gov.anar.ebreshna.configuration.csc.model.Customer;
 import af.gov.anar.ebreshna.configuration.csc.model.RequestType;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
@@ -22,6 +23,7 @@ public class TrLossesConfiguration extends BaseEntity {
 
     @ManyToOne(targetEntity = Customer.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "customer_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Customer customer;
 
 

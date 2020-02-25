@@ -7,6 +7,7 @@ import af.gov.anar.ebreshna.configuration.csc.model.ApprovalLimit;
 import af.gov.anar.ebreshna.configuration.metering.model.MeteringType;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
@@ -24,6 +25,7 @@ public class TariffCategoryMaster extends BaseEntity {
 
     @ManyToOne(targetEntity = TariffCategoryTypeMaster.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "tariff_category_type_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private TariffCategoryTypeMaster tariffCategoryTypeMaster;
 
     @Column

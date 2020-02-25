@@ -8,6 +8,7 @@ import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.metering.model.CycleConfiguration;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
@@ -25,6 +26,7 @@ public class TariffChargeDetail extends BaseEntity {
 
     @ManyToOne(targetEntity = TariffCharge.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "tariff_charge_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private TariffCharge tariffCharge;
 
     @Column

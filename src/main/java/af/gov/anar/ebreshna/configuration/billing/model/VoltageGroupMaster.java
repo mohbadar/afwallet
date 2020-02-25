@@ -4,6 +4,7 @@ import af.gov.anar.ebreshna.configuration.billing.enumeration.VoltageGroup;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
@@ -21,6 +22,7 @@ public class VoltageGroupMaster extends BaseEntity {
 
     @ManyToOne(targetEntity = VoltageUnit.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "voltage_unit_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private VoltageUnit voltageUnit;
 
     @Column

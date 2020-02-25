@@ -4,6 +4,7 @@ import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.csc.model.RequestType;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
@@ -21,10 +22,12 @@ public class ProcessBehaviourLinkConfiguration extends BaseEntity {
 
     @ManyToOne(targetEntity = ProcessConfiguration.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "process_configuration_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private ProcessConfiguration processConfiguration;
 
 
     @ManyToOne(targetEntity = BehaviourConfiguration.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "behaviour_configuration_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private BehaviourConfiguration behaviourConfiguration;
 }
