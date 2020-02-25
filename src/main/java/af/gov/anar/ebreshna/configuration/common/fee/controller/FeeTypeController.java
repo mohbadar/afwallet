@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/common/feetypes")
+@RequestMapping(value = "/api/config/common/fee-types")
 public class FeeTypeController extends ResponseHandler {
 
     @Autowired
