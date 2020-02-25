@@ -1,11 +1,13 @@
 package af.gov.anar.ebreshna.configuration.metering.model;
 
+import af.gov.anar.ebreshna.configuration.billing.model.BehaviourConfiguration;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
+import af.gov.anar.ebreshna.configuration.office.model.OfficeMaster;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "metering_meter_status_master")
@@ -18,4 +20,30 @@ import javax.persistence.Table;
 @ToString
 @Audited
 public class MeterStatusMaster extends BaseEntity {
+
+    @Column
+    private String meterStatusCode;
+
+    @Column
+    private String meterStatus;
+
+    @Column
+    private String meterName;
+
+    @OneToOne(targetEntity = BehaviourConfiguration.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "behaviour_configuration_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private BehaviourConfiguration behaviourConfiguration;
+
+    @Column
+    private String billingBasis;
+
+    @Column
+    private String govtLetter;
+
+    @Column
+    private String remark;
+
+
+
 }

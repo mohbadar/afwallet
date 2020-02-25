@@ -22,5 +22,8 @@ import javax.persistence.Table;
 public class MeteringType extends BaseEntity {
 
     @Column
-    private String name;
+    private String type;
+
+    @Column
+    private String typeDescription;
 }
