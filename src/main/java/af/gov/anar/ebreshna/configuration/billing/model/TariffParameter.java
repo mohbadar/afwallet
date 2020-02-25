@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "billing_tr_losses_configuration")
+@Table(name = "billing_tariff_parameter")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,5 +17,5 @@ import javax.persistence.Table;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class TrLossesConfiguration extends BaseEntity {
+public class TariffParameter extends BaseEntity {
 }

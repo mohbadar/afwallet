@@ -1,4 +1,21 @@
 package af.gov.anar.ebreshna.configuration.billing.model;
 
-public class VoltageGroupMaster {
+import af.gov.anar.ebreshna.configuration.common.BaseEntity;
+import lombok.*;
+import org.hibernate.envers.Audited;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "billing_voltage_group_master")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@EqualsAndHashCode
+@ToString
+@Audited
+public class VoltageGroupMaster extends BaseEntity {
 }
