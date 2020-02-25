@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "metering_activity_master")
+@Table(name = "metering_consumption_percentage")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,5 +17,5 @@ import javax.persistence.Table;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class ActivityMaster extends BaseEntity {
+public class ConsumptionPercentage extends BaseEntity {
 }
