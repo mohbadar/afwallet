@@ -19,7 +19,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class ActivityMaster extends BaseEntity {
+public class MeteringActivityMaster extends BaseEntity {
 
     @Column
     private String name;

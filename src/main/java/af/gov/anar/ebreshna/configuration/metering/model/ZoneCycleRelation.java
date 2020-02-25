@@ -41,10 +41,10 @@ public class ZoneCycleRelation extends BaseEntity {
     @Column
     private double graceDays;
 
-    @OneToOne(targetEntity = ActivityMaster.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = MeteringActivityMaster.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "activity_master_id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    private ActivityMaster activityMaster;
+    private MeteringActivityMaster activityMaster;
 
     @OneToOne(targetEntity = CycleConfiguration.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "cycle_id")
