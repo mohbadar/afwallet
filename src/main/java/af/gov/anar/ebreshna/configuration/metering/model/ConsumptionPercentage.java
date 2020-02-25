@@ -1,6 +1,7 @@
 package af.gov.anar.ebreshna.configuration.metering.model;
 
 import af.gov.anar.ebreshna.configuration.billing.enumeration.TariffChargeType;
+import af.gov.anar.ebreshna.configuration.billing.model.TariffCharge;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.configuration.office.model.OfficeMaster;
@@ -27,10 +28,10 @@ public class ConsumptionPercentage extends BaseEntity {
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Province province;
 
-    @OneToOne(targetEntity = TariffChargeType.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = TariffCharge.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "tariff_charge_id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    private TariffChargeType tariffChargeType;
+    private TariffCharge tariffCharge;
 
 
     @Column
