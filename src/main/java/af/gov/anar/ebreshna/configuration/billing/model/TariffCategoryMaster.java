@@ -2,6 +2,7 @@ package af.gov.anar.ebreshna.configuration.billing.model;
 
 import af.gov.anar.ebreshna.configuration.billing.enumeration.TariffModifyCategory;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
+import af.gov.anar.ebreshna.configuration.common.tariff.model.TariffCategory;
 import af.gov.anar.ebreshna.configuration.csc.model.ApprovalLimit;
 import af.gov.anar.ebreshna.configuration.metering.model.MeteringType;
 import lombok.*;
@@ -43,4 +44,14 @@ public class TariffCategoryMaster extends BaseEntity {
     @ManyToOne(targetEntity = MeteringType.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "metering_type_id")
     private MeteringType meteringType;
+
+    @ManyToOne(targetEntity = TariffCategoryMaster.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "parent")
+    private TariffCategoryMaster parent;
+
+    @Column
+    private String authorizedReferenceNumber;
+
+    @Column
+    private String remark;
 }
