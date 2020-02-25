@@ -1,11 +1,11 @@
 package af.gov.anar.ebreshna.configuration.billing.model;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
+import af.gov.anar.ebreshna.configuration.csc.model.ApprovalLimit;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "billing_tariff_category_master")
@@ -18,4 +18,8 @@ import javax.persistence.Table;
 @ToString
 @Audited
 public class TariffCategoryMaster extends BaseEntity {
+
+    @ManyToOne(targetEntity = TariffCategoryTypeMaster.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "tariff_category_master_id")
+    private TariffCategoryTypeMaster tariffCategoryTypeMaster;
 }
