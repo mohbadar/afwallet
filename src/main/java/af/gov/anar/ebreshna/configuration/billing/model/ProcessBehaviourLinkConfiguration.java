@@ -1,11 +1,11 @@
 package af.gov.anar.ebreshna.configuration.billing.model;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
+import af.gov.anar.ebreshna.configuration.csc.model.RequestType;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "billing_process_behaviour_link_configuration")
@@ -18,4 +18,13 @@ import javax.persistence.Table;
 @ToString
 @Audited
 public class ProcessBehaviourLinkConfiguration extends BaseEntity {
+
+    @ManyToOne(targetEntity = ProcessConfiguration.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "process_configuration_id")
+    private ProcessConfiguration processConfiguration;
+
+
+    @ManyToOne(targetEntity = BehaviourConfiguration.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "behaviour_configuration_id")
+    private BehaviourConfiguration behaviourConfiguration;
 }
