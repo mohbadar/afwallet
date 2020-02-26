@@ -1,10 +1,8 @@
 package af.gov.anar.ebreshna.configuration.metering.model;
 
-import af.gov.anar.ebreshna.configuration.billing.enumeration.TariffChargeType;
-import af.gov.anar.ebreshna.configuration.billing.model.TariffCharge;
+import af.gov.anar.ebreshna.configuration.billing.tariff_charge.TariffCharge;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
-import af.gov.anar.ebreshna.configuration.office.model.OfficeMaster;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;

@@ -1,8 +1,7 @@
 package af.gov.anar.ebreshna.configuration.metering.model;
 
-import af.gov.anar.ebreshna.configuration.billing.model.BehaviourConfiguration;
+import af.gov.anar.ebreshna.configuration.billing.behaviour.BehaviourConfiguration;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
-import af.gov.anar.ebreshna.configuration.office.model.OfficeMaster;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
