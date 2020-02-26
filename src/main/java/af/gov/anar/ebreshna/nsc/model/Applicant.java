@@ -2,6 +2,7 @@ package af.gov.anar.ebreshna.nsc.model;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
+import af.gov.anar.ebreshna.configuration.common.tariff.model.TariffCategory;
 import af.gov.anar.ebreshna.configuration.csc.request_type.RequestType;
 import af.gov.anar.ebreshna.configuration.network.area.AreaMaster;
 import af.gov.anar.ebreshna.configuration.network.feeder.FeederMaster;
@@ -88,12 +89,15 @@ public class Applicant extends BaseEntity {
     private ContactMethod contactMethod;
 
 
-    @Column
-    private String addressLine3;
+    @OneToOne(targetEntity = CommunicationAddress.class, fetch = FetchType.EAGER)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private CommunicationAddress communicationAddress;
 
-    @Column
-    private String addressLine4;
 
+    @ManyToOne(targetEntity = TariffCategory.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "tariff_category_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private TariffCategory tariffCategory;
 
 
 }
