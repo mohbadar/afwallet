@@ -1,7 +1,7 @@
-package af.gov.anar.ebreshna.configuration.metering.service;
+package af.gov.anar.ebreshna.configuration.network.voltage_level;
 
-import af.gov.anar.ebreshna.configuration.metering.model.MeterMakeSerial;
-import af.gov.anar.ebreshna.configuration.metering.repository.MeterMakeSerialRepository;
+import af.gov.anar.ebreshna.configuration.network.voltage_level.VoltageLevel;
+import af.gov.anar.ebreshna.configuration.network.voltage_level.VoltageLevelRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,36 +10,35 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class MeterMakeSerialService {
+public class VoltageLevelService {
 
     @Autowired
-    private MeterMakeSerialRepository repository;
+    private VoltageLevelRepository repository;
 
     @Autowired
     private UserService userService;
 
-    public MeterMakeSerial save(MeterMakeSerial obj)
+    public VoltageLevel save(VoltageLevel obj)
     {
         return repository.save(obj);
     }
 
-    public List<MeterMakeSerial> findall()
+    public List<VoltageLevel> findall()
     {
         return repository.findAll();
     }
 
-    public MeterMakeSerial findOne(long id)
+    public VoltageLevel findOne(long id)
     {
         return repository.getOne(id);
     }
 
     public void delete(long id)
     {
-        MeterMakeSerial obj = repository.getOne(id);
+        VoltageLevel obj = repository.getOne(id);
         obj.setDeleted(true);
         obj.setUserId(userService.getId());
         obj.setDeletedAt(new Date());
         save(obj);
     }
-
 }

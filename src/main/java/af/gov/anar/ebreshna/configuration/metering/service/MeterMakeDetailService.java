@@ -2,10 +2,7 @@ package af.gov.anar.ebreshna.configuration.metering.service;
 
 import af.gov.anar.ebreshna.configuration.metering.model.MeterMakeDetail;
 import af.gov.anar.ebreshna.configuration.metering.repository.MeterMakeDetailRepository;
-import af.gov.anar.ebreshna.configuration.network.model.AreaMaster;
-import af.gov.anar.ebreshna.configuration.network.repository.AreaMasterRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
-import io.micrometer.core.instrument.Meter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

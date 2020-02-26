@@ -3,8 +3,6 @@ package af.gov.anar.ebreshna.configuration.metering.controller;
 import af.gov.anar.api.handler.ResponseHandler;
 import af.gov.anar.ebreshna.configuration.metering.model.ConsumptionPercentage;
 import af.gov.anar.ebreshna.configuration.metering.service.ConsumptionPercentageService;
-import af.gov.anar.ebreshna.configuration.network.model.AreaMaster;
-import af.gov.anar.ebreshna.configuration.network.service.AreaMasterService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

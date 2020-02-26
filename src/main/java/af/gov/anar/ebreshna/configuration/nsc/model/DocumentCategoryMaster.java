@@ -1,7 +1,7 @@
 package af.gov.anar.ebreshna.configuration.nsc.model;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
-import af.gov.anar.ebreshna.configuration.network.model.DtrCategory;
+import af.gov.anar.ebreshna.configuration.network.dtr_category.DtrCategory;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
