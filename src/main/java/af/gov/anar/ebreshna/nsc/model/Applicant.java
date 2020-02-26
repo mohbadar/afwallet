@@ -11,9 +11,11 @@ import af.gov.anar.ebreshna.configuration.network.area.AreaMaster;
 import af.gov.anar.ebreshna.configuration.network.feeder.FeederMaster;
 import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
 import af.gov.anar.ebreshna.nsc.enumeration.ContactMethod;
+import af.gov.anar.lib.workflow.model.Workflow;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
+import org.hibernate.jdbc.Work;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -155,5 +157,8 @@ public class Applicant extends BaseEntity {
     @Column
     private String officerName;
 
-
+    @ManyToOne(targetEntity = Workflow.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "workflow_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private Workflow workflow;
 }
