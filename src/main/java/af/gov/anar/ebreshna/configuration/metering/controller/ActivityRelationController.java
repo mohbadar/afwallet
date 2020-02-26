@@ -1,5 +1,6 @@
 package af.gov.anar.ebreshna.configuration.metering.controller;
 
+import af.gov.anar.api.handler.ResponseHandler;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.configuration.common.province.ProvinceService;
@@ -17,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/config/metering/activity-relations")
-public class ActivityRelationController extends BaseEntity {
+public class ActivityRelationController extends ResponseHandler {
 
 
     @Autowired

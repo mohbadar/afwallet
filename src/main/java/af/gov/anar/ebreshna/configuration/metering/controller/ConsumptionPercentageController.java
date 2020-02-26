@@ -1,5 +1,6 @@
 package af.gov.anar.ebreshna.configuration.metering.controller;
 
+import af.gov.anar.api.handler.ResponseHandler;
 import af.gov.anar.ebreshna.configuration.metering.model.ConsumptionPercentage;
 import af.gov.anar.ebreshna.configuration.metering.service.ConsumptionPercentageService;
 import af.gov.anar.ebreshna.configuration.network.model.AreaMaster;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/config/metering/consumption-percentages")
-public class ConsumptionPercentageController {
+public class ConsumptionPercentageController extends ResponseHandler {
 
     @Autowired
     private ConsumptionPercentageService service;
