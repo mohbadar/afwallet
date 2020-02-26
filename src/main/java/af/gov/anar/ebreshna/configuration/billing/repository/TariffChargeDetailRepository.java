@@ -1,4 +1,10 @@
 package af.gov.anar.ebreshna.configuration.billing.repository;
 
-public interface TariffChargeDetailRepository {
+import af.gov.anar.ebreshna.configuration.billing.model.TariffChargeDetail;
+import af.gov.anar.ebreshna.configuration.billing.model.TrLossesConfiguration;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TariffChargeDetailRepository extends JpaRepository<TariffChargeDetail, Long> {
 }
