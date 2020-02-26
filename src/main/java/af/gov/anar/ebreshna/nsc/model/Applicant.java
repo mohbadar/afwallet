@@ -1,5 +1,8 @@
 package af.gov.anar.ebreshna.nsc.model;
 
+import af.gov.anar.ebreshna.configuration.billing.enumeration.VoltageGroup;
+import af.gov.anar.ebreshna.configuration.billing.voltage_group.VoltageGroupMaster;
+import af.gov.anar.ebreshna.configuration.billing.voltage_unit.VoltageUnit;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.configuration.common.tariff.model.TariffCategory;
@@ -99,5 +102,20 @@ public class Applicant extends BaseEntity {
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private TariffCategory tariffCategory;
 
+    @ManyToOne(targetEntity = VoltageGroupMaster.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "voltage_group_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private VoltageGroupMaster voltageGroup;
 
+
+    @Column
+    private String indoorInWatt;
+
+    @Column
+    private String outdoorInWatt;
+
+    @ManyToOne(targetEntity = TariffCategory.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "tariff_category_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private TariffCategory tariffCategory;
 }
