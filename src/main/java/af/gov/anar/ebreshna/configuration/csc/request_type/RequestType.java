@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.configuration.csc.model;
+package af.gov.anar.ebreshna.configuration.csc.request_type;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import lombok.*;

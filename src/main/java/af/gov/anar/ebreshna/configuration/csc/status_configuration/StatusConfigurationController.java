@@ -1,8 +1,7 @@
-package af.gov.anar.ebreshna.configuration.csc.controller;
+package af.gov.anar.ebreshna.configuration.csc.status_configuration;
 
-
-import af.gov.anar.ebreshna.configuration.csc.model.ApprovalLimit;
-import af.gov.anar.ebreshna.configuration.csc.service.ApprovalLimitService;
+import af.gov.anar.ebreshna.configuration.csc.status_configuration.StatusConfiguration;
+import af.gov.anar.ebreshna.configuration.csc.status_configuration.StatusConfigurationService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -12,11 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/csc/approvallimits")
-public class ApprovalLimitController {
+@RequestMapping(value = "/api/config/csc/statusconfigs")
+public class StatusConfigurationController {
+
 
     @Autowired
-    private ApprovalLimitService service;
+    private StatusConfigurationService service;
 
     @Autowired
     private UserService userService;
@@ -24,7 +24,7 @@ public class ApprovalLimitController {
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<ApprovalLimit>> findall()
+    ResponseEntity<List<StatusConfiguration>> findall()
     {
         return ResponseEntity.ok(service.findall());
     }
@@ -32,14 +32,14 @@ public class ApprovalLimitController {
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<ApprovalLimit> findOne(@PathVariable(name = "id", required = true) long id)
+    ResponseEntity<StatusConfiguration> findOne(@PathVariable(name = "id", required = true) long id)
     {
         return ResponseEntity.ok(service.findOne(id));
     }
 
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<ApprovalLimit> update(@PathVariable(name = "id", required = true) long id, @RequestBody(required = true) ApprovalLimit obj)
+    ResponseEntity<StatusConfiguration> update(@PathVariable(name = "id", required = true) long id, @RequestBody(required = true) StatusConfiguration obj)
     {
         obj.setId(id);
         return ResponseEntity.ok(service.save(obj));
@@ -47,7 +47,7 @@ public class ApprovalLimitController {
 
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<ApprovalLimit> save(@RequestBody(required = true) ApprovalLimit obj)
+    ResponseEntity<StatusConfiguration> save(@RequestBody(required = true) StatusConfiguration obj)
     {
         return ResponseEntity.ok(service.save(obj));
     }

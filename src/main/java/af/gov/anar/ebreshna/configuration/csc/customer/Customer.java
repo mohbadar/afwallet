@@ -1,6 +1,8 @@
-package af.gov.anar.ebreshna.configuration.csc.model;
+package af.gov.anar.ebreshna.configuration.csc.customer;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
+import af.gov.anar.ebreshna.configuration.csc.request.Request;
+import af.gov.anar.ebreshna.configuration.csc.request_type.RequestType;
 import af.gov.anar.ebreshna.configuration.office.model.PremisesCategory;
 import lombok.*;
 import org.hibernate.envers.Audited;

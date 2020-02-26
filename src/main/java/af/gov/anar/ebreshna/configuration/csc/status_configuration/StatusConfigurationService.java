@@ -1,7 +1,7 @@
-package af.gov.anar.ebreshna.configuration.csc.service;
+package af.gov.anar.ebreshna.configuration.csc.status_configuration;
 
-import af.gov.anar.ebreshna.configuration.csc.model.StatusConfiguration;
-import af.gov.anar.ebreshna.configuration.csc.repository.StatusConfigurationRepository;
+import af.gov.anar.ebreshna.configuration.csc.status_configuration.StatusConfiguration;
+import af.gov.anar.ebreshna.configuration.csc.status_configuration.StatusConfigurationRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.configuration.csc.model;
+package af.gov.anar.ebreshna.configuration.csc.approval_limit;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;

@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.configuration.csc.model;
+package af.gov.anar.ebreshna.configuration.csc.status_configuration;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.helpdesk.enumeration.ComplaintStatus;

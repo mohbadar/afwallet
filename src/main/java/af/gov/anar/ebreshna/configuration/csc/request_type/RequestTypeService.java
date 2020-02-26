@@ -1,7 +1,7 @@
-package af.gov.anar.ebreshna.configuration.csc.service;
+package af.gov.anar.ebreshna.configuration.csc.request_type;
 
-import af.gov.anar.ebreshna.configuration.csc.model.Customer;
-import af.gov.anar.ebreshna.configuration.csc.repository.CustomerRepository;
+import af.gov.anar.ebreshna.configuration.csc.request_type.RequestType;
+import af.gov.anar.ebreshna.configuration.csc.request_type.RequestTypeRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,37 +10,35 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class CustomerService {
+public class RequestTypeService {
 
     @Autowired
-    private CustomerRepository repository;
+    private RequestTypeRepository repository;
 
     @Autowired
     private UserService userService;
 
-    public Customer save(Customer obj)
+    public RequestType save(RequestType obj)
     {
         return repository.save(obj);
     }
 
-    public List<Customer> findall()
+    public List<RequestType> findall()
     {
         return repository.findAll();
     }
 
-    public Customer findOne(long id)
+    public RequestType findOne(long id)
     {
         return repository.getOne(id);
     }
 
     public void delete(long id)
     {
-        Customer obj = repository.getOne(id);
+        RequestType obj = repository.getOne(id);
         obj.setDeleted(true);
         obj.setUserId(userService.getId());
         obj.setDeletedAt(new Date());
         save(obj);
     }
-
-
 }

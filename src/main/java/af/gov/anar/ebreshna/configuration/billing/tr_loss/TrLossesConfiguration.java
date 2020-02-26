@@ -1,8 +1,7 @@
 package af.gov.anar.ebreshna.configuration.billing.tr_loss;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
-import af.gov.anar.ebreshna.configuration.csc.model.Customer;
-import af.gov.anar.ebreshna.configuration.csc.model.RequestType;
+import af.gov.anar.ebreshna.configuration.csc.customer.Customer;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;

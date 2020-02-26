@@ -2,7 +2,6 @@ package af.gov.anar.ebreshna.configuration.billing.tariff_parameter;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
-import af.gov.anar.ebreshna.configuration.csc.model.RequestType;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;

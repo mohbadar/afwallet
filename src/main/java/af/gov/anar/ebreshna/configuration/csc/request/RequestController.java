@@ -1,7 +1,7 @@
-package af.gov.anar.ebreshna.configuration.csc.controller;
+package af.gov.anar.ebreshna.configuration.csc.request;
 
-import af.gov.anar.ebreshna.configuration.csc.model.Request;
-import af.gov.anar.ebreshna.configuration.csc.service.RequestService;
+import af.gov.anar.ebreshna.configuration.csc.request.Request;
+import af.gov.anar.ebreshna.configuration.csc.request.RequestService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
