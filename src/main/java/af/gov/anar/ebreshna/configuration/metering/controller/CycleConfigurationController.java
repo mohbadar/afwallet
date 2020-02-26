@@ -3,7 +3,6 @@ package af.gov.anar.ebreshna.configuration.metering.controller;
 import af.gov.anar.api.handler.ResponseHandler;
 import af.gov.anar.ebreshna.configuration.metering.model.CycleConfiguration;
 import af.gov.anar.ebreshna.configuration.metering.model.CycleConfiguration;
-import af.gov.anar.ebreshna.configuration.metering.service.CycleConfigurationService;
 import af.gov.anar.ebreshna.configuration.metering.service.CycleService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class CycleConfigurationController extends ResponseHandler {
     private UserService userService;
 
 
-    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     ResponseEntity<List<CycleConfiguration>> findall()
     {
