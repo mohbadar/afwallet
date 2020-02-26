@@ -1,7 +1,7 @@
-package af.gov.anar.ebreshna.configuration.dlist.service;
+package af.gov.anar.ebreshna.configuration.dlist;
 
-import af.gov.anar.ebreshna.configuration.dlist.model.DList;
-import af.gov.anar.ebreshna.configuration.dlist.repository.DListRepository;
+import af.gov.anar.ebreshna.configuration.dlist.DList;
+import af.gov.anar.ebreshna.configuration.dlist.DListRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

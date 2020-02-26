@@ -3,15 +3,13 @@ package af.gov.anar.ebreshna.configuration.payment.model;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.configuration.common.tariff.model.TariffCategory;
-import af.gov.anar.ebreshna.configuration.metering.model.CycleConfiguration;
-import af.gov.anar.ebreshna.configuration.office.model.DesignationMaster;
+import af.gov.anar.ebreshna.configuration.metering.cycle.CycleConfiguration;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "payment_installment_panelty", schema = Schema.CORE_SCHEMA)

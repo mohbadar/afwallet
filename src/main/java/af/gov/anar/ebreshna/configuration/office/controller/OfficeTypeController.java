@@ -1,7 +1,7 @@
 package af.gov.anar.ebreshna.configuration.office.controller;
 
-import af.gov.anar.ebreshna.configuration.office.model.OfficeType;
-import af.gov.anar.ebreshna.configuration.office.service.OfficeTypeService;
+import af.gov.anar.ebreshna.configuration.office.office_type.OfficeType;
+import af.gov.anar.ebreshna.configuration.office.office_type.OfficeTypeService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

@@ -1,7 +1,7 @@
 package af.gov.anar.ebreshna.configuration.office.controller;
 
-import af.gov.anar.ebreshna.configuration.office.model.PremisesCategory;
-import af.gov.anar.ebreshna.configuration.office.service.PremisesCategoryService;
+import af.gov.anar.ebreshna.configuration.office.premises_category.PremisesCategory;
+import af.gov.anar.ebreshna.configuration.office.premises_category.PremisesCategoryService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

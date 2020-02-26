@@ -1,7 +1,7 @@
 package af.gov.anar.ebreshna.configuration.office.controller;
 
-import af.gov.anar.ebreshna.configuration.office.model.FieldStaff;
-import af.gov.anar.ebreshna.configuration.office.service.FieldStaffService;
+import af.gov.anar.ebreshna.configuration.office.field_staff.FieldStaff;
+import af.gov.anar.ebreshna.configuration.office.field_staff.FieldStaffService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

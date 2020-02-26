@@ -1,8 +1,8 @@
 package af.gov.anar.ebreshna.configuration.office.controller;
 
 import af.gov.anar.api.handler.ResponseHandler;
-import af.gov.anar.ebreshna.configuration.office.model.GovCodeMaster;
-import af.gov.anar.ebreshna.configuration.office.service.GovCodeMasterService;
+import af.gov.anar.ebreshna.configuration.office.govt_code.GovCodeMaster;
+import af.gov.anar.ebreshna.configuration.office.govt_code.GovCodeMasterService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

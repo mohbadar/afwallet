@@ -3,7 +3,7 @@ package af.gov.anar.ebreshna.configuration.billing.tariff_category;
 import af.gov.anar.ebreshna.configuration.billing.enumeration.TariffModifyCategory;
 import af.gov.anar.ebreshna.configuration.billing.tariff_category_type.TariffCategoryTypeMaster;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
-import af.gov.anar.ebreshna.configuration.metering.model.MeteringType;
+import af.gov.anar.ebreshna.configuration.metering.metering_type.MeteringType;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;

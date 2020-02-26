@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.configuration.dlist.model;
+package af.gov.anar.ebreshna.configuration.dlist;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;

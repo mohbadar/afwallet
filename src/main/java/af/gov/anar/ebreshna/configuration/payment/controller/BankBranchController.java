@@ -1,8 +1,6 @@
 package af.gov.anar.ebreshna.configuration.payment.controller;
 
 import af.gov.anar.api.handler.ResponseHandler;
-import af.gov.anar.ebreshna.configuration.office.model.DesignationMaster;
-import af.gov.anar.ebreshna.configuration.office.service.DesignationMasterService;
 import af.gov.anar.ebreshna.configuration.payment.model.BankBranch;
 import af.gov.anar.ebreshna.configuration.payment.service.BankBranchService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;

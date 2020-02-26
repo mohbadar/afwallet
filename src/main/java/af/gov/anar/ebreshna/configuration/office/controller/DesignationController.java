@@ -1,8 +1,8 @@
 package af.gov.anar.ebreshna.configuration.office.controller;
 
 
-import af.gov.anar.ebreshna.configuration.office.model.DesignationMaster;
-import af.gov.anar.ebreshna.configuration.office.service.DesignationMasterService;
+import af.gov.anar.ebreshna.configuration.office.designation.DesignationMaster;
+import af.gov.anar.ebreshna.configuration.office.designation.DesignationMasterService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

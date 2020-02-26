@@ -7,7 +7,7 @@ import af.gov.anar.ebreshna.configuration.network.enumeration.MeterBoxModeType;
 import af.gov.anar.ebreshna.configuration.network.enumeration.MeterBoxType;
 import af.gov.anar.ebreshna.configuration.network.enumeration.TypeOfMounting;
 import af.gov.anar.ebreshna.configuration.network.meter_reader.MeterReaderMaster;
-import af.gov.anar.ebreshna.configuration.office.model.OfficeMaster;
+import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;

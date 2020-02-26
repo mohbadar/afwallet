@@ -3,7 +3,6 @@ package af.gov.anar.ebreshna.configuration.payment.model;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.configuration.common.workingcalender.model.WorkingCalenderTemplate;
-import af.gov.anar.ebreshna.configuration.office.model.OfficeMaster;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;

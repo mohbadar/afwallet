@@ -2,8 +2,8 @@ package af.gov.anar.ebreshna.configuration.network.area;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.network.enumeration.AreaType;
-import af.gov.anar.ebreshna.configuration.office.model.DesignationMaster;
-import af.gov.anar.ebreshna.configuration.office.model.OfficeMaster;
+import af.gov.anar.ebreshna.configuration.office.designation.DesignationMaster;
+import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;

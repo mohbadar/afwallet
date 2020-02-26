@@ -5,7 +5,7 @@ import af.gov.anar.ebreshna.configuration.common.fee.model.FeeType;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.configuration.common.tariff.model.TariffCategory;
 import af.gov.anar.ebreshna.configuration.csc.request_type.RequestType;
-import af.gov.anar.ebreshna.configuration.nsc.model.SupplyVoltage;
+import af.gov.anar.ebreshna.configuration.nsc.supply_voltage.SupplyVoltage;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import lombok.*;
 import org.hibernate.envers.Audited;

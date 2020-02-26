@@ -1,7 +1,5 @@
 package af.gov.anar.ebreshna.configuration.dlist;
 
-import af.gov.anar.ebreshna.configuration.dlist.model.DList;
-import af.gov.anar.ebreshna.configuration.dlist.service.DListService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

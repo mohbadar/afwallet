@@ -1,7 +1,5 @@
 package af.gov.anar.ebreshna.configuration.payment.service;
 
-import af.gov.anar.ebreshna.configuration.office.model.FieldStaff;
-import af.gov.anar.ebreshna.configuration.office.repository.FieldStaffRepository;
 import af.gov.anar.ebreshna.configuration.payment.model.BankBranch;
 import af.gov.anar.ebreshna.configuration.payment.repository.BankBranchRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
