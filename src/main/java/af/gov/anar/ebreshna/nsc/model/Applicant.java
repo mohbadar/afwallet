@@ -114,8 +114,23 @@ public class Applicant extends BaseEntity {
     @Column
     private String outdoorInWatt;
 
-    @ManyToOne(targetEntity = TariffCategory.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "tariff_category_id")
+    @ManyToOne(targetEntity = ApplicantApplianceRelation.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "applicant_appliance_relation_id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    private TariffCategory tariffCategory;
+    private ApplicantApplianceRelation applicantApplianceRelation;
+
+
+    @Column
+    private int numberOfMotors;
+
+    @Column
+    private String sizeOfMotors;
+
+    @Column
+    private  int phase1or3;
+
+    @Column
+    private String softStart;
+
+
 }
