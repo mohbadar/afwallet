@@ -188,22 +188,92 @@ public class ApplicantInfoDetail extends BaseEntity {
     private String meterSerialNo1;
 
     @Column
+    private String meterSerialNo2;
+
+    @Column
     private String meterSerialNo3;
+    @Column
+    private String meterSerialNo4;
 
     @Column
     private String coverSerialNo1;
+    @Column
+    private String coverSerialNo2;
 
     @Column
     private String coverSerialNo3;
+    @Column
+    private String coverSerialNo4;
 
     @Column
-    private String terminalSerialNo;
+    private String terminalSerialNo1;
+
+    @Column
+    private String terminalSerialNo2;
+
+    @Column
+    private Date meterInstalledDateOnPremises;
+
+
+    @Column
+    private String itemName;
+
+    @Column
+    private String amps;
+
+    @Column
+    private  int itemPhase;
+
+    @Column
+    private String digit;
+
+    @Column
+    private Date serialDate;
+
+
+    @Column
+    private double meterLatitude;
+    @Column
+    private double meterLongtitude;
+
+    @Column
+    private Date releaseOn;
+
+    @Column
+    private String releasedBy;
+
+    @Column
+    private String applicantNeighborAccountNumber;
+
+    @Column
+    private String neighborName;
 
 
 
+    @ManyToOne(targetEntity = DistributionTransformerMaster.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "neighbor_transformer_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private DistributionTransformerMaster neighborDistributionTransformerMaster;
+
+    @ManyToOne(targetEntity = MeterBoxMaster.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "neighbor_meter_box_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private MeterBoxMaster neighborMeterBoxMaster;
 
 
+    //meter reading entry
+
+    @Column
+    private double meterPresentReading;
+
+    @Column
+    private int multipyingFactor;
 
 
+    @Column
+    private double consumption;
+
+    @Column
+    private Date readingDate;
 
 }
