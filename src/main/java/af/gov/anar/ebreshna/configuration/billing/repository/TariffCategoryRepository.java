@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TariffCategoryMasterRepository extends JpaRepository<TariffCategoryMaster, Long> {
+public interface TariffCategoryRepository extends JpaRepository<TariffCategoryMaster, Long> {
 }
