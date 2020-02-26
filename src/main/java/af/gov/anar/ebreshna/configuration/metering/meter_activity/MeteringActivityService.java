@@ -1,7 +1,5 @@
 package af.gov.anar.ebreshna.configuration.metering.meter_activity;
 
-import af.gov.anar.ebreshna.configuration.metering.meter_activity.MeteringActivityMaster;
-import af.gov.anar.ebreshna.configuration.metering.meter_activity.ActivityRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class ActivityService {
+public class MeteringActivityService {
 
     @Autowired
-    private ActivityRepository repository;
+    private MeteringActivityRepository repository;
 
     @Autowired
     private UserService userService;

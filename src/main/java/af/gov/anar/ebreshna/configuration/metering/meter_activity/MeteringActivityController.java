@@ -1,8 +1,6 @@
 package af.gov.anar.ebreshna.configuration.metering.meter_activity;
 
 import af.gov.anar.api.handler.ResponseHandler;
-import af.gov.anar.ebreshna.configuration.metering.meter_activity.MeteringActivityMaster;
-import af.gov.anar.ebreshna.configuration.metering.meter_activity.ActivityService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,7 +14,7 @@ import java.util.List;
 public class MeteringActivityController extends ResponseHandler {
 
     @Autowired
-    private ActivityService service;
+    private MeteringActivityService service;
 
     @Autowired
     private UserService userService;
