@@ -1,12 +1,10 @@
-package af.gov.anar.ebreshna.customerservice.complaint.model;
-
+package af.gov.anar.ebreshna.csc.ecall.model;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
-import af.gov.anar.ebreshna.configuration.common.workflowdata.WorkflowTransitionData;
 import af.gov.anar.ebreshna.configuration.csc.request.Request;
 import af.gov.anar.ebreshna.configuration.csc.request_type.RequestType;
-import af.gov.anar.lib.workflow.model.Workflow;
+import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
@@ -15,7 +13,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "customerservice_complaint")
+@Table(name = "customerservice_ivr_call_feedback")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,7 +22,13 @@ import java.util.Date;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class ComplaintRequest extends BaseEntity {
+public class Feedback extends BaseEntity {
+
+    @ManyToOne(targetEntity = IvrCall.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ivr_call_id", nullable = false)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private IvrCall ivrCall;
+
 
     @ManyToOne(targetEntity = RequestType.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "request_type_id", nullable = false)
@@ -60,29 +64,9 @@ public class ComplaintRequest extends BaseEntity {
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Province province;
 
-
-    @Column
-    private String tazkiraDocument;
-    @Column
-    private String identityProofDocument;
-
-    @Column
-    private String customerAccountBookDocument;
-
-
-    @ManyToOne(targetEntity = Workflow.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "workflow_id", nullable = false)
+    @ManyToOne(targetEntity = OfficeMaster.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "office_master_id", nullable = false)
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    private Workflow workflow;
-
-    @Column
-    private String workflowCurrentStep;
-
-
-    @ManyToOne(targetEntity = WorkflowTransitionData.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "workflow_transition_data_id", nullable = false)
-    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    private WorkflowTransitionData workflowTransitionData;
-
+    private OfficeMaster officeMaster;
 
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/office/govcodes")
+@RequestMapping(value = "/api/config/office/govtcodes")
 public class GovCodeMasterController extends ResponseHandler {
 
     @Autowired

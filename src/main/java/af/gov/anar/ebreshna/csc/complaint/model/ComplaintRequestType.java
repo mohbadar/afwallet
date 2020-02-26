@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.customerservice.complaint.model;
+package af.gov.anar.ebreshna.csc.complaint.model;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import lombok.*;
