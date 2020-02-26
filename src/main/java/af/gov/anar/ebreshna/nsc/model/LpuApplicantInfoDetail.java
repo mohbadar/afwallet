@@ -1,8 +1,9 @@
-package af.gov.anar.ebreshna.nsc.online.model;
+package af.gov.anar.ebreshna.nsc.model;
 
 import af.gov.anar.ebreshna.configuration.common.license_type.LicenseType;
 import af.gov.anar.ebreshna.configuration.common.power_source.PowerSource;
 import af.gov.anar.ebreshna.configuration.common.power_usage_type.PowerUsageType;
+import af.gov.anar.ebreshna.nsc.model.Applicant;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;

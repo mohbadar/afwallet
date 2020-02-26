@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.nsc.online.model;
+package af.gov.anar.ebreshna.nsc.model;
 
 import af.gov.anar.ebreshna.configuration.billing.voltage_unit.VoltageUnit;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
@@ -7,12 +7,10 @@ import af.gov.anar.ebreshna.configuration.metering.meter_make_detail.MeterMakeDe
 import af.gov.anar.ebreshna.configuration.network.distributed_transformer.DistributionTransformerMaster;
 import af.gov.anar.ebreshna.configuration.network.meter_box.MeterBoxMaster;
 import af.gov.anar.ebreshna.configuration.network.meter_reader.MeterReaderMaster;
-import af.gov.anar.ebreshna.configuration.nsc.document.DocumentMaster;
 import af.gov.anar.ebreshna.configuration.nsc.metric.MetricMaster;
 import af.gov.anar.ebreshna.nsc.enumeration.ConnectionType;
 import af.gov.anar.ebreshna.nsc.enumeration.ElectricType;
 import af.gov.anar.ebreshna.nsc.enumeration.PropertyType;
-import af.gov.anar.ebreshna.nsc.online.model.Applicant;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
