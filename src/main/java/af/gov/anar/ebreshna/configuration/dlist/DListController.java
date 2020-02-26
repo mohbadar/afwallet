@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.configuration.dlist.controller;
+package af.gov.anar.ebreshna.configuration.dlist;
 
 import af.gov.anar.ebreshna.configuration.dlist.model.DList;
 import af.gov.anar.ebreshna.configuration.dlist.service.DListService;
