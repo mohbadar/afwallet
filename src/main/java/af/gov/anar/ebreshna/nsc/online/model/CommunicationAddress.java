@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.nsc.model;
+package af.gov.anar.ebreshna.nsc.online.model;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;

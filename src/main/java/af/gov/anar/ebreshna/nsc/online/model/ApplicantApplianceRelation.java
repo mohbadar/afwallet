@@ -1,7 +1,7 @@
-package af.gov.anar.ebreshna.nsc.model;
+package af.gov.anar.ebreshna.nsc.online.model;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
-import af.gov.anar.ebreshna.configuration.nsc.document.DocumentMaster;
+import af.gov.anar.ebreshna.configuration.nsc.appliance.ApplianceMaster;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
@@ -9,7 +9,7 @@ import org.hibernate.envers.RelationTargetAuditMode;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "nsc_applicant_document")
+@Table(name = "nsc_applicant_appliance_relation")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,21 +18,18 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class ApplicantDocument extends BaseEntity {
+public class ApplicantApplianceRelation extends BaseEntity {
+
+    @ManyToOne(targetEntity = ApplianceMaster.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "appliance_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private ApplianceMaster applianceMaster;
 
     @ManyToOne(targetEntity = Applicant.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "applicant_id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Applicant applicant;
 
-    @ManyToOne(targetEntity = DocumentMaster.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "document_id")
-    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    private DocumentMaster documentMaster;
-
     @Column
-    private String type;
-
-    @Column
-    private String filePath;
+    private int count;
 }

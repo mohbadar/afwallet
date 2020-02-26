@@ -1,21 +1,18 @@
-package af.gov.anar.ebreshna.nsc.model;
+package af.gov.anar.ebreshna.nsc.online.model;
 
-import af.gov.anar.ebreshna.configuration.billing.enumeration.VoltageGroup;
 import af.gov.anar.ebreshna.configuration.billing.voltage_group.VoltageGroupMaster;
-import af.gov.anar.ebreshna.configuration.billing.voltage_unit.VoltageUnit;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.configuration.common.tariff.model.TariffCategory;
-import af.gov.anar.ebreshna.configuration.csc.request_type.RequestType;
 import af.gov.anar.ebreshna.configuration.network.area.AreaMaster;
 import af.gov.anar.ebreshna.configuration.network.feeder.FeederMaster;
+import af.gov.anar.ebreshna.configuration.nsc.supply_voltage.SupplyVoltage;
 import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
 import af.gov.anar.ebreshna.nsc.enumeration.ContactMethod;
 import af.gov.anar.lib.workflow.model.Workflow;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
-import org.hibernate.jdbc.Work;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -110,6 +107,11 @@ public class Applicant extends BaseEntity {
     private VoltageGroupMaster voltageGroup;
 
 
+    @ManyToOne(targetEntity = SupplyVoltage.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "supply_voltage_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private SupplyVoltage supplyVoltage;
+
     @Column
     private String indoorInWatt;
 
@@ -161,4 +163,9 @@ public class Applicant extends BaseEntity {
     @JoinColumn(nullable = false, name = "workflow_id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Workflow workflow;
+
+    @OneToOne(targetEntity = ApplicantInfoDetail.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "applicant_info_detail_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private ApplicantInfoDetail applicantInfoDetail;
 }
