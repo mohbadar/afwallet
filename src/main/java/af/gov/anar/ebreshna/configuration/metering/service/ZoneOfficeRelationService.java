@@ -1,7 +1,9 @@
 package af.gov.anar.ebreshna.configuration.metering.service;
 
 import af.gov.anar.ebreshna.configuration.metering.model.MeterMakeSerial;
+import af.gov.anar.ebreshna.configuration.metering.model.ZoneOfficeRelation;
 import af.gov.anar.ebreshna.configuration.metering.repository.MeterMakeSerialRepository;
+import af.gov.anar.ebreshna.configuration.metering.repository.ZoneOfficeRelationRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,29 +15,29 @@ import java.util.List;
 public class ZoneOfficeRelationService {
 
     @Autowired
-    private MeterMakeSerialRepository repository;
+    private ZoneOfficeRelationRepository repository;
 
     @Autowired
     private UserService userService;
 
-    public MeterMakeSerial save(MeterMakeSerial obj)
+    public ZoneOfficeRelation save(ZoneOfficeRelation obj)
     {
         return repository.save(obj);
     }
 
-    public List<MeterMakeSerial> findall()
+    public List<ZoneOfficeRelation> findall()
     {
         return repository.findAll();
     }
 
-    public MeterMakeSerial findOne(long id)
+    public ZoneOfficeRelation findOne(long id)
     {
         return repository.getOne(id);
     }
 
     public void delete(long id)
     {
-        MeterMakeSerial obj = repository.getOne(id);
+        ZoneOfficeRelation obj = repository.getOne(id);
         obj.setDeleted(true);
         obj.setUserId(userService.getId());
         obj.setDeletedAt(new Date());
