@@ -132,5 +132,28 @@ public class Applicant extends BaseEntity {
     @Column
     private String softStart;
 
+    @ManyToOne(targetEntity = ApplicantDocument.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "applicant_document_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private ApplicantDocument applicantDocument;
+
+    @Column
+    private String electricalContractorName;
+
+    @Column
+    private String electricalContractorCompany;
+
+    @Column
+    private String electricalContractorMobileNumber;
+
+    @Column
+    private  String electricalContractorEmail;
+
+    @Column
+    private String admd;
+
+    @Column
+    private String officerName;
+
 
 }
