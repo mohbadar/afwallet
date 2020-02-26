@@ -1,4 +1,10 @@
 package af.gov.anar.ebreshna.configuration.billing.repository;
 
-public interface ProcessRepository {
+import af.gov.anar.ebreshna.configuration.billing.model.ProcessConfiguration;
+import af.gov.anar.ebreshna.configuration.billing.model.TrLossesConfiguration;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProcessRepository extends JpaRepository<ProcessConfiguration, Long> {
 }
