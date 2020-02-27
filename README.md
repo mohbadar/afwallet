@@ -27,7 +27,7 @@ npm start
 
 #### How to build the source code
 - Run the Keycloak `cd keycloak_path/bin` and `bash standalone.sh`
-- Run `main` method from `af.gov.anar.ebreshna.Applicant`
+- Run `main` method from `af.gov.anar.ebreshna.Application`
 
 
 
