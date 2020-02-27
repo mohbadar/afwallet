@@ -1,10 +1,8 @@
-package af.gov.anar.ebreshna.nsc.service;
+package af.gov.anar.ebreshna.nsc.communication_address;
 
-import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
-import af.gov.anar.ebreshna.configuration.office.office.OfficeMasterRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
-import af.gov.anar.ebreshna.nsc.model.Applicant;
-import af.gov.anar.ebreshna.nsc.repository.ApplicantRepository;
+import af.gov.anar.ebreshna.nsc.communication_address.CommunicationAddress;
+import af.gov.anar.ebreshna.nsc.communication_address.CommunicationAddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,32 +10,32 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class ApplicantService {
+public class CommunicationAddressService {
 
     @Autowired
-    private ApplicantRepository repository;
+    private CommunicationAddressRepository repository;
 
     @Autowired
     private UserService userService;
 
-    public Applicant save(Applicant obj)
+    public CommunicationAddress save(CommunicationAddress obj)
     {
         return repository.save(obj);
     }
 
-    public List<Applicant> findall()
+    public List<CommunicationAddress> findall()
     {
         return repository.findAll();
     }
 
-    public Applicant findOne(long id)
+    public CommunicationAddress findOne(long id)
     {
         return repository.getOne(id);
     }
 
     public void delete(long id)
     {
-        Applicant obj = repository.getOne(id);
+        CommunicationAddress obj = repository.getOne(id);
         obj.setDeleted(true);
         obj.setUserId(userService.getId());
         obj.setDeletedAt(new Date());

@@ -22,7 +22,7 @@ public class ApplianceController extends ResponseHandler {
     private UserService userService;
 
 
-    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     ResponseEntity<List<ApplianceMaster>> findall()
     {

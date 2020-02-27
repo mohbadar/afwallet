@@ -1,6 +1,6 @@
-package af.gov.anar.ebreshna.nsc.repository;
+package af.gov.anar.ebreshna.nsc.applicant_appliance_relation;
 
-import af.gov.anar.ebreshna.nsc.model.ApplicantApplianceRelation;
+import af.gov.anar.ebreshna.nsc.applicant_appliance_relation.ApplicantApplianceRelation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

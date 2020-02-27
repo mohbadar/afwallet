@@ -1,10 +1,10 @@
-package af.gov.anar.ebreshna.nsc.model;
+package af.gov.anar.ebreshna.nsc.lpu_applicant;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.license_type.LicenseType;
 import af.gov.anar.ebreshna.configuration.common.power_source.PowerSource;
 import af.gov.anar.ebreshna.configuration.common.power_usage_type.PowerUsageType;
-import af.gov.anar.ebreshna.nsc.model.Applicant;
+import af.gov.anar.ebreshna.nsc.applicant.Applicant;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;

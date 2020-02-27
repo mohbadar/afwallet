@@ -1,11 +1,9 @@
-package af.gov.anar.ebreshna.nsc.controller;
+package af.gov.anar.ebreshna.nsc.applicant;
 
 import af.gov.anar.api.handler.ResponseHandler;
-import af.gov.anar.ebreshna.configuration.csc.approval_limit.ApprovalLimit;
-import af.gov.anar.ebreshna.configuration.csc.approval_limit.ApprovalLimitService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
-import af.gov.anar.ebreshna.nsc.model.CommunicationAddress;
-import af.gov.anar.ebreshna.nsc.service.CommunicationAddressService;
+import af.gov.anar.ebreshna.nsc.applicant.Applicant;
+import af.gov.anar.ebreshna.nsc.applicant.ApplicantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/nsc/applicant-communication-addresses")
-public class CommunicationAddressController extends ResponseHandler {
+@RequestMapping(value = "/api/nsc/applicants")
+public class ApplicantController extends ResponseHandler {
 
     @Autowired
-    private CommunicationAddressService service;
+    private ApplicantService service;
 
     @Autowired
     private UserService userService;
@@ -26,7 +24,7 @@ public class CommunicationAddressController extends ResponseHandler {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<CommunicationAddress>> findall()
+    ResponseEntity<List<Applicant>> findall()
     {
         return ResponseEntity.ok(service.findall());
     }
@@ -34,14 +32,14 @@ public class CommunicationAddressController extends ResponseHandler {
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<CommunicationAddress> findOne(@PathVariable(name = "id", required = true) long id)
+    ResponseEntity<Applicant> findOne(@PathVariable(name = "id", required = true) long id)
     {
         return ResponseEntity.ok(service.findOne(id));
     }
 
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<CommunicationAddress> update(@PathVariable(name = "id", required = true) long id, @RequestBody(required = true) CommunicationAddress obj)
+    ResponseEntity<Applicant> update(@PathVariable(name = "id", required = true) long id, @RequestBody(required = true) Applicant obj)
     {
         obj.setId(id);
         return ResponseEntity.ok(service.save(obj));
@@ -49,7 +47,7 @@ public class CommunicationAddressController extends ResponseHandler {
 
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<CommunicationAddress> save(@RequestBody(required = true) CommunicationAddress obj)
+    ResponseEntity<Applicant> save(@RequestBody(required = true) Applicant obj)
     {
         return ResponseEntity.ok(service.save(obj));
     }

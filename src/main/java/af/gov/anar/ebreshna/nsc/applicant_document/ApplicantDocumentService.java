@@ -1,11 +1,8 @@
-package af.gov.anar.ebreshna.nsc.service;
+package af.gov.anar.ebreshna.nsc.applicant_document;
 
-import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
-import af.gov.anar.ebreshna.configuration.office.office.OfficeMasterRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
-import af.gov.anar.ebreshna.nsc.model.Applicant;
-import af.gov.anar.ebreshna.nsc.model.ApplicantDocument;
-import af.gov.anar.ebreshna.nsc.repository.ApplicantDocumentRepository;
+import af.gov.anar.ebreshna.nsc.applicant_document.ApplicantDocument;
+import af.gov.anar.ebreshna.nsc.applicant_document.ApplicantDocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

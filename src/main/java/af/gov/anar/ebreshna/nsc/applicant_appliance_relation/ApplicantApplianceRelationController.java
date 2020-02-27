@@ -1,11 +1,9 @@
-package af.gov.anar.ebreshna.nsc.controller;
+package af.gov.anar.ebreshna.nsc.applicant_appliance_relation;
 
 import af.gov.anar.api.handler.ResponseHandler;
-import af.gov.anar.ebreshna.configuration.csc.approval_limit.ApprovalLimit;
-import af.gov.anar.ebreshna.configuration.csc.approval_limit.ApprovalLimitService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
-import af.gov.anar.ebreshna.nsc.model.ApplicantDocument;
-import af.gov.anar.ebreshna.nsc.service.ApplicantDocumentService;
+import af.gov.anar.ebreshna.nsc.applicant_appliance_relation.ApplicantApplianceRelation;
+import af.gov.anar.ebreshna.nsc.applicant_appliance_relation.ApplicantApplianceRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/nsc/applicant-documents")
-public class ApplicantDocumentController extends ResponseHandler {
+@RequestMapping(value = "/api/nsc/applicant-appliance-relations")
+public class ApplicantApplianceRelationController extends ResponseHandler {
 
     @Autowired
-    private ApplicantDocumentService service;
+    private ApplicantApplianceRelationService service;
 
     @Autowired
     private UserService userService;
@@ -26,7 +24,7 @@ public class ApplicantDocumentController extends ResponseHandler {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<ApplicantDocument>> findall()
+    ResponseEntity<List<ApplicantApplianceRelation>> findall()
     {
         return ResponseEntity.ok(service.findall());
     }
@@ -34,14 +32,14 @@ public class ApplicantDocumentController extends ResponseHandler {
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<ApplicantDocument> findOne(@PathVariable(name = "id", required = true) long id)
+    ResponseEntity<ApplicantApplianceRelation> findOne(@PathVariable(name = "id", required = true) long id)
     {
         return ResponseEntity.ok(service.findOne(id));
     }
 
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<ApplicantDocument> update(@PathVariable(name = "id", required = true) long id, @RequestBody(required = true) ApplicantDocument obj)
+    ResponseEntity<ApplicantApplianceRelation> update(@PathVariable(name = "id", required = true) long id, @RequestBody(required = true) ApplicantApplianceRelation obj)
     {
         obj.setId(id);
         return ResponseEntity.ok(service.save(obj));
@@ -49,8 +47,9 @@ public class ApplicantDocumentController extends ResponseHandler {
 
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<ApplicantDocument> save(@RequestBody(required = true) ApplicantDocument obj)
+    ResponseEntity<ApplicantApplianceRelation> save(@RequestBody(required = true) ApplicantApplianceRelation obj)
     {
         return ResponseEntity.ok(service.save(obj));
     }
+
 }

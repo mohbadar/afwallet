@@ -1,7 +1,8 @@
-package af.gov.anar.ebreshna.nsc.model;
+package af.gov.anar.ebreshna.nsc.applicant_document;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.nsc.document.DocumentMaster;
+import af.gov.anar.ebreshna.nsc.applicant.Applicant;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;

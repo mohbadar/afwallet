@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.nsc.model;
+package af.gov.anar.ebreshna.nsc.applicant_info_detail;
 
 import af.gov.anar.ebreshna.configuration.billing.voltage_unit.VoltageUnit;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;

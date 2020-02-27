@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.nsc.model;
+package af.gov.anar.ebreshna.nsc.applicant;
 
 import af.gov.anar.ebreshna.configuration.billing.voltage_group.VoltageGroupMaster;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
@@ -9,6 +9,10 @@ import af.gov.anar.ebreshna.configuration.network.feeder.FeederMaster;
 import af.gov.anar.ebreshna.configuration.nsc.supply_voltage.SupplyVoltage;
 import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
 import af.gov.anar.ebreshna.nsc.enumeration.ContactMethod;
+import af.gov.anar.ebreshna.nsc.applicant_appliance_relation.ApplicantApplianceRelation;
+import af.gov.anar.ebreshna.nsc.applicant_document.ApplicantDocument;
+import af.gov.anar.ebreshna.nsc.applicant_info_detail.ApplicantInfoDetail;
+import af.gov.anar.ebreshna.nsc.communication_address.CommunicationAddress;
 import af.gov.anar.lib.workflow.model.Workflow;
 import lombok.*;
 import org.hibernate.envers.Audited;

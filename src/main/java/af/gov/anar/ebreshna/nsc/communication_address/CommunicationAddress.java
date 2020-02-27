@@ -1,7 +1,8 @@
-package af.gov.anar.ebreshna.nsc.model;
+package af.gov.anar.ebreshna.nsc.communication_address;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
+import af.gov.anar.ebreshna.nsc.applicant.Applicant;
 import af.gov.anar.ebreshna.nsc.enumeration.ContactMethod;
 import lombok.*;
 import org.hibernate.envers.Audited;

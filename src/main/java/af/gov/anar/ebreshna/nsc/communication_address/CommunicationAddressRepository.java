@@ -1,6 +1,6 @@
-package af.gov.anar.ebreshna.nsc.repository;
+package af.gov.anar.ebreshna.nsc.communication_address;
 
-import af.gov.anar.ebreshna.nsc.model.CommunicationAddress;
+import af.gov.anar.ebreshna.nsc.communication_address.CommunicationAddress;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
