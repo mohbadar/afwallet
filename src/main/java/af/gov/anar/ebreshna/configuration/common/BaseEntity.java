@@ -1,5 +1,6 @@
 package af.gov.anar.ebreshna.configuration.common;
 
+import af.gov.anar.ebreshna.infrastructure.revision.AuditEnabledEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,7 +14,7 @@ import java.util.Date;
 @MappedSuperclass
 @Getter
 @Setter
-public class BaseEntity implements Serializable{
+public class BaseEntity  extends AuditEnabledEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

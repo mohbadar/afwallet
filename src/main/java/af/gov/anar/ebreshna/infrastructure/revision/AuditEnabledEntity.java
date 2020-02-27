@@ -30,7 +30,4 @@ public class AuditEnabledEntity {
     @LastModifiedDate
     private Instant lastModifiedDate;
 
-    @Version
-    private Integer version;
-
 }
