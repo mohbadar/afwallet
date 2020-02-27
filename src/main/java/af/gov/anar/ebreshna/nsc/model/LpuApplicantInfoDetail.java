@@ -1,5 +1,6 @@
 package af.gov.anar.ebreshna.nsc.model;
 
+import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.license_type.LicenseType;
 import af.gov.anar.ebreshna.configuration.common.power_source.PowerSource;
 import af.gov.anar.ebreshna.configuration.common.power_usage_type.PowerUsageType;
@@ -20,7 +21,7 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class LpuApplicantInfoDetail {
+public class LpuApplicantInfoDetail extends BaseEntity {
 
     @ManyToOne(targetEntity = Applicant.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "applicant_id")
