@@ -9,7 +9,7 @@ cd anar-parent/script/setup/
 bash setup.sh
 cd ../..
 ```
-- clone eBreshna repository
+- Clone eBreshna repository
 
 ```xml
 git clone https://github.com/nsia-infosys/eBreshna.git
