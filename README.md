@@ -1,18 +1,13 @@
-### eBreshna System
+## eBreshna System
 
-# How to setup the project
-- Download Keycloak from (https://www.keycloak.org/)
-- Run the following commands to setup Anar Framework
+#### How to setup the project
+- Download Keycloak from (https://www.keycloak.org/downloads.html)
+- Setup Anar Framework
 ```xml
-
 git clone https://github.com/Anar-Framework/anar-parent.git
-
 cd anar-parent/script/setup/
-
 bash setup.sh
-
 cd ../..
-
 ```
 - clone eBreshna repository
 
@@ -20,7 +15,7 @@ cd ../..
 git clone https://github.com/nsia-infosys/eBreshna.git
 ```
 - Open the eBreshna with `intellij` IDE
-- Add imported libraries/modules as an Existing module `File>New>Module from Existing Sources...`
+- Add imported libraries in `pom.xml` from `File>New>Module from Existing Sources...`
 
 - Setup eBreshna-web
 ```xml
@@ -30,10 +25,11 @@ npm install
 npm start
 ```
 
-# How to build the source code
-- Run the Keycloak
-$ bin/standalone.sh
-- run `main` method from `af.gov.anar.ebreshna.Applicant`
+#### How to build the source code
+- Run the Keycloak `cd keycloak_path/bin` and `bash standalone.sh`
+- Run `main` method from `af.gov.anar.ebreshna.Applicant`
+
+
 
 #### Documentation
 
