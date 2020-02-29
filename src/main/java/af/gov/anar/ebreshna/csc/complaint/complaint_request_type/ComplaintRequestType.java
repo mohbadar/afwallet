@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.csc.complaint.model;
+package af.gov.anar.ebreshna.csc.complaint.complaint_request_type;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import lombok.*;
@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "customerservice_complaint_type")
+@Table(name = "csc_complaint_request_type")
 @Getter
 @Setter
 @AllArgsConstructor

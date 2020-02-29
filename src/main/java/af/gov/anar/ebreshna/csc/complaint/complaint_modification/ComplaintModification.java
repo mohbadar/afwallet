@@ -1,6 +1,7 @@
-package af.gov.anar.ebreshna.csc.complaint.model;
+package af.gov.anar.ebreshna.csc.complaint.complaint_modification;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
+import af.gov.anar.ebreshna.csc.complaint.complaint_request.ComplaintRequest;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
@@ -8,7 +9,7 @@ import org.hibernate.envers.RelationTargetAuditMode;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "customerservice_complaint_modifications")
+@Table(name = "csc_complaint_modifications")
 @Getter
 @Setter
 @AllArgsConstructor

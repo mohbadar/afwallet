@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.csc.complaint.model;
+package af.gov.anar.ebreshna.csc.complaint.complaint_request;
 
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
@@ -15,7 +15,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "customerservice_complaint")
+@Table(name = "csc_complaint_request")
 @Getter
 @Setter
 @AllArgsConstructor
