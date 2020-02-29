@@ -1,10 +1,7 @@
-package af.gov.anar.ebreshna.csc.complaint.complaint_request;
+package af.gov.anar.ebreshna.csc.complaint_request;
 
 import af.gov.anar.api.handler.ResponseHandler;
-import af.gov.anar.ebreshna.helpdesk.model.Complaint;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
-import af.gov.anar.ebreshna.nsc.applicant.Applicant;
-import af.gov.anar.ebreshna.nsc.applicant.ApplicantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

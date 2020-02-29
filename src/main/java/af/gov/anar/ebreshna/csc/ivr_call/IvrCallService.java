@@ -1,8 +1,5 @@
-package af.gov.anar.ebreshna.csc.complaint.complaint_request_type;
+package af.gov.anar.ebreshna.csc.ivr_call;
 
-import af.gov.anar.ebreshna.configuration.billing.behaviour.BehaviourConfiguration;
-import af.gov.anar.ebreshna.configuration.billing.behaviour.BehaviourRepository;
-import af.gov.anar.ebreshna.csc.complaint.complaint_request.ComplaintRequest;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,35 +8,38 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class ComplaintRequestTypeService {
+public class IvrCallService {
+
 
     @Autowired
-    private ComplaintRequestTypeRepository repository;
+    private IvrCallRepository repository;
 
     @Autowired
     private UserService userService;
 
-    public ComplaintRequestType save(ComplaintRequestType obj)
+    public IvrCall save(IvrCall obj)
     {
         return repository.save(obj);
     }
 
-    public List<ComplaintRequestType> findall()
+    public List<IvrCall> findall()
     {
         return repository.findAll();
     }
 
-    public ComplaintRequestType findOne(long id)
+    public IvrCall findOne(long id)
     {
         return repository.getOne(id);
     }
 
     public void delete(long id)
     {
-        ComplaintRequestType obj = repository.getOne(id);
+        IvrCall obj = repository.getOne(id);
         obj.setDeleted(true);
         obj.setUserId(userService.getId());
         obj.setDeletedAt(new Date());
         save(obj);
     }
+
+
 }

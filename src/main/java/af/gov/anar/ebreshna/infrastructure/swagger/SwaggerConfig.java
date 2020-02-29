@@ -46,7 +46,7 @@ public class SwaggerConfig {
      * public Docket api() {
      *     return new Docket(DocumentationType.SWAGGER_2)
      *       .select()
-     *       .apis(RequestHandlerSelectors.basePackage("af.gov.anar.servicetemplate.object.api"))
+     *       .apis(RequestHandlerSelectors.basePackage("af.gov.anar.ebreshna.object.api"))
      *       .paths(PathSelectors.ant("/foos/*"))
      *       .build();
      * }

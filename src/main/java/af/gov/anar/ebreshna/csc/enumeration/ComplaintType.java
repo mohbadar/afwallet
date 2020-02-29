@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.csc.complaint.enumeration;
+package af.gov.anar.ebreshna.csc.enumeration;
 
 public enum  ComplaintType {
 

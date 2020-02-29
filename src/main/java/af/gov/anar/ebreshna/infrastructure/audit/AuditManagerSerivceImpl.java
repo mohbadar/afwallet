@@ -71,7 +71,7 @@ public class AuditManagerSerivceImpl extends BaseService implements AuditManager
          hostName = hostService.getDefaultHostName();
 
         } catch (UnknownHostException unknownHostException) {
-            LOGGER.info("SERVICETE-TEMPLATE-AUDIT_FACTORY-AUDIT", APPLICATION_NAME, APPLICATION_ID,
+            LOGGER.info("eBreshna-AUDIT_FACTORY-AUDIT", APPLICATION_NAME, APPLICATION_ID,
                     ExceptionUtils.getStackTrace(unknownHostException));
         }
 

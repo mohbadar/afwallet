@@ -1,8 +1,5 @@
-package af.gov.anar.ebreshna.csc.complaint.complaint_modification;
+package af.gov.anar.ebreshna.csc.ivr_feedback;
 
-import af.gov.anar.ebreshna.configuration.billing.behaviour.BehaviourConfiguration;
-import af.gov.anar.ebreshna.configuration.billing.behaviour.BehaviourRepository;
-import af.gov.anar.ebreshna.helpdesk.model.Complaint;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,35 +8,36 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class ComplaintModificationService {
+public class FeedbackService {
 
     @Autowired
-    private ComplaintModificationRepository repository;
+    private FeedbackRepository repository;
 
     @Autowired
     private UserService userService;
 
-    public ComplaintModification save(ComplaintModification obj)
+    public Feedback save(Feedback obj)
     {
         return repository.save(obj);
     }
 
-    public List<ComplaintModification> findall()
+    public List<Feedback> findall()
     {
         return repository.findAll();
     }
 
-    public ComplaintModification findOne(long id)
+    public Feedback findOne(long id)
     {
         return repository.getOne(id);
     }
 
     public void delete(long id)
     {
-        ComplaintModification obj = repository.getOne(id);
+        Feedback obj = repository.getOne(id);
         obj.setDeleted(true);
         obj.setUserId(userService.getId());
         obj.setDeletedAt(new Date());
         save(obj);
     }
+
 }

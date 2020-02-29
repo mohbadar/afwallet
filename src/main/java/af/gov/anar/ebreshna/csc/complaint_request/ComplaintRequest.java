@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.csc.ecall.ivr_call;
+package af.gov.anar.ebreshna.csc.complaint_request;
 
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
@@ -15,7 +15,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "customerservice_ivr_call")
+@Table(name = "csc_complaint_request")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,7 +24,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class IvrCall extends BaseEntity {
+public class ComplaintRequest extends BaseEntity {
 
     @ManyToOne(targetEntity = RequestType.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "request_type_id", nullable = false)
@@ -61,6 +61,13 @@ public class IvrCall extends BaseEntity {
     private Province province;
 
 
+    @Column
+    private String tazkiraDocument;
+    @Column
+    private String identityProofDocument;
+
+    @Column
+    private String customerAccountBookDocument;
 
 
     @ManyToOne(targetEntity = Workflow.class, fetch = FetchType.EAGER)

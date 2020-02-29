@@ -1,6 +1,5 @@
-package af.gov.anar.ebreshna.csc.ecall.feedback;
+package af.gov.anar.ebreshna.csc.ivr_feedback;
 
-import af.gov.anar.ebreshna.csc.complaint.complaint_modification.ComplaintModification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.history.RevisionRepository;
 import org.springframework.stereotype.Repository;

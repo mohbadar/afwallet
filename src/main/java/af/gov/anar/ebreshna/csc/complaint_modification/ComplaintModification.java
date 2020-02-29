@@ -1,7 +1,7 @@
-package af.gov.anar.ebreshna.csc.complaint.complaint_modification;
+package af.gov.anar.ebreshna.csc.complaint_modification;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
-import af.gov.anar.ebreshna.csc.complaint.complaint_request.ComplaintRequest;
+import af.gov.anar.ebreshna.csc.complaint_request.ComplaintRequest;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;

@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.csc.complaint.complaint_modification;
+package af.gov.anar.ebreshna.csc.complaint_modification;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.history.RevisionRepository;
