@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.csc.ecall.model;
+package af.gov.anar.ebreshna.csc.ecall.ivr_call;
 
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;

@@ -1,10 +1,11 @@
-package af.gov.anar.ebreshna.csc.ecall.model;
+package af.gov.anar.ebreshna.csc.ecall.feedback;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.common.province.Province;
 import af.gov.anar.ebreshna.configuration.csc.request.Request;
 import af.gov.anar.ebreshna.configuration.csc.request_type.RequestType;
 import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
+import af.gov.anar.ebreshna.csc.ecall.ivr_call.IvrCall;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
