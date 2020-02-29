@@ -9,7 +9,7 @@ import org.hibernate.envers.RelationTargetAuditMode;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "metering_meter_stock")
+@Table(name = "metering_meter")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,7 +18,7 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class MeterStock extends BaseEntity {
+public class Meter extends BaseEntity {
 
 
     @Column
