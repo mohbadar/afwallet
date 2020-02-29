@@ -8,10 +8,7 @@ import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "network_substation_master", schema = Schema.CORE_SCHEMA)
@@ -30,7 +27,8 @@ public class SubstationMaster extends BaseEntity {
     private OfficeMaster officeMaster;
 
     @Column
-    private SubstationCapacity substationCapacity;
+    @Enumerated(EnumType.STRING)
+    private String substationCapacity;
 
     @Column
     private String stationName;
