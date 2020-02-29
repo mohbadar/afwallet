@@ -26,9 +26,9 @@ public class SubstationMaster extends BaseEntity {
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private OfficeMaster officeMaster;
 
-    @Column
+    @Column(name="substation_capacity")
     @Enumerated(EnumType.STRING)
-    private String substationCapacity;
+    private SubstationCapacity substationCapacity;
 
     @Column
     private String stationName;
