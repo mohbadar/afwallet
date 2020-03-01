@@ -36,6 +36,7 @@ public class SubstationMaster extends BaseEntity {
 //    @Enumerated(EnumType.STRING)
 //    @Column(columnDefinition = "substation_status_info")
 //    @Type( type = "pgsql_enum" )
+    @Column
     private String substationCapacity;
 
     @Column
