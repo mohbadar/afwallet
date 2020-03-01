@@ -1,7 +1,7 @@
-package af.gov.anar.ebreshna.metering;
+package af.gov.anar.ebreshna.metering.meter_applicant;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
-import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
+import af.gov.anar.ebreshna.metering.meter.Meter;
 import af.gov.anar.ebreshna.nsc.applicant.Applicant;
 import lombok.*;
 import org.hibernate.envers.Audited;

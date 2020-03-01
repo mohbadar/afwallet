@@ -1,7 +1,7 @@
-package af.gov.anar.ebreshna.metering;
+package af.gov.anar.ebreshna.metering.reading_entry;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
-import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
+import af.gov.anar.ebreshna.metering.observation.ObservationMaster;
 import af.gov.anar.ebreshna.nsc.applicant.Applicant;
 import lombok.*;
 import org.hibernate.envers.Audited;
@@ -82,23 +82,84 @@ public class MeterReadingEntry extends BaseEntity {
     @Column
     private String multiplicationFactorForKvah;
 
+    @Column
+    private String recordedKwh;
+
+    @Column
+    private String recordedKva;
+
+    @Column
+    private String recordedKvah;
+
+    @Column
+    private String recordCreatedBy;
+
+    @Column
+    private String recordCreateDate;
+
+    @Column
+    private String recordUpdatedBy;
+
+    @Column
+    private String recordUpdatedDate;
+
+    @Column
+    private int readingMonth;
+
+    @Column
+    private int readingYear;
+
+    @OneToOne(targetEntity = ObservationMaster.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "observation_master_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private ObservationMaster observationMaster;
+
 
     /**
-     * ID
-     * PRST_RDG_DATE
-     * PRST_STATUS_KWH
-     * PRST_STATUS_KVA
-     * PRST_STATUS_KVAH
-     * PRST_RDG_KWH
-     * PRST_RDG_KVA
-     * PRST_RDG_KVAH
-     * PREV_RDG_DATE
-     * PREV_STATUS_KWH
-     * PREV_STATUS_KVA
-     * PREV_STATUS_KVAH
-     * PREV_RDG_KWH
-     * PREV_RDG_KVA
-     * PREV_RDG_KVAH
+     * RECOMMENDED UNITS FOR KWH
+     */
+    @Column
+    private String recommendedUnitKwh;
+
+    @Column
+    private String recommendedUnitKva;
+
+    @Column
+    private String recommendedUnitKvah;
+
+    /**
+     * METER STATUS DATE WHEN IT IS NOT NORMAL
+     */
+    private String meterStatusDateWhenAbnormal;
+
+    @Column
+    private boolean readingUsedforBilling;
+
+    @Column
+    private double averageUnitForKwh;
+
+    @Column
+    private double averageUnitForKva;
+
+    @Column
+    private double averageUnitForKvah;
+
+    @Column
+    private String remark;
+
+    @Column
+    private double behaviourKwh;
+
+    @Column
+    private double behaviourKva;
+
+    @Column
+    private  double behaviourKvah;
+
+
+
+    /**
+
      * MF_KWH
      * MF_KVA
      * MF_KVAH
