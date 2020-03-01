@@ -23,7 +23,7 @@ public class FeederMasterService {
         return repository.save(obj);
     }
 
-    public List<FeederMaster> findall()
+    public List<FeederMaster> findAll()
     {
         return repository.findAll();
     }

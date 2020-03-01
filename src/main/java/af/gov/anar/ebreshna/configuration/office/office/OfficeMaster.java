@@ -3,8 +3,10 @@ package af.gov.anar.ebreshna.configuration.office.office;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.office.office_type.OfficeType;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
@@ -23,9 +25,11 @@ public class OfficeMaster extends BaseEntity {
     @ManyToOne(targetEntity = OfficeType.class)
     private OfficeType officeType;
 
-    @OneToOne(cascade={CascadeType.ALL})
-    @JoinColumn(name="parent")
-    private OfficeMaster officeMaster;
+    @ManyToOne
+    @JoinColumn(name = "parent", referencedColumnName = "id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    @JsonBackReference
+    private OfficeMaster parent;
 
     private String name;
     private String officeCode;
