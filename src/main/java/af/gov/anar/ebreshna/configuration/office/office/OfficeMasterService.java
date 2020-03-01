@@ -23,7 +23,7 @@ public class OfficeMasterService {
         return repository.save(obj);
     }
 
-    public List<OfficeMaster> findall()
+    public List<OfficeMaster> findAll()
     {
         return repository.findAll();
     }

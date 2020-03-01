@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/network/substations")
+@RequestMapping(value = "/api/config/network/substation-master")
 public class SubstationController {
 
     @Autowired
@@ -23,9 +23,9 @@ public class SubstationController {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<SubstationMaster>> findall()
+    ResponseEntity<List<SubstationMaster>> findAll()
     {
-        return ResponseEntity.ok(service.findall());
+        return ResponseEntity.ok(service.findAll());
     }
 
 

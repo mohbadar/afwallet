@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/office/officemasters")
+@RequestMapping(value = "/api/config/office/office-masters")
 public class OfficeMasterController extends ResponseHandler {
 
     @Autowired
@@ -24,9 +24,9 @@ public class OfficeMasterController extends ResponseHandler {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<OfficeMaster>> findall()
+    ResponseEntity<List<OfficeMaster>> findAll()
     {
-        return ResponseEntity.ok(service.findall());
+        return ResponseEntity.ok(service.findAll());
     }
 
 

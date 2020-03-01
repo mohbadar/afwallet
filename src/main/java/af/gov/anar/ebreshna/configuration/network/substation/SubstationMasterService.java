@@ -23,7 +23,7 @@ public class SubstationMasterService {
         return repository.save(obj);
     }
 
-    public List<SubstationMaster> findall()
+    public List<SubstationMaster> findAll()
     {
         return repository.findAll();
     }

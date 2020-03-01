@@ -23,7 +23,7 @@ public class StationTypeService {
         return repository.save(obj);
     }
 
-    public List<StationType> findall()
+    public List<StationType> findAll()
     {
         return repository.findAll();
     }
