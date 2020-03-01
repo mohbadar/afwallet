@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.metering;
+package af.gov.anar.ebreshna.metering.meter;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
