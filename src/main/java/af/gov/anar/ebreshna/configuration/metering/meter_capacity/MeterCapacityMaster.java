@@ -2,12 +2,11 @@ package af.gov.anar.ebreshna.configuration.metering.meter_capacity;
 
 import af.gov.anar.ebreshna.configuration.billing.enumeration.TariffChargeMaximumType;
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
+import af.gov.anar.ebreshna.infrastructure.datatype.StringToEnumFactory;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "metering_meter_capacity")
@@ -27,8 +26,13 @@ public class MeterCapacityMaster extends BaseEntity {
     @Column
     private double maxCapacity;
 
+//    @Column
+//    @Enumerated(EnumType.STRING)
+//    @Convert(converter = StringToEnumFactory.class)
+//    private TariffChargeMaximumType tariffChargeMaximumType;
+
     @Column
-    private TariffChargeMaximumType tariffChargeMaximumType;
+    private String tariffChargeMaximumType;
 
     @Column
     private String remark;
