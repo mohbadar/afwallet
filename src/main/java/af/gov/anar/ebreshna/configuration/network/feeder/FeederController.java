@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/network/feeders")
+@RequestMapping(value = "/api/config/network/feeders-master")
 public class FeederController {
 
     @Autowired
@@ -23,9 +23,9 @@ public class FeederController {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<FeederMaster>> findall()
+    ResponseEntity<List<FeederMaster>> findAll()
     {
-        return ResponseEntity.ok(service.findall());
+        return ResponseEntity.ok(service.findAll());
     }
 
 

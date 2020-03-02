@@ -11,10 +11,7 @@ import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "network_feeder_master", schema = Schema.CORE_SCHEMA)
@@ -39,10 +36,12 @@ public class FeederMaster extends BaseEntity {
     @Column
     private String feederName;
 
-    @Column
+    @Column(name="feeder_power_supply")
+    @Enumerated(EnumType.STRING)
     private FeederPowerSupply feederPowerSupply;
 
-    @Column
+    @Column(name="feeder_type")
+    @Enumerated(EnumType.STRING)
     private FeederType feederType;
 
     @Column
@@ -51,17 +50,20 @@ public class FeederMaster extends BaseEntity {
     @Column
     private String feederAt;
 
-    @Column
+    @Column(name="organization")
+    @Enumerated(EnumType.STRING)
     private FeederOrganization organization;
 
     @Column
     private String feederLocation;
 
-    @Column
+    @Column(name="feeder_category")
+    @Enumerated(EnumType.STRING)
     private FeederCategory feederCategory;
 
-    @Column
-    private FeederLoadShedCatogory feederLoadShedCatogory;
+    @Column(name="feeder_load_shed_category")
+    @Enumerated(EnumType.STRING)
+    private FeederLoadShedCatogory feederLoadShedCategory;
 
     @Column
     private String maxLoad;
