@@ -49,6 +49,7 @@ public class OfficeTypeController {
     public @ResponseBody
     ResponseEntity<OfficeType> save(@Valid  @RequestBody(required = true) OfficeType obj)
     {
+        System.out.println("OfficeType>>>"+ obj.toString());
         return ResponseEntity.ok(service.save(obj));
     }
 }

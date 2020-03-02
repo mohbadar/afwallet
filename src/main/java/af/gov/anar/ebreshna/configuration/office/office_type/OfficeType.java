@@ -5,6 +5,7 @@ import af.gov.anar.ebreshna.infrastructure.util.Schema;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
@@ -27,8 +28,9 @@ public class OfficeType extends BaseEntity {
 //    @JoinColumn(name="parent")
 //    private OfficeType officeType;
 
-    @ManyToOne(targetEntity = OfficeType.class , fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = OfficeType.class , fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "parent", referencedColumnName = "id")
-    @JsonBackReference
-    private OfficeType officeType;
+//    @JsonBackReference
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private OfficeType parent;
 }
