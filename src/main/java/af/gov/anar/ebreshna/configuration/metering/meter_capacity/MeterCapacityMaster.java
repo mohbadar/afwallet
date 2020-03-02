@@ -31,7 +31,7 @@ public class MeterCapacityMaster extends BaseEntity {
 //    @Convert(converter = StringToEnumFactory.class)
 //    private TariffChargeMaximumType tariffChargeMaximumType;
 
-    @Column
+    @Column(name = "tariff_change_max_type")
     private String tariffChargeMaximumType;
 
     @Column
