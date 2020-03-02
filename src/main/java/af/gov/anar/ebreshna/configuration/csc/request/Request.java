@@ -66,6 +66,9 @@ public class Request extends BaseEntity {
 
 
     private boolean paymentRequired;
+    private Date payableAt;
+
+
     private boolean customerNumberRequired;
     private boolean displayRequestNature;
 
