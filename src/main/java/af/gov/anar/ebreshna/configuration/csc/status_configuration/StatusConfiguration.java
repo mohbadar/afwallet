@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "crm_status_configuration")
+@Table(name = "csc_status_configuration")
 @Getter
 @Setter
 @AllArgsConstructor

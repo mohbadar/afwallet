@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "crm_approval_limit")
+@Table(name = "csc_approval_limit")
 @Getter
 @Setter
 @AllArgsConstructor

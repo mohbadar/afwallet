@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "crm_request_type")
+@Table(name = "csc_request_type")
 @Getter
 @Setter
 @AllArgsConstructor
