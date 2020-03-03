@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/csc/requesttypes")
+@RequestMapping(value = "/api/config/csc/request_types")
 public class RequestTypeController {
 
     @Autowired
