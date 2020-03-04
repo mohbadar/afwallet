@@ -1,8 +1,6 @@
-package af.gov.anar.ebreshna.configuration.billing.constumer_group;
+package af.gov.anar.ebreshna.configuration.billing.consumer_group;
 
 import af.gov.anar.api.handler.ResponseHandler;
-import af.gov.anar.ebreshna.configuration.billing.constumer_group.CustomerGroupMaster;
-import af.gov.anar.ebreshna.configuration.billing.constumer_group.CustomerGroupService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

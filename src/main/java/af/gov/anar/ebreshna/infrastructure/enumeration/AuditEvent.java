@@ -7,7 +7,6 @@ import static af.gov.anar.lib.audit.util.AuditEventType.SYSTEM_EVENT;
 
 /**
  * Enum for Audit Events
- *
  */
 public enum AuditEvent {
 

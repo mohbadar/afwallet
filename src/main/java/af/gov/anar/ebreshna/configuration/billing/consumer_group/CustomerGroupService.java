@@ -1,7 +1,5 @@
-package af.gov.anar.ebreshna.configuration.billing.constumer_group;
+package af.gov.anar.ebreshna.configuration.billing.consumer_group;
 
-import af.gov.anar.ebreshna.configuration.billing.constumer_group.CustomerGroupMaster;
-import af.gov.anar.ebreshna.configuration.billing.constumer_group.CustomerGroupRepository;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.configuration.billing.process_behaviour_link;
+package af.gov.anar.ebreshna.configuration.billing.process;
 
 import af.gov.anar.ebreshna.configuration.billing.process.ProcessConfiguration;
 import af.gov.anar.ebreshna.configuration.billing.process.ProcessRepository;

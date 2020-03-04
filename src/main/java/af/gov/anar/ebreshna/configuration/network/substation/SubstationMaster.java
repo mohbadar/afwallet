@@ -5,6 +5,7 @@ import af.gov.anar.ebreshna.configuration.network.enumeration.SubstationCapacity
 import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
 import af.gov.anar.ebreshna.configuration.office.office_type.OfficeType;
 import af.gov.anar.ebreshna.infrastructure.util.Schema;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -30,6 +31,7 @@ public class SubstationMaster extends BaseEntity {
     @ManyToOne(targetEntity = OfficeMaster.class , fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "office_master_id", referencedColumnName = "id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    @JsonBackReference
     private OfficeMaster officeMaster;
 
     @Column

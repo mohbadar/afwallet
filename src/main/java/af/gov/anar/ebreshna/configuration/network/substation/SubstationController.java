@@ -2,10 +2,13 @@ package af.gov.anar.ebreshna.configuration.network.substation;
 
 import af.gov.anar.ebreshna.configuration.network.substation.SubstationMaster;
 import af.gov.anar.ebreshna.configuration.network.substation.SubstationMasterService;
+import af.gov.anar.ebreshna.configuration.office.office.OfficeMaster;
+import af.gov.anar.ebreshna.configuration.office.office.OfficeMasterService;
 import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +22,9 @@ public class SubstationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private OfficeMasterService officeMasterService;
 
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -46,8 +52,11 @@ public class SubstationController {
 
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<SubstationMaster> save(@RequestBody(required = true) SubstationMaster obj)
+    ResponseEntity<SubstationMaster> save(@Validated  @RequestBody(required = true) SubstationMaster obj)
     {
+        System.out.println("SubstationMaster>>>"+ obj.toString());
+        OfficeMaster officeMaster = officeMasterService.findOne(obj.getOfficeMaster().getId());
+        obj.setOfficeMaster(officeMaster);
         return ResponseEntity.ok(service.save(obj));
     }
 }

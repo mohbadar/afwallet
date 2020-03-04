@@ -1,8 +1,7 @@
-package af.gov.anar.ebreshna.configuration.billing.constumer_group;
+package af.gov.anar.ebreshna.configuration.billing.consumer_group;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
 import lombok.*;
-import org.checkerframework.checker.units.qual.C;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.Column;

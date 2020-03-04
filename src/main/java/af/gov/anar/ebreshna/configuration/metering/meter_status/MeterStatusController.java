@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/metering/meter-statuses")
+@RequestMapping(value = "/api/config/metering/meter-status-masters")
 public class MeterStatusController extends ResponseHandler {
 
     @Autowired

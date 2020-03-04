@@ -31,8 +31,11 @@ public class OfficeMaster extends BaseEntity {
     @JsonBackReference
     private OfficeMaster parent;
 
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String officeCode;
+    @Column(nullable = false)
     private String shortName;
     private String doorNumber;
     private String street;
