@@ -30,7 +30,7 @@ public class BehaviourService {
 
     public BehaviourConfiguration findOne(long id)
     {
-        return repository.getOne(id);
+        return repository.findById(id).get();
     }
 
     public void delete(long id)

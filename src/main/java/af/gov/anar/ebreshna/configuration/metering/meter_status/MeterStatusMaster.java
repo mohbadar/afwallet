@@ -27,9 +27,9 @@ public class MeterStatusMaster extends BaseEntity {
     private String meterStatus;
 
     @Column
-    private String meterName;
+    private String shortName;
 
-    @OneToOne(targetEntity = BehaviourConfiguration.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = BehaviourConfiguration.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "behaviour_configuration_id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private BehaviourConfiguration behaviourConfiguration;
