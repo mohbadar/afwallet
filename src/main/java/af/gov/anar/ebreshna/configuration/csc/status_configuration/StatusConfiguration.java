@@ -1,7 +1,7 @@
 package af.gov.anar.ebreshna.configuration.csc.status_configuration;
 
 import af.gov.anar.ebreshna.configuration.common.BaseEntity;
-import af.gov.anar.ebreshna.helpdesk.enumeration.ComplaintStatus;
+import af.gov.anar.ebreshna.helpdesk.enumeration.ParentProcess;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
@@ -23,7 +23,7 @@ public class StatusConfiguration extends BaseEntity {
     private String status;
     private String statusValue;
     private String  statusDescription;
-    private ComplaintStatus complaintStatus;
+    private ParentProcess parentProcess;
     private boolean skipable;
     private boolean displayStatus;
     private boolean mandatory;

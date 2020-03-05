@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/csc/statusconfigs")
+@RequestMapping(value = "/api/config/csc/status_configuration")
 public class StatusConfigurationController {
 
 
