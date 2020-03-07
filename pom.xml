@@ -32,6 +32,7 @@
 			<version>${project.version}</version>
 		</dependency>
 
+
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
 			<artifactId>anar-lib-kafka</artifactId>
