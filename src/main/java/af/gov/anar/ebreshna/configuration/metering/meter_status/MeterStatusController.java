@@ -64,13 +64,13 @@ public class MeterStatusController extends ResponseHandler {
     ResponseEntity<MeterStatusMaster> save(@Validated  @RequestBody(required = true) String request) throws JsonProcessingException {
         JsonNode root = mapper.readTree(request);
 
-        Long behaviourId =root.get("behaviourConfiguration").asLong();
-        BehaviourConfiguration behaviourConfiguration = behaviourService.findOne(behaviourId);
+//        Long behaviourId =root.get("behaviourConfiguration").asLong();
+//        BehaviourConfiguration behaviourConfiguration = behaviourService.findOne(behaviourId);
 
         MeterStatusMaster obj = MeterStatusMaster.builder()
                 .meterStatus(root.get("meterStatus").asText())
                 .meterStatusCode(root.get("meterStatusCode").asText())
-                .behaviourConfiguration(behaviourConfiguration)
+//                .behaviourConfiguration(behaviourConfiguration)
                 .shortName(root.get("shortName").asText())
                 .remark(root.get("remark").asText())
                 .billingBasis(root.get("billingBasis").asText())
