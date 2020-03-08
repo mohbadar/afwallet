@@ -31,7 +31,6 @@ public class SubstationMaster extends BaseEntity {
     @ManyToOne(targetEntity = OfficeMaster.class , fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "office_master_id", referencedColumnName = "id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    @JsonBackReference
     private OfficeMaster officeMaster;
 
     @Column

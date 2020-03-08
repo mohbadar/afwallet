@@ -21,9 +21,14 @@ public class ESignatureService {
 
     public ESignature save(ESignature obj)
     {
-        ESignature previousData = repository.findByUserId(userService.getId());
-        obj.setId(previousData.getId());
-        obj.setUserId(userService.getId());
+        System.out.println("ESING : "+ obj.toString());
+        ESignature previousData = repository.findByOwner(userService.getPreferredUsername());
+        if (previousData != null)
+        {
+            obj.setId(previousData.getId());
+        }
+
+        obj.setOwner(userService.getPreferredUsername());
         return repository.save(obj);
     }
 

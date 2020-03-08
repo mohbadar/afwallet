@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface ESignatureRepository extends JpaRepository<ESignature, Long>, RevisionRepository<ESignature, Long, Integer> {
 
     ESignature findByUserId(String userId);
+
+    ESignature findByOwner(String owner);
 }

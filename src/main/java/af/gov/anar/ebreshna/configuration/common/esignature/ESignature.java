@@ -22,8 +22,10 @@ import javax.persistence.Table;
 @Audited
 public class ESignature extends BaseEntity {
 
+    @Column(columnDefinition="TEXT", nullable = false)
+    private String drawContent;
+
     @Column(nullable = false)
-    @Type(type = "TEXT")
-    private String drowContent;
+    private String owner;
 
 }

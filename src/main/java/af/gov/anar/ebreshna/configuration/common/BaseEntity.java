@@ -25,7 +25,7 @@ public class BaseEntity  extends AuditEnabledEntity implements Serializable {
     protected Long id;
 
     @Column(name = "version")
-    @Version
+//    @Version
     private Long version;
 
     @Column(name = "created_at")
