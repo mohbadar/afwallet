@@ -54,9 +54,9 @@ public class SubstationController {
     public @ResponseBody
     ResponseEntity<SubstationMaster> save(@Validated  @RequestBody(required = true) SubstationMaster obj)
     {
-        System.out.println("SubstationMaster>>>"+ obj.getOfficeMaster().getId().toString());
-        OfficeMaster officeMaster = officeMasterService.findOne(obj.getOfficeMaster().getId());
-        obj.setOfficeMaster(officeMaster);
+//        System.out.println("SubstationMaster>>>"+ obj.getOfficeMaster().getId().toString());
+//        OfficeMaster officeMaster = officeMasterService.findOne(obj.getOfficeMaster().getId());
+//        obj.setOfficeMaster(officeMaster);
         return ResponseEntity.ok(service.save(obj));
     }
 }

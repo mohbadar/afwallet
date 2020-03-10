@@ -45,10 +45,11 @@ public class BankController extends ResponseHandler {
         return ResponseEntity.ok(service.save(obj));
     }
 
-    @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     ResponseEntity<BankMaster> save(@RequestBody(required = true) BankMaster obj)
     {
+        System.out.println("BankMaster>>>"+ obj.toString());
         return ResponseEntity.ok(service.save(obj));
     }
 }
