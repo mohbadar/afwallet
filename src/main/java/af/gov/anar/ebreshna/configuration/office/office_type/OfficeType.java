@@ -24,13 +24,8 @@ public class OfficeType extends BaseEntity {
     @Column(unique = true)
     private String name;
 
-//    @OneToOne(cascade={CascadeType.ALL}, fetch = FetchType.EAGER)
-//    @JoinColumn(name="parent")
-//    private OfficeType officeType;
-
-    @ManyToOne(targetEntity = OfficeType.class , fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = OfficeType.class)
     @JoinColumn(name = "parent", referencedColumnName = "id")
-//    @JsonBackReference
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private OfficeType parent;
 }
