@@ -23,7 +23,7 @@ public class FieldStaffService {
         return repository.save(obj);
     }
 
-    public List<FieldStaff> findall()
+    public List<FieldStaff> findAll()
     {
         return repository.findAll();
     }

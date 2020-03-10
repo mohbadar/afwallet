@@ -23,12 +23,12 @@ import javax.persistence.*;
 @Audited
 public class FieldStaff extends BaseEntity {
 
-    @OneToOne(targetEntity = OfficeMaster.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = OfficeMaster.class)
     @JoinColumn(nullable = true, name = "office_master_id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private OfficeMaster officeMaster;
 
-    @OneToOne(targetEntity = DesignationMaster.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = DesignationMaster.class)
     @JoinColumn(nullable = true, name = "designation_master_id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private DesignationMaster designationMaster;

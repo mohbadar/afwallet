@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/network/areas")
+@RequestMapping(value = "/api/config/network/area-master")
 public class AreaController {
 
     @Autowired
@@ -23,9 +23,9 @@ public class AreaController {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<AreaMaster>> findall()
+    ResponseEntity<List<AreaMaster>> findAll()
     {
-        return ResponseEntity.ok(service.findall());
+        return ResponseEntity.ok(service.findAll());
     }
 
 

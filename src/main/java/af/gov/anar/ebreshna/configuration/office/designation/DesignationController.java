@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/office/designations")
+@RequestMapping(value = "/api/config/office/designation-master")
 public class DesignationController {
 
     @Autowired
@@ -24,9 +24,9 @@ public class DesignationController {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<DesignationMaster>> findall()
+    ResponseEntity<List<DesignationMaster>> findAll()
     {
-        return ResponseEntity.ok(service.findall());
+        return ResponseEntity.ok(service.findAll());
     }
 
 

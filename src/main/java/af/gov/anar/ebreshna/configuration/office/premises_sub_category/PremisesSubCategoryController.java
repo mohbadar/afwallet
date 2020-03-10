@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/office/premisessubcategories")
+@RequestMapping(value = "/api/config/office/premises-sub-categories")
 public class PremisesSubCategoryController {
 
     @Autowired
@@ -23,9 +23,9 @@ public class PremisesSubCategoryController {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<PremisesSubCategory>> findall()
+    ResponseEntity<List<PremisesSubCategory>> findAll()
     {
-        return ResponseEntity.ok(service.findall());
+        return ResponseEntity.ok(service.findAll());
     }
 
 

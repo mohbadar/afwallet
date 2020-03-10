@@ -23,7 +23,7 @@ public class MeterReaderMasterService {
         return repository.save(obj);
     }
 
-    public List<MeterReaderMaster> findall()
+    public List<MeterReaderMaster> findAll()
     {
         return repository.findAll();
     }

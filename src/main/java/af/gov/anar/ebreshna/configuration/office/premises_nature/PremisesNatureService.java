@@ -23,7 +23,7 @@ public class PremisesNatureService {
         return repository.save(obj);
     }
 
-    public List<PremisesNature> findall()
+    public List<PremisesNature> findAll()
     {
         return repository.findAll();
     }
