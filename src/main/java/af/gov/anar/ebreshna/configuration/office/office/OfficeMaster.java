@@ -47,10 +47,5 @@ public class OfficeMaster extends BaseEntity {
     private String phone3;
     private String fax;
     private String email;
-//    private String hodOfJunction;
-
-    @OneToMany(mappedBy = "officeMaster")
-    private List<SubstationMaster> substationMasters;
-
-
+    private String hodOfJunction;
 }

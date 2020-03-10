@@ -28,14 +28,13 @@ import javax.persistence.*;
 
 public class SubstationMaster extends BaseEntity {
 
-    @ManyToOne(targetEntity = OfficeMaster.class , fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "office_master_id", referencedColumnName = "id")
+    @ManyToOne(targetEntity = OfficeMaster.class)
+    @JoinColumn(name = "office_master_id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private OfficeMaster officeMaster;
 
     @Column
     private String substationCapacity;
-
     @Column
     private String stationName;
     @Column
