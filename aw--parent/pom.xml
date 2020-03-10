@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>af.gov.anar</groupId>
+	<artifactId>anar-framework</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>anar-framework</name>
+	<description>Anar Framework</description>
+
+
+	<modules>
+		<module>anar-accounting</module>
+		<module>anar-connect</module>
+		<module>anar-keycloack</module>
+		<module>anar-lib-activemq</module>
+		<module>anar-lib-api</module>
+		<module>anar-lib-audit</module>
+		<module>anar-lib-calendar</module>
+		<module>anar-lib-checksum</module>
+		<module>anar-lib-core</module>
+		<module>anar-lib-cors</module>
+		<module>anar-lib-crypto</module>
+		<module>anar-lib-crypto-jce</module>
+		<module>anar-lib-csv</module>
+		<module>anar-lib-date</module>
+		<module>anar-lib-emptycheck</module>
+		<module>anar-lib-excel</module>
+		<module>anar-lib-file</module>
+		<module>anar-lib-hash</module>
+		<module>anar-lib-hmac</module>
+		<module>anar-lib-json</module>
+		<module>anar-lib-kafka</module>
+		<module>anar-lib-logger</module>
+		<module>anar-lib-mail</module>
+		<module>anar-lib-math</module>
+		<module>anar-lib-pdf</module>
+		<module>anar-lib-str</module>
+		<module>anar-lib-uuid</module>
+		<module>anar-lib-workflow</module>
+		<module>anar-lib-xml</module>
+		<module>anar-lib-zip</module>
+		<module>anar-lib-metrics</module>
+		<module>anar-lib-velocitytemplate</module>
+		<module>anar-lib-reportutil</module>
+		<module>anar-lib-jobs</module>
+		<module>anar-lib-html</module>
+		<module>anar-docs</module>
+		<module>anar-keycloak-theme</module>
+		<module>anar-servicetemplate</module>
+		<module>anar-webapptemplate</module>
+		<module>anar-keycloak</module>
+		<module>anar-datacollection-kit</module>
+		<module>anar-identity-custom</module>
+		<module>anar-servicetemaplate-customidentity</module>
+
+
+		<module>anar-assetmanagement</module>
+		<module>anar-spm</module>
+		<module>anar-cache</module>
+		<module>anar-hooks</module>
+		<module>anar-adhocquery</module>
+
+	</modules>
+
+</project>

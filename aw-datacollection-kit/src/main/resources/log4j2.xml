@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">     
+            [%highlight{%-5level}] \n %d{DEFAULT} \n %c{1}.%M() \n- %msg%n%throwable{short.lineNumber}      
+        </Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="[%highlight{%-5level}] %d{DEFAULT}  %c{1}.%M() - %msg%n%throwable{short.lineNumber}"/>
+        </Console>
+
+    <!-- <JDBC name="databaseAppender" tableName="event_logs">
+      <ConnectionFactory class="com.nsia.config.ConnectionFactory" method="getDatabaseConnection" />
+
+      <Column name="created_at" isEventTimestamp="true" />
+      <Column name="level" pattern="%level" isUnicode="false"/>
+      <Column name="action" pattern="%logger" isUnicode="false"/>
+      <Column name="details" pattern="%message" isUnicode="false"/>
+      <Column name="throwable" pattern="%ex{full}" isUnicode="false"/>
+    </JDBC> -->
+
+
+    <JDBC name="databaseAppender" tableName="log.eventlog"  target="SYSTEM_OUT" follow="true">
+         <ConnectionFactory
+            class="com.nsia.config.ConnectionFactory" method="getDatabaseConnection" />
+         <!-- <Column name="LOG_ID" pattern="%u" isUnicode="false"  /> -->
+         <Column name="ENTRY_DATE" isEventTimestamp="true" />
+         <Column name="LOGGER" pattern="%logger" isUnicode="false"  />
+         <Column name="LOG_LEVEL" pattern="%level" isUnicode="false"  />
+         <Column name="MESSAGE" pattern="%m"  isUnicode="false" />
+         <Column name="EXCEPTION" pattern="%throwable " isUnicode="false" />
+      </JDBC>
+
+        <!-- Rolling File Appender -->
+       <RollingFile name="FileAppender" fileName="logs/logs.log"
+                     filePattern="logs/logs-%d{yyyy-MM-dd}-%i.log" filePermissions="drwxrwxr-x">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- SMTP Appender -->
+       <!-- <SMTP name="MailAppender"
+             subject="Log [PROD]"
+             to="bigdata.directorate@gmail.com"
+             from="bigdata.directorate@gmail.com"
+             smtpHost="smtp.gmail.com"
+             smtpPort="465"
+             smtpUsername="bigdata.directorate@gmail.com"
+             smtpPassword="iNovation@nSIA"
+             smtpProtocol="smtps"
+             bufferSize="4"
+             smtpDebug="true"
+             ignoreExceptions="false">
+           <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+           <PatternLayout>
+               <Pattern>${LOG_PATTERN}</Pattern>
+           </PatternLayout>
+       </SMTP>
+        -->
+    </Appenders>
+
+    <Loggers>
+        <Logger name="logger" level="debug" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Logger>
+
+        <Logger name="error" level="error">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+            <AppenderRef ref="MailAppender"/>
+        </Logger>
+
+        <Root level="INFO">
+             <AppenderRef ref="databaseAppender" />
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Root>
+    </Loggers>
+</Configuration>

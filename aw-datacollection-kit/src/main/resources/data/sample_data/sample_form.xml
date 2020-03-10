@@ -1,0 +1,460 @@
+<?xml version="1.0"?>
+<h:html
+	xmlns="http://www.w3.org/2002/xforms"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:jr="http://openrosa.org/javarosa"
+	xmlns:odk="http://www.opendatakit.org/xforms"
+	xmlns:orx="http://openrosa.org/xforms"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<h:head>
+		<h:title>Sample_Form</h:title>
+		<model>
+			<itext>
+				<translation lang="Pashto">
+					<text id="/sample_form/other_game:label">
+						<value>جزیآت</value>
+					</text>
+					<text id="/sample_form/education/school:label">
+						<value>مکتب</value>
+					</text>
+					<text id="/sample_form/studied:label">
+						<value>مکتب کي لوستل شوی مضامین</value>
+					</text>
+					<text id="/sample_form/gender/g_f:label">
+						<value>ښځینه</value>
+					</text>
+					<text id="/sample_form/game/other:label">
+						<value>نور</value>
+					</text>
+					<text id="/sample_form/studied/dari:label">
+						<value>دری</value>
+					</text>
+					<text id="/sample_form/photo:label">
+						<value>عکس واخلی</value>
+					</text>
+					<text id="/sample_form/education/university:label">
+						<value>پوهنتون</value>
+					</text>
+					<text id="/sample_form/age:label">
+						<value>عمر</value>
+					</text>
+					<text id="/sample_form/begin0/times:label">
+						<value>د وقفی پیل وخت</value>
+					</text>
+					<text id="/sample_form/parcentage:label">
+						<value>د مکتب فیصدی ولیکي</value>
+					</text>
+					<text id="/sample_form/begin:label">
+						<value>نور عکسونه</value>
+					</text>
+					<text id="/sample_form/game/cricket:label">
+						<value>کرکټ</value>
+					</text>
+					<text id="/sample_form/begin0/date_time:label">
+						<value>د کار پیل تاریخ او وخت</value>
+					</text>
+					<text id="/sample_form/studied/pashto:label">
+						<value>پښتو</value>
+					</text>
+					<text id="/sample_form/name:label">
+						<value>نوم</value>
+					</text>
+					<text id="/sample_form/begin/photo:label">
+						<value>عکس واخلی</value>
+					</text>
+					<text id="/sample_form/education:label">
+						<value>تعلیمی سطحه</value>
+					</text>
+					<text id="/sample_form/studied/english:label">
+						<value>انګلیسی</value>
+					</text>
+					<text id="/sample_form/gender:label">
+						<value>جندر مو انتخاب کړي</value>
+					</text>
+					<text id="/sample_form/game/valleyball:label">
+						<value>ولیبال</value>
+					</text>
+					<text id="/sample_form/studied/math:label">
+						<value>ریاضی</value>
+					</text>
+					<text id="/sample_form/video_recored:label">
+						<value>وډیو مو ثبت کړي</value>
+					</text>
+					<text id="/sample_form/some-file:label">
+						<value>خپل CV مو اپلوډ کړي</value>
+					</text>
+					<text id="/sample_form/studied/arabic:label">
+						<value>عربی</value>
+					</text>
+					<text id="/sample_form/gender/g_m:label">
+						<value>نرینه</value>
+					</text>
+					<text id="/sample_form/geopoints:label">
+						<value>خپل موقعیت مو ثبت کړي</value>
+					</text>
+					<text id="/sample_form/audio_record:label">
+						<value>غږ مو ثبت کړي</value>
+					</text>
+					<text id="/sample_form/game/football:label">
+						<value>فوتبال</value>
+					</text>
+					<text id="/sample_form/begin0/starting:label">
+						<value>د کار شروع تاریخ</value>
+					</text>
+					<text id="/sample_form/game:label">
+						<value>دخوښی لوبی مو انتخاب کړي</value>
+					</text>
+				</translation>
+				<translation default="true()" lang="default">
+					<text id="/sample_form/other_game:label">
+						<value>Details</value>
+					</text>
+					<text id="/sample_form/education/school:label">
+						<value>School</value>
+					</text>
+					<text id="/sample_form/studied:label">
+						<value>Studied subjects at school</value>
+					</text>
+					<text id="/sample_form/gender/g_f:label">
+						<value>Female</value>
+					</text>
+					<text id="/sample_form/game/other:label">
+						<value>Other</value>
+					</text>
+					<text id="/sample_form/studied/dari:label">
+						<value>Dari</value>
+					</text>
+					<text id="/sample_form/photo:label">
+						<value>Take a photo</value>
+					</text>
+					<text id="/sample_form/education/university:label">
+						<value>University</value>
+					</text>
+					<text id="/sample_form/age:label">
+						<value>Age</value>
+					</text>
+					<text id="/sample_form/begin0/times:label">
+						<value>Break starting time</value>
+					</text>
+					<text id="/sample_form/parcentage:label">
+						<value>Your school percentage</value>
+					</text>
+					<text id="/sample_form/begin:label">
+						<value>Take other photo</value>
+					</text>
+					<text id="/sample_form/game/cricket:label">
+						<value>Cricket</value>
+					</text>
+					<text id="/sample_form/begin0/date_time:label">
+						<value>Work starting date and time</value>
+					</text>
+					<text id="/sample_form/studied/pashto:label">
+						<value>Pashto</value>
+					</text>
+					<text id="/sample_form/name:label">
+						<value>Name</value>
+					</text>
+					<text id="/sample_form/begin/photo:label">
+						<value>Take a photo</value>
+					</text>
+					<text id="/sample_form/education:label">
+						<value>Educaion level</value>
+					</text>
+					<text id="/sample_form/studied/english:label">
+						<value>English</value>
+					</text>
+					<text id="/sample_form/gender:label">
+						<value>Select your gender</value>
+					</text>
+					<text id="/sample_form/game/valleyball:label">
+						<value>Valleyball</value>
+					</text>
+					<text id="/sample_form/studied/math:label">
+						<value>Math</value>
+					</text>
+					<text id="/sample_form/video_recored:label">
+						<value>Record your video</value>
+					</text>
+					<text id="/sample_form/some-file:label">
+						<value>Upload your CV</value>
+					</text>
+					<text id="/sample_form/studied/arabic:label">
+						<value>Arabic</value>
+					</text>
+					<text id="/sample_form/gender/g_m:label">
+						<value>Male</value>
+					</text>
+					<text id="/sample_form/geopoints:label">
+						<value>Record your location</value>
+					</text>
+					<text id="/sample_form/audio_record:label">
+						<value>Record your vice</value>
+					</text>
+					<text id="/sample_form/game/football:label">
+						<value>Football</value>
+					</text>
+					<text id="/sample_form/begin0/starting:label">
+						<value>Work ending date</value>
+					</text>
+					<text id="/sample_form/game:label">
+						<value>Select your favorite game</value>
+					</text>
+				</translation>
+				<translation lang="Dari">
+					<text id="/sample_form/other_game:label">
+						<value>تفصیلات</value>
+					</text>
+					<text id="/sample_form/education/school:label">
+						<value>مکتب</value>
+					</text>
+					<text id="/sample_form/studied:label">
+						<value>مضامین تدریس شده در مکتب</value>
+					</text>
+					<text id="/sample_form/gender/g_f:label">
+						<value>اناث</value>
+					</text>
+					<text id="/sample_form/game/other:label">
+						<value>دیګر</value>
+					</text>
+					<text id="/sample_form/studied/dari:label">
+						<value>دری</value>
+					</text>
+					<text id="/sample_form/photo:label">
+						<value>عکس را بیګرید</value>
+					</text>
+					<text id="/sample_form/education/university:label">
+						<value>پوهنتون</value>
+					</text>
+					<text id="/sample_form/age:label">
+						<value>عمر</value>
+					</text>
+					<text id="/sample_form/begin0/times:label">
+						<value>وقت اغاز وقفه</value>
+					</text>
+					<text id="/sample_form/parcentage:label">
+						<value>فیصدی مکتب تان وارد نمایید</value>
+					</text>
+					<text id="/sample_form/begin:label">
+						<value>دیګر تصویر ها</value>
+					</text>
+					<text id="/sample_form/game/cricket:label">
+						<value>کرکټ</value>
+					</text>
+					<text id="/sample_form/begin0/date_time:label">
+						<value>تاریخ و وقت اغاز کار</value>
+					</text>
+					<text id="/sample_form/studied/pashto:label">
+						<value>پشتو</value>
+					</text>
+					<text id="/sample_form/name:label">
+						<value>اسم</value>
+					</text>
+					<text id="/sample_form/begin/photo:label">
+						<value>عکس را بیګرید</value>
+					</text>
+					<text id="/sample_form/education:label">
+						<value>سطحه تعلیمی</value>
+					</text>
+					<text id="/sample_form/studied/english:label">
+						<value>انګلیش</value>
+					</text>
+					<text id="/sample_form/gender:label">
+						<value>جنسیت را انتخاب نمايید</value>
+					</text>
+					<text id="/sample_form/game/valleyball:label">
+						<value>ولیبال</value>
+					</text>
+					<text id="/sample_form/studied/math:label">
+						<value>ریاضی</value>
+					</text>
+					<text id="/sample_form/video_recored:label">
+						<value>وډیو خود را ثبت نمایید</value>
+					</text>
+					<text id="/sample_form/some-file:label">
+						<value>Cv خود را ضمیمه نمایید</value>
+					</text>
+					<text id="/sample_form/studied/arabic:label">
+						<value>عربی</value>
+					</text>
+					<text id="/sample_form/gender/g_m:label">
+						<value>ذکور</value>
+					</text>
+					<text id="/sample_form/geopoints:label">
+						<value>موقعیت خود را ثبت نمایید</value>
+					</text>
+					<text id="/sample_form/audio_record:label">
+						<value>صدای خود را ثبت نمایید</value>
+					</text>
+					<text id="/sample_form/game/football:label">
+						<value>فوتبال</value>
+					</text>
+					<text id="/sample_form/begin0/starting:label">
+						<value>تاریخ انجام کار</value>
+					</text>
+					<text id="/sample_form/game:label">
+						<value>بازی مورد علاقه تان انتخاب نمایید</value>
+					</text>
+				</translation>
+			</itext>
+			<instance>
+				<sample_form id="Sample_Form">
+					<name/>
+					<age/>
+					<gender/>
+					<education/>
+					<studied/>
+					<parcentage/>
+					<game/>
+					<other_game/>
+					<photo/>
+					<begin jr:template="">
+						<photo/>
+					</begin>
+					<audio_record/>
+					<video_recored/>
+					<geopoints/>
+					<some-file/>
+					<begin0>
+						<date_time/>
+						<starting/>
+						<times/>
+					</begin0>
+					<meta>
+						<instanceID/>
+					</meta>
+				</sample_form>
+			</instance>
+			<bind jr:requiredMsg="اسم خود را وارد نمایید" nodeset="/sample_form/name" required="true()" type="string"/>
+			<bind jr:requiredMsg="عمر خود را وارد نمایید" nodeset="/sample_form/age" required="true()" type="int"/>
+			<bind nodeset="/sample_form/gender" type="select1"/>
+			<bind nodeset="/sample_form/education" type="select1"/>
+			<bind nodeset="/sample_form/studied" type="select"/>
+			<bind nodeset="/sample_form/parcentage" type="decimal"/>
+			<bind nodeset="/sample_form/game" type="select1"/>
+			<bind nodeset="/sample_form/other_game" relevant="selected( /sample_form/game , 'other')" type="string"/>
+			<bind nodeset="/sample_form/photo" type="binary"/>
+			<bind nodeset="/sample_form/begin/photo" type="binary"/>
+			<bind nodeset="/sample_form/audio_record" type="binary"/>
+			<bind nodeset="/sample_form/video_recored" type="binary"/>
+			<bind nodeset="/sample_form/geopoints" type="geopoint"/>
+			<bind nodeset="/sample_form/some-file" type="binary"/>
+			<bind nodeset="/sample_form/begin0/date_time" type="dateTime"/>
+			<bind nodeset="/sample_form/begin0/starting" type="date"/>
+			<bind nodeset="/sample_form/begin0/times" type="time"/>
+			<bind calculate="concat('uuid:', uuid())" nodeset="/sample_form/meta/instanceID" readonly="true()" type="string"/>
+		</model>
+	</h:head>
+	<h:body>
+		<input ref="/sample_form/name">
+			<label ref="jr:itext('/sample_form/name:label')"/>
+		</input>
+		<input ref="/sample_form/age">
+			<label ref="jr:itext('/sample_form/age:label')"/>
+		</input>
+		<select1 ref="/sample_form/gender">
+			<label ref="jr:itext('/sample_form/gender:label')"/>
+			<item>
+				<label ref="jr:itext('/sample_form/gender/g_m:label')"/>
+				<value>g_m</value>
+			</item>
+			<item>
+				<label ref="jr:itext('/sample_form/gender/g_f:label')"/>
+				<value>g_f</value>
+			</item>
+		</select1>
+		<select1 appearance="minimal" ref="/sample_form/education">
+			<label ref="jr:itext('/sample_form/education:label')"/>
+			<item>
+				<label ref="jr:itext('/sample_form/education/school:label')"/>
+				<value>school</value>
+			</item>
+			<item>
+				<label ref="jr:itext('/sample_form/education/university:label')"/>
+				<value>university</value>
+			</item>
+		</select1>
+		<select ref="/sample_form/studied">
+			<label ref="jr:itext('/sample_form/studied:label')"/>
+			<item>
+				<label ref="jr:itext('/sample_form/studied/math:label')"/>
+				<value>math</value>
+			</item>
+			<item>
+				<label ref="jr:itext('/sample_form/studied/pashto:label')"/>
+				<value>pashto</value>
+			</item>
+			<item>
+				<label ref="jr:itext('/sample_form/studied/dari:label')"/>
+				<value>dari</value>
+			</item>
+			<item>
+				<label ref="jr:itext('/sample_form/studied/english:label')"/>
+				<value>english</value>
+			</item>
+			<item>
+				<label ref="jr:itext('/sample_form/studied/arabic:label')"/>
+				<value>arabic</value>
+			</item>
+		</select>
+		<input ref="/sample_form/parcentage">
+			<label ref="jr:itext('/sample_form/parcentage:label')"/>
+		</input>
+		<select1 ref="/sample_form/game">
+			<label ref="jr:itext('/sample_form/game:label')"/>
+			<item>
+				<label ref="jr:itext('/sample_form/game/cricket:label')"/>
+				<value>cricket</value>
+			</item>
+			<item>
+				<label ref="jr:itext('/sample_form/game/football:label')"/>
+				<value>football</value>
+			</item>
+			<item>
+				<label ref="jr:itext('/sample_form/game/valleyball:label')"/>
+				<value>valleyball</value>
+			</item>
+			<item>
+				<label ref="jr:itext('/sample_form/game/other:label')"/>
+				<value>other</value>
+			</item>
+		</select1>
+		<input ref="/sample_form/other_game">
+			<label ref="jr:itext('/sample_form/other_game:label')"/>
+		</input>
+		<upload mediatype="image/*" ref="/sample_form/photo">
+			<label ref="jr:itext('/sample_form/photo:label')"/>
+		</upload>
+		<group ref="/sample_form/begin">
+			<label ref="jr:itext('/sample_form/begin:label')"/>
+			<repeat nodeset="/sample_form/begin">
+				<upload mediatype="image/*" ref="/sample_form/begin/photo">
+					<label ref="jr:itext('/sample_form/begin/photo:label')"/>
+				</upload>
+			</repeat>
+		</group>
+		<upload mediatype="audio/*" ref="/sample_form/audio_record">
+			<label ref="jr:itext('/sample_form/audio_record:label')"/>
+		</upload>
+		<upload mediatype="video/*" ref="/sample_form/video_recored">
+			<label ref="jr:itext('/sample_form/video_recored:label')"/>
+		</upload>
+		<input ref="/sample_form/geopoints">
+			<label ref="jr:itext('/sample_form/geopoints:label')"/>
+		</input>
+		<upload mediatype="application/*" ref="/sample_form/some-file">
+			<label ref="jr:itext('/sample_form/some-file:label')"/>
+		</upload>
+		<group appearance="field-list" ref="/sample_form/begin0">
+			<input ref="/sample_form/begin0/date_time">
+				<label ref="jr:itext('/sample_form/begin0/date_time:label')"/>
+			</input>
+			<input ref="/sample_form/begin0/starting">
+				<label ref="jr:itext('/sample_form/begin0/starting:label')"/>
+			</input>
+			<input ref="/sample_form/begin0/times">
+				<label ref="jr:itext('/sample_form/begin0/times:label')"/>
+			</input>
+		</group>
+	</h:body>
+</h:html>
