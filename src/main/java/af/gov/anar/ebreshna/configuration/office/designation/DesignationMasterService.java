@@ -23,7 +23,7 @@ public class DesignationMasterService {
         return repository.save(obj);
     }
 
-    public List<DesignationMaster> findall()
+    public List<DesignationMaster> findAll()
     {
         return repository.findAll();
     }

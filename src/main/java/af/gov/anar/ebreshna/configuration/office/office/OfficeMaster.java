@@ -25,12 +25,12 @@ import java.util.List;
 public class OfficeMaster extends BaseEntity {
 
     @ManyToOne(targetEntity = OfficeType.class)
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private OfficeType officeType;
 
     @ManyToOne
     @JoinColumn(name = "parent", referencedColumnName = "id")
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-    @JsonBackReference
     private OfficeMaster parent;
 
     @Column(nullable = false)
@@ -47,10 +47,5 @@ public class OfficeMaster extends BaseEntity {
     private String phone3;
     private String fax;
     private String email;
-//    private String hodOfJunction;
-
-    @OneToMany(mappedBy = "officeMaster")
-    private List<SubstationMaster> substationMasters;
-
-
+    private String hodOfJunction;
 }

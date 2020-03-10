@@ -23,7 +23,7 @@ public class AreaMasterService {
         return repository.save(obj);
     }
 
-    public List<AreaMaster> findall()
+    public List<AreaMaster> findAll()
     {
         return repository.findAll();
     }

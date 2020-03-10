@@ -35,7 +35,6 @@ public class AreaMaster extends BaseEntity {
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private OfficeMaster officeMaster;
 
-
     @ManyToOne(targetEntity = DesignationMaster.class)
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private DesignationMaster reportingTo;

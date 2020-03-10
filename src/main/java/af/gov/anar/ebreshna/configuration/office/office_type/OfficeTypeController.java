@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/office/officetypes")
+@RequestMapping(value = "/api/config/office/office-type")
 public class OfficeTypeController {
 
     @Autowired
@@ -24,9 +24,9 @@ public class OfficeTypeController {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<OfficeType>> findall()
+    ResponseEntity<List<OfficeType>> findAll()
     {
-        return ResponseEntity.ok(service.findall());
+        return ResponseEntity.ok(service.findAll());
     }
 
 
@@ -49,7 +49,6 @@ public class OfficeTypeController {
     public @ResponseBody
     ResponseEntity<OfficeType> save(@Valid  @RequestBody(required = true) OfficeType obj)
     {
-        System.out.println("OfficeType>>>"+ obj.toString());
         return ResponseEntity.ok(service.save(obj));
     }
 }

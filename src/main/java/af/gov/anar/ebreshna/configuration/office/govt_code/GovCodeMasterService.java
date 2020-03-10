@@ -23,7 +23,7 @@ public class GovCodeMasterService {
         return repository.save(obj);
     }
 
-    public List<GovCodeMaster> findall()
+    public List<GovCodeMaster> findAll()
     {
         return repository.findAll();
     }

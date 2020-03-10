@@ -23,7 +23,7 @@ public class PremisesSubCategoryService {
         return repository.save(obj);
     }
 
-    public List<PremisesSubCategory> findall()
+    public List<PremisesSubCategory> findAll()
     {
         return repository.findAll();
     }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/office/govtcodes")
+@RequestMapping(value = "/api/config/office/govt-code-master")
 public class GovCodeMasterController extends ResponseHandler {
 
     @Autowired
@@ -24,9 +24,9 @@ public class GovCodeMasterController extends ResponseHandler {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<GovCodeMaster>> findall()
+    ResponseEntity<List<GovCodeMaster>> findAll()
     {
-        return ResponseEntity.ok(service.findall());
+        return ResponseEntity.ok(service.findAll());
     }
 
 

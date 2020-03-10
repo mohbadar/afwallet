@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/office/premisesnatures")
+@RequestMapping(value = "/api/config/office/premises-nature")
 public class PremisesNatureController {
 
     @Autowired
@@ -23,9 +23,9 @@ public class PremisesNatureController {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<PremisesNature>> findall()
+    ResponseEntity<List<PremisesNature>> findAll()
     {
-        return ResponseEntity.ok(service.findall());
+        return ResponseEntity.ok(service.findAll());
     }
 
 

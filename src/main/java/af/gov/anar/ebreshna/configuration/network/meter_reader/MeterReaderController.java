@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/config/network/meterreaders")
+@RequestMapping(value = "/api/config/network/meter-reader-master")
 public class MeterReaderController {
 
     @Autowired
@@ -23,9 +23,9 @@ public class MeterReaderController {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<List<MeterReaderMaster>> findall()
+    ResponseEntity<List<MeterReaderMaster>> findAll()
     {
-        return ResponseEntity.ok(service.findall());
+        return ResponseEntity.ok(service.findAll());
     }
 
 

@@ -23,7 +23,7 @@ public class OfficeTypeService {
         return repository.save(obj);
     }
 
-    public List<OfficeType> findall()
+    public List<OfficeType> findAll()
     {
         return repository.findAll();
     }
