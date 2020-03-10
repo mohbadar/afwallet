@@ -1,37 +1,25 @@
-## eBreshna System
+## Wellet Server Application
 
-#### How to setup the project
-- Download Keycloak from (https://www.keycloak.org/downloads.html)
-- Setup Anar Framework
-```xml
-git clone https://github.com/Anar-Framework/anar-parent.git
-cd anar-parent/script/setup/
+#### Setup Guide
+
+##### With .sh Script
+```aidl
+
+git clone https://github.com/mohbadar/afghan-wallet.git
+
 bash setup.sh
-cd ../..
-```
-- Clone eBreshna repository
-
-```xml
-git clone https://github.com/nsia-infosys/eBreshna.git
-```
-- Open the eBreshna with `intellij` IDE
-- Add imported libraries in `pom.xml` from `File>New>Module from Existing Sources...`
-
-- Setup eBreshna-web
-```xml
-git clone https://github.com/nsia-infosys/eBreshna-web
-cd eBreshna-web
-npm install 
-npm start
 ```
 
-#### How to build the source code
-- Run the Keycloak `cd keycloak_path/bin` and `bash standalone.sh`
-- Run `main` method from `af.gov.anar.ebreshna.Application`
+##### With Python Script
+
+```python
+git clone https://github.com/mohbadar/afghan-wallet.git
 
 
+pip install -r requirements.txt
 
-#### Documentation
 
-Refer to this repository **Wiki** section.
-https://github.com/nsia-infosys/eBreshna/wiki
+```
+the script will clone all the required libraries and modules.
+
+open the parent repository in `intellij` as new existing project.
