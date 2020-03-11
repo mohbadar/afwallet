@@ -2,64 +2,64 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>af.gov.anar</groupId>
-	<artifactId>anar-framework</artifactId>
+	<groupId>af.gov.aw</groupId>
+	<artifactId>afghan-wallet</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-framework</name>
-	<description>Anar Framework</description>
+	<name>aw-framework</name>
+	<description>aw Framework</description>
 
 
 	<modules>
-		<module>anar-accounting</module>
-		<module>anar-connect</module>
-		<module>anar-keycloack</module>
-		<module>anar-lib-activemq</module>
-		<module>anar-lib-api</module>
-		<module>anar-lib-audit</module>
-		<module>anar-lib-calendar</module>
-		<module>anar-lib-checksum</module>
-		<module>anar-lib-core</module>
-		<module>anar-lib-cors</module>
-		<module>anar-lib-crypto</module>
-		<module>anar-lib-crypto-jce</module>
-		<module>anar-lib-csv</module>
-		<module>anar-lib-date</module>
-		<module>anar-lib-emptycheck</module>
-		<module>anar-lib-excel</module>
-		<module>anar-lib-file</module>
-		<module>anar-lib-hash</module>
-		<module>anar-lib-hmac</module>
-		<module>anar-lib-json</module>
-		<module>anar-lib-kafka</module>
-		<module>anar-lib-logger</module>
-		<module>anar-lib-mail</module>
-		<module>anar-lib-math</module>
-		<module>anar-lib-pdf</module>
-		<module>anar-lib-str</module>
-		<module>anar-lib-uuid</module>
-		<module>anar-lib-workflow</module>
-		<module>anar-lib-xml</module>
-		<module>anar-lib-zip</module>
-		<module>anar-lib-metrics</module>
-		<module>anar-lib-velocitytemplate</module>
-		<module>anar-lib-reportutil</module>
-		<module>anar-lib-jobs</module>
-		<module>anar-lib-html</module>
-		<module>anar-docs</module>
-		<module>anar-keycloak-theme</module>
-		<module>anar-servicetemplate</module>
-		<module>anar-webapptemplate</module>
-		<module>anar-keycloak</module>
-		<module>anar-datacollection-kit</module>
-		<module>anar-identity-custom</module>
-		<module>anar-servicetemaplate-customidentity</module>
+		<module>aw-accounting</module>
+		<module>aw-connect</module>
+		<module>aw-keycloack</module>
+		<module>aw-lib-activemq</module>
+		<module>aw-lib-api</module>
+		<module>aw-lib-audit</module>
+		<module>aw-lib-calendar</module>
+		<module>aw-lib-checksum</module>
+		<module>aw-lib-core</module>
+		<module>aw-lib-cors</module>
+		<module>aw-lib-crypto</module>
+		<module>aw-lib-crypto-jce</module>
+		<module>aw-lib-csv</module>
+		<module>aw-lib-date</module>
+		<module>aw-lib-emptycheck</module>
+		<module>aw-lib-excel</module>
+		<module>aw-lib-file</module>
+		<module>aw-lib-hash</module>
+		<module>aw-lib-hmac</module>
+		<module>aw-lib-json</module>
+		<module>aw-lib-kafka</module>
+		<module>aw-lib-logger</module>
+		<module>aw-lib-mail</module>
+		<module>aw-lib-math</module>
+		<module>aw-lib-pdf</module>
+		<module>aw-lib-str</module>
+		<module>aw-lib-uuid</module>
+		<module>aw-lib-workflow</module>
+		<module>aw-lib-xml</module>
+		<module>aw-lib-zip</module>
+		<module>aw-lib-metrics</module>
+		<module>aw-lib-velocitytemplate</module>
+		<module>aw-lib-reportutil</module>
+		<module>aw-lib-jobs</module>
+		<module>aw-lib-html</module>
+		<module>aw-docs</module>
+		<module>aw-keycloak-theme</module>
+		<module>aw-servicetemplate</module>
+		<module>aw-webapptemplate</module>
+		<module>aw-keycloak</module>
+		<module>aw-datacollection-kit</module>
+		<module>aw-identity-custom</module>
+		<module>aw-servicetemaplate-customidentity</module>
 
 
-		<module>anar-assetmanagement</module>
-		<module>anar-spm</module>
-		<module>anar-cache</module>
-		<module>anar-hooks</module>
-		<module>anar-adhocquery</module>
+		<module>aw-assetmanagement</module>
+		<module>aw-spm</module>
+		<module>aw-cache</module>
+		<module>aw-hooks</module>
+		<module>aw-adhocquery</module>
 
 	</modules>
 

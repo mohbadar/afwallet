@@ -1,4 +1,4 @@
-### Anar Framework
+### ePayFrame
 
 As the sustainability, reliability, interoperability, architectural design and security are becoming
 essential for governmental software platforms, it is vital to build a framework (an integrated

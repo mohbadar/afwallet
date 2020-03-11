@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-mail</artifactId>
+	<artifactId>aw-lib-mail</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-mail</name>
-	<description>Email Utility Library of Anar Framework</description>
+	<name>aw-lib-mail</name>
+	<description>Email Utility Library of ePayFrame</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -22,7 +22,7 @@
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-core</artifactId>
+			<artifactId>aw-lib-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

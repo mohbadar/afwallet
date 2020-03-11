@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
 # @author Mirwais Akrami
 # @gmail m7akrami770@gmail.com
-# Script to clone all Anar Framework repositories into a parent directory
+# Script to clone all ePayFrame repositories into a parent directory
 # for an easier developer experience.
 # -----------------------------------------------------------------------------
 #!/bin/bash
@@ -11,7 +11,7 @@ declare -A REPOLIST
 regex="(git\:).*(\.git)"
 repoNameReg="[^\/]+$"
 
-# Get the list of repositories in Anar Framework
+# Get the list of repositories in ePayFrame
 REPOS=$(curl -X GET https://api.github.com/orgs/Anar-Framework/repos?per_page=100)
 
 # go to the parent directory first

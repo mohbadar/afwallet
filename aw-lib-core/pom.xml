@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-core</artifactId>
+	<artifactId>aw-lib-core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-core</name>
+	<name>aw-lib-core</name>
 	<description>Library for shared functionalities</description>
 
 	<properties>

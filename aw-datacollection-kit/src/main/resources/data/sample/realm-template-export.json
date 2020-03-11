@@ -1,8 +1,8 @@
 {
   "id": "template",
   "realm": "template",
-  "displayName": "Anar Framework Web Template",
-  "displayNameHtml": "Anar Framework Web Template",
+  "displayName": "ePayFrame Web Template",
+  "displayNameHtml": "ePayFrame Web Template",
   "notBefore": 0,
   "revokeRefreshToken": false,
   "refreshTokenMaxReuse": 0,
@@ -587,8 +587,8 @@
     {
       "id": "c1df99d1-3e8a-401f-91d2-05ac03488622",
       "clientId": "template-app",
-      "name": "Anar Framework web template application",
-      "description": "Anar Framework web template application",
+      "name": "ePayFrame web template application",
+      "description": "ePayFrame web template application",
       "surrogateAuthRequired": false,
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
@@ -1912,9 +1912,9 @@
   "dockerAuthenticationFlow": "docker auth",
   "attributes": {
     "webAuthnPolicyAuthenticatorAttachment": "not specified",
-    "displayName": "Anar Framework Web Template",
+    "displayName": "ePayFrame Web Template",
     "_browser_header.xRobotsTag": "none",
-    "displayNameHtml": "Anar Framework Web Template",
+    "displayNameHtml": "ePayFrame Web Template",
     "webAuthnPolicyRpEntityName": "keycloak",
     "failureFactor": "30",
     "actionTokenGeneratedByUserLifespan": "300",

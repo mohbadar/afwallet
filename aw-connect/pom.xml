@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.connect</groupId>
-	<artifactId>anar-connect</artifactId>
+	<artifactId>aw-connect</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-connect</name>
-	<description>Anar Framework and Kafka Connect Integration Module</description>
+	<name>aw-connect</name>
+	<description>ePayFrame and Kafka Connect Integration Module</description>
 
 	<properties>
 		<java.version>1.8</java.version>

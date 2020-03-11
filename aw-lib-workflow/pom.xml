@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-workflow</artifactId>
+	<artifactId>aw-lib-workflow</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-workflow</name>
+	<name>aw-lib-workflow</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -22,13 +22,13 @@
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-api</artifactId>
+			<artifactId>aw-lib-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-json</artifactId>
+			<artifactId>aw-lib-json</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib.emptycheck</groupId>
-	<artifactId>anar-lib-emptycheck</artifactId>
+	<artifactId>aw-lib-emptycheck</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-emptycheck</name>
-	<description>Empty Check Utility Library for Anar Framework</description>
+	<name>aw-lib-emptycheck</name>
+	<description>Empty Check Utility Library for ePayFrame</description>
 
 	<properties>
 		<java.version>1.8</java.version>

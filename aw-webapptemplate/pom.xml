@@ -3,9 +3,9 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>af.gov.anar</groupId>
-	<artifactId>anar-webapptemplate</artifactId>
+	<artifactId>aw-webapptemplate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-webapptemplate</name>
-	<description>Anar Framework - Webapp Template</description>
+	<name>aw-webapptemplate</name>
+	<description>ePayFrame - Webapp Template</description>
 
 </project>

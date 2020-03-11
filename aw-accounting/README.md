@@ -1,7 +1,7 @@
-### Service Template of Anar Framework
+### Service Template of ePayFrame
 
 
-It is used to develop services for Anar framework. 
+It is used to develop services for ePayFrame. 
 
 
 #### Multitenancy 

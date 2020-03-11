@@ -1,4 +1,4 @@
-### Mail Utility Library for Anar Framework
+### Mail Utility Library for ePayFrame
 
 #### Usage Guide
 

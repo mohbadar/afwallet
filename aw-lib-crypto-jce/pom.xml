@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-crypto-jce</artifactId>
+	<artifactId>aw-lib-crypto-jce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-crypto-jce</name>
-	<description>JCE Crypto Utility Library for Anar Framework</description>
+	<name>aw-lib-crypto-jce</name>
+	<description>JCE Crypto Utility Library for ePayFrame</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -22,7 +22,7 @@
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-core</artifactId>
+			<artifactId>aw-lib-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

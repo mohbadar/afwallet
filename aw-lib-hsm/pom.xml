@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-hsm</artifactId>
+	<artifactId>aw-lib-hsm</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-hsm</name>
+	<name>aw-lib-hsm</name>
 	<description>HSM Integration Library</description>
 
 	<properties>

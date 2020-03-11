@@ -1,4 +1,4 @@
-### String Utility Library for Anar Framework
+### String Utility Library for ePayFrame
 
 #### Usage Guide
 

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-csv</artifactId>
+	<artifactId>aw-lib-csv</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-csv</name>
-	<description>CSV Utility Library of Anar Framework</description>
+	<name>aw-lib-csv</name>
+	<description>CSV Utility Library of ePayFrame</description>
 
 	<properties>
 		<java.version>1.8</java.version>

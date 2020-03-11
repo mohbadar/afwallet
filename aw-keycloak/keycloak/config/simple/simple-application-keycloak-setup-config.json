@@ -1,8 +1,8 @@
 {
   "id": "anar-simple",
   "realm": "anar-simple",
-  "displayName": "Simple Realm for Anar Framework",
-  "displayNameHtml": "Simple Realm for Anar Framework",
+  "displayName": "Simple Realm for ePayFrame",
+  "displayNameHtml": "Simple Realm for ePayFrame",
   "notBefore": 0,
   "revokeRefreshToken": false,
   "refreshTokenMaxReuse": 0,
@@ -1909,9 +1909,9 @@
   "dockerAuthenticationFlow": "docker auth",
   "attributes": {
     "webAuthnPolicyAuthenticatorAttachment": "not specified",
-    "displayName": "Simple Realm for Anar Framework",
+    "displayName": "Simple Realm for ePayFrame",
     "_browser_header.xRobotsTag": "none",
-    "displayNameHtml": "Simple Realm for Anar Framework",
+    "displayNameHtml": "Simple Realm for ePayFrame",
     "webAuthnPolicyRpEntityName": "keycloak",
     "failureFactor": "30",
     "actionTokenGeneratedByUserLifespan": "300",

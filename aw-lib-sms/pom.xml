@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-sms</artifactId>
+	<artifactId>aw-lib-sms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-sms</name>
-	<description>SMS Messaging Module of Anar Framework</description>
+	<name>aw-sms</name>
+	<description>SMS Messaging Module of ePayFrame</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,7 +24,7 @@
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-core</artifactId>
+			<artifactId>aw-lib-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

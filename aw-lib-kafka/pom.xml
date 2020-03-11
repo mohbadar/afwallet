@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-kafka</artifactId>
+	<artifactId>aw-lib-kafka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-kafka</name>
-	<description>Kafka Integration Library of Anar Framework</description>
+	<name>aw-lib-kafka</name>
+	<description>Kafka Integration Library of ePayFrame</description>
 
 	<properties>
 		<java.version>1.8</java.version>

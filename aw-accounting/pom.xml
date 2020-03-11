@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar</groupId>
-	<artifactId>anar-accounting</artifactId>
+	<artifactId>aw-accounting</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-accounting</name>
-	<description>Accounting Service of Anar Framework</description>
+	<name>aw-accounting</name>
+	<description>Accounting Service of ePayFrame</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,60 +26,60 @@
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-api</artifactId>
+			<artifactId>aw-lib-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-crypto-jce</artifactId>
+			<artifactId>aw-lib-crypto-jce</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-hmac</artifactId>
+			<artifactId>aw-lib-hmac</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-audit</artifactId>
+			<artifactId>aw-lib-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-file</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-cors</artifactId>
+			<artifactId>aw-lib-audit</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-workflow</artifactId>
+			<artifactId>aw-lib-file</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-logger</artifactId>
+			<artifactId>aw-lib-cors</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-date</artifactId>
+			<artifactId>aw-lib-workflow</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>af.gov.anar.lib</groupId>
+			<artifactId>aw-lib-logger</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>af.gov.anar.lib</groupId>
+			<artifactId>aw-lib-date</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

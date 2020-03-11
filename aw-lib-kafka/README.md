@@ -1,4 +1,4 @@
-### Kafka Integration Library for Anar Framework
+### Kafka Integration Library for ePayFrame
 
 #### Usage Guide
 

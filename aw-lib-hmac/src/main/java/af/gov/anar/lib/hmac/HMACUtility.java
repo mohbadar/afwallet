@@ -16,7 +16,7 @@ import org.apache.commons.codec.binary.Base64;
 
 
 /**
- * This class defines the HMAC Util to be used in Anar Framework. The HMAC Util
+ * This class defines the HMAC Util to be used in ePayFrame. The HMAC Util
  * is implemented using desired methods of MessageDigest class of java security
  * package
  */

@@ -1,4 +1,4 @@
-### CORS (Cross Origin Resourcing Sharing) Library of Anar Framework
+### CORS (Cross Origin Resourcing Sharing) Library of ePayFrame
 
 #### Usage Guide
 

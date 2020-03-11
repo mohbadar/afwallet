@@ -1,4 +1,4 @@
-### ActiveMQ Integration Library for Anar Framework
+### ActiveMQ Integration Library for ePayFrame
 
 #### Usage Guide
 

@@ -1,4 +1,4 @@
-### Hooks Service of Anar Framework
+### Hooks Service of ePayFrame
 
 Hooks are a mechanism to trigger custom code on the occurence of events.
 

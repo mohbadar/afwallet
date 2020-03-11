@@ -1,4 +1,4 @@
-### JCE Cryptography Library of Anar Framework
+### JCE Cryptography Library of ePayFrame
 
 #### Usage Guide
 

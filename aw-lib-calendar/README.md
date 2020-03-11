@@ -1,4 +1,4 @@
-### Calendar Utility Library for Anar Framework
+### Calendar Utility Library for ePayFrame
 
 #### Usage Guide
 

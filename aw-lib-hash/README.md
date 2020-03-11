@@ -1,4 +1,4 @@
-### Hashing Utility Library for Anar Framework
+### Hashing Utility Library for ePayFrame
 
 #### Usage Guide
 

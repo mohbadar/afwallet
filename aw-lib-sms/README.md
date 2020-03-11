@@ -1,4 +1,4 @@
-### SMS Module of Anar Framework
+### SMS Module of ePayFrame
 
 #### Usage Guide
 

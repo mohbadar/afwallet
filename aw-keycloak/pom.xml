@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>af.gov.anar.config</groupId>
-	<artifactId>anar-keycloak</artifactId>
+	<artifactId>aw-keycloak</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-keycloak</name>
+	<name>aw-keycloak</name>
 	<description>Default Data and Configuration of Keycloak</description>
 
 </project>

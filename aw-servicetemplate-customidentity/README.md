@@ -1,4 +1,4 @@
-### Service Template with Custom Identity and Access Management of Anar Framework
+### Service Template with Custom Identity and Access Management of ePayFrame
 
 
 

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-logger</artifactId>
+	<artifactId>aw-lib-logger</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>${project.groupId}:${project.artifactId}</name>
-	<description>Logging Utility Library of Anar Framework </description>
+	<description>Logging Utility Library of ePayFrame </description>
 	<url>http://www.example.com/example-application</url>
 
 
@@ -57,9 +57,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/Anar-Framework/anar-lib-logger.git</connection>
-		<developerConnection>scm:git:ssh://github.com:Anar-Framework/anar-lib-logger.git</developerConnection>
-		<url>http://github.com/Anar-Framework/anar-lib-logger/tree/master</url>
+		<connection>scm:git:git://github.com/aw-Framework/aw-lib-logger.git</connection>
+		<developerConnection>scm:git:ssh://github.com:aw-Framework/aw-lib-logger.git</developerConnection>
+		<url>http://github.com/aw-Framework/aw-lib-logger/tree/master</url>
 	</scm>
 
 	<properties>
@@ -71,13 +71,13 @@
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-core</artifactId>
+			<artifactId>aw-lib-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>anar-lib-json</artifactId>
+			<artifactId>aw-lib-json</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

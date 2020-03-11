@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-xml</artifactId>
+	<artifactId>aw-lib-xml</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-xml</name>
-	<description>XML Utility Library for Anar Framework</description>
+	<name>aw-lib-xml</name>
+	<description>XML Utility Library for ePayFrame</description>
 
 
 	<properties>

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-metrics</artifactId>
+	<artifactId>aw-lib-metrics</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-metrics</name>
-	<description>Monitoring Library of Anar Framework with Grafana and Prometheus</description>
+	<name>aw-lib-metrics</name>
+	<description>Monitoring Library of ePayFrame with Grafana and Prometheus</description>
 
 	<properties>
 		<java.version>1.8</java.version>

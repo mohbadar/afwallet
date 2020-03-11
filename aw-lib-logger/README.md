@@ -1,4 +1,4 @@
-### Loggin Utility Library of Anar Framework
+### Loggin Utility Library of ePayFrame
 
 #### Usage Guide
 

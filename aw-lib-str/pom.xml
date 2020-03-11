@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib.str</groupId>
-	<artifactId>anar-lib-str</artifactId>
+	<artifactId>aw-lib-str</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-str</name>
-	<description>String Utility Library for Anar Framework</description>
+	<name>aw-lib-str</name>
+	<description>String Utility Library for ePayFrame</description>
 
 	<properties>
 		<java.version>1.8</java.version>

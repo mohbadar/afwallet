@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>anar-lib-api</artifactId>
+	<artifactId>aw-lib-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>anar-lib-api</name>
+	<name>aw-lib-api</name>
 	<description>Api Utility Library</description>
 
 
@@ -148,9 +148,9 @@
 	</repositories>
 
 	<scm>
-		<connection>scm:git:git://github.com/Anar-Framework/anar-api.git</connection>
-		<developerConnection>scm:git:git@github.com:Anar-Framework/anar-api.git</developerConnection>
-		<url>https://github.com/Anar-Framework/anar-api</url>
+		<connection>scm:git:git://github.com/aw-Framework/aw-api.git</connection>
+		<developerConnection>scm:git:git@github.com:aw-Framework/aw-api.git</developerConnection>
+		<url>https://github.com/aw-Framework/aw-api</url>
 		<tag>HEAD</tag>
 	</scm>
 

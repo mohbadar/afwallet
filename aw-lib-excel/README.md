@@ -1,4 +1,4 @@
-### Excel Utility Library for Anar Framework
+### Excel Utility Library for ePayFrame
 
 A flexible and easy to use java excel reading and writing. It is a wrapper around Apache POI that provides elegant and user friendly interface for creating Excel documents.
 
