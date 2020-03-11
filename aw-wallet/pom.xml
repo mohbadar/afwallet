@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar</groupId>
-	<artifactId>ebreshna</artifactId>
+	<artifactId>aw-wallet</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ebreshna</name>
-	<description>eBreshna Experimental System</description>
+	<name>aw-wallet</name>
+	<description>Afghan Wallet Platform</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

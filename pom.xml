@@ -53,7 +53,7 @@
 		<module>aw-datacollection-kit</module>
 		<module>aw-identity-custom</module>
 		<module>aw-servicetemaplate-customidentity</module>
-
+		<module>aw-wallet</module>
 
 		<module>aw-assetmanagement</module>
 		<module>aw-spm</module>
