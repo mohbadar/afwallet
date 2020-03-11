@@ -27,7 +27,17 @@
 	<dependencies>
 
 
+		<dependency>
+			<groupId>af.gov.anar.lib</groupId>
+			<artifactId>aw-lib-mail</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
+		<dependency>
+			<groupId>af.gov.anar.lib</groupId>
+			<artifactId>aw-lib-kafka</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
