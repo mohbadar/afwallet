@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar.lib</groupId>
-	<artifactId>aw-lib-businessworkingcalendar</artifactId>
+	<artifactId>aw-lib-businesshour</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>aw-lib-businessworkingcalendar</name>
+	<name>aw-lib-businesshour</name>
 	<description>Business Working Calendar Utility Library</description>
 
 	<properties>

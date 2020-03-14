@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.asr.mpaisa</groupId>
-	<artifactId>upay-mpaisa</artifactId>
+	<artifactId>aw-lib-mpaisa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>upay-mpaisa</name>
+	<name>aw-lib-mpaisa</name>
 	<description>UPAY and MPaisa Messages Library</description>
 
 	<properties>

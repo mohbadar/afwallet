@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.asr.iso8583</groupId>
-	<artifactId>upay-iso8583</artifactId>
+	<artifactId>aw-lib-iso8583</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>upay-iso8583</name>
+	<name>aw-lib-iso8583</name>
 	<description>ISO8583 Module of Upay Platform</description>
 
 	<properties>

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.asr.youtap</groupId>
-	<artifactId>upay-youtap</artifactId>
+	<artifactId>aw-lib-youtap</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>upay-youtap</name>
+	<name>aw-lib-youtap</name>
 	<description>NVP format for integration with Youtap Platform</description>
 
 	<properties>

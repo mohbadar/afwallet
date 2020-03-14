@@ -45,21 +45,30 @@
 		<module>aw-lib-reportutil</module>
 		<module>aw-lib-jobs</module>
 		<module>aw-lib-html</module>
+		<module>aw-lib-sms</module>
+		<module>aw-lib-youtap</module>
+		<module>aw-lib-mpaisa</module>
+		<module>aw-lib-hsm</module>
 		<module>aw-docs</module>
 		<module>aw-keycloak-theme</module>
 		<module>aw-servicetemplate</module>
 		<module>aw-webapptemplate</module>
 		<module>aw-keycloak</module>
 		<module>aw-datacollection-kit</module>
+		<module>aw-lib-iso8583</module>
 		<module>aw-identity-custom</module>
-		<module>aw-servicetemaplate-customidentity</module>
+		<module>aw-servicetemplate-customidentity</module>
 		<module>aw-wallet</module>
-
+		<module>aw-lib-businesshour</module>
+		<module>aw-hooks</module>
 		<module>aw-assetmanagement</module>
-		<module>aw-spm</module>
+		<module>aw-spm-survey</module>
 		<module>aw-cache</module>
 		<module>aw-hooks</module>
 		<module>aw-adhocquery</module>
+		<module>aw-customer</module>
+		<module>aw-notification</module>
+		<module>aw-settlement</module>
 		<module>aw-customer</module>
 	</modules>
 

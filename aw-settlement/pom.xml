@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.asr.settlement</groupId>
-	<artifactId>upay-settlement</artifactId>
+	<artifactId>aw-settlement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>upay-settlement</name>
+	<name>aw-settlement</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

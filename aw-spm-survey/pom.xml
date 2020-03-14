@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>af.gov.anar</groupId>
-	<artifactId>aw-spm</artifactId>
+	<artifactId>aw-spm-survey</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>aw-spm</name>
 	<description>SPM Module of ePayFrame</description>

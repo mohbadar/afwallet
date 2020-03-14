@@ -1,2 +1,8 @@
-# anar-identity
-This is identity management service that will be used to define the rules, secuirty measure and act as guard between outside world and internal components
+### Online and Offline Data Collection Kit of ePayFrame
+
+
+
+#### Documentation
+
+Refer to this repository **Wiki** section.
+https://github.com/Anar-Framework/anar-identity-custom/wiki
