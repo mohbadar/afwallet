@@ -1,6 +1,7 @@
 
 package af.asr.csc.domain;
 
+import af.asr.catalog.domain.Value;
 import af.gov.anar.lang.validation.date.DateOfBirth;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -46,7 +47,7 @@ public final class Customer {
   private List<ContactDetail> contactDetails;
   private State currentState;
   private String applicationDate;
-//  private List<Value> customValues;
+  private List<Value> customValues;
   private String createdBy;
   private String createdOn;
   private String lastModifiedBy;
@@ -176,13 +177,13 @@ public final class Customer {
     this.applicationDate = applicationDate;
   }
 
-//  public List<Value> getCustomValues() {
-//    return this.customValues;
-//  }
-//
-//  public void setCustomValues(final List<Value> customValues) {
-//    this.customValues = customValues;
-//  }
+  public List<Value> getCustomValues() {
+    return this.customValues;
+  }
+
+  public void setCustomValues(final List<Value> customValues) {
+    this.customValues = customValues;
+  }
 
   public String getCreatedBy() {
     return this.createdBy;
