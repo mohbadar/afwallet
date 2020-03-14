@@ -60,7 +60,7 @@
 		<module>aw-cache</module>
 		<module>aw-hooks</module>
 		<module>aw-adhocquery</module>
-
+		<module>aw-customer</module>
 	</modules>
 
 </project>
