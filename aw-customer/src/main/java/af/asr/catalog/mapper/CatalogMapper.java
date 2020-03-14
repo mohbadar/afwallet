@@ -3,7 +3,9 @@ package af.asr.catalog.mapper;
 
 
 
+import af.asr.catalog.domain.Catalog;
 import af.asr.catalog.model.CatalogEntity;
+import af.gov.anar.lang.validation.date.DateConverter;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
@@ -19,7 +21,7 @@ public class CatalogMapper {
     catalogEntity.setIdentifier(catalog.getIdentifier());
     catalogEntity.setName(catalog.getName());
     catalogEntity.setDescription(catalog.getDescription());
-    catalogEntity.setCreatedBy(UserContextHolder.checkedGetUser());
+//    catalogEntity.setCreatedBy(UserContextHolder.checkedGetUser());
     catalogEntity.setCreatedOn(LocalDateTime.now(Clock.systemUTC()));
     return catalogEntity;
   }

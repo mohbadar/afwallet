@@ -1,11 +1,11 @@
 
 package af.asr.catalog.mapper;
 
-import org.apache.fineract.cn.api.util.UserContextHolder;
-import org.apache.fineract.cn.customer.catalog.api.v1.domain.Field;
-import org.apache.fineract.cn.customer.catalog.internal.repository.CatalogEntity;
-import org.apache.fineract.cn.customer.catalog.internal.repository.FieldEntity;
-import org.apache.fineract.cn.lang.DateConverter;
+
+import af.asr.catalog.domain.Field;
+import af.asr.catalog.model.CatalogEntity;
+import af.asr.catalog.model.FieldEntity;
+import af.gov.anar.lang.validation.date.DateConverter;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
@@ -30,7 +30,7 @@ public class FieldMapper {
     fieldEntity.setPrecision(field.getPrecision());
     fieldEntity.setMinValue(field.getMinValue());
     fieldEntity.setMaxValue(field.getMaxValue());
-    fieldEntity.setCreatedBy(UserContextHolder.checkedGetUser());
+//    fieldEntity.setCreatedBy(UserContextHolder.checkedGetUser());
     fieldEntity.setCreatedOn(LocalDateTime.now(Clock.systemUTC()));
 
     if (field.getOptions() != null && !field.getOptions().isEmpty()) {

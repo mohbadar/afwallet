@@ -1,11 +1,12 @@
 
 package af.asr.catalog.mapper;
 
-import org.apache.fineract.cn.api.util.UserContextHolder;
-import org.apache.fineract.cn.customer.catalog.api.v1.domain.Option;
-import org.apache.fineract.cn.customer.catalog.internal.repository.FieldEntity;
-import org.apache.fineract.cn.customer.catalog.internal.repository.OptionEntity;
-import org.apache.fineract.cn.lang.DateConverter;
+
+
+import af.asr.catalog.domain.Option;
+import af.asr.catalog.model.FieldEntity;
+import af.asr.catalog.model.OptionEntity;
+import af.gov.anar.lang.validation.date.DateConverter;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
@@ -21,7 +22,7 @@ public class OptionMapper {
     optionEntity.setField(fieldEntity);
     optionEntity.setLabel(option.getLabel());
     optionEntity.setValue(option.getValue());
-    optionEntity.setCreatedBy(UserContextHolder.checkedGetUser());
+//    optionEntity.setCreatedBy(UserContextHolder.checkedGetUser());
     optionEntity.setCreatedOn(LocalDateTime.now(Clock.systemUTC()));
     return optionEntity;
   }
