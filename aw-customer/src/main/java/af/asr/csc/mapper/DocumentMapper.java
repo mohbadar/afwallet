@@ -5,7 +5,7 @@ import af.asr.csc.domain.CustomerDocument;
 import af.asr.csc.model.CustomerEntity;
 import af.asr.csc.model.DocumentEntity;
 import af.asr.csc.model.DocumentPageEntity;
-import org.apache.fineract.cn.lang.DateConverter;
+import af.gov.anar.lang.validation.date.DateConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,15 +1,8 @@
 
 package af.asr.csc.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.validator.constraints.NotBlank;
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 public final class TaskInstance {
 
   @NotBlank
@@ -18,5 +11,39 @@ public final class TaskInstance {
   private String executedOn;
   private String executedBy;
 
+  public TaskInstance() {
+    super();
+  }
 
+  public String getTaskIdentifier() {
+    return taskIdentifier;
+  }
+
+  public void setTaskIdentifier(final String taskIdentifier) {
+    this.taskIdentifier = taskIdentifier;
+  }
+
+  public String getComment() {
+    return this.comment;
+  }
+
+  public void setComment(final String comment) {
+    this.comment = comment;
+  }
+
+  public String getExecutedOn() {
+    return this.executedOn;
+  }
+
+  public void setExecutedOn(final String executedOn) {
+    this.executedOn = executedOn;
+  }
+
+  public String getExecutedBy() {
+    return this.executedBy;
+  }
+
+  public void setExecutedBy(final String executedBy) {
+    this.executedBy = executedBy;
+  }
 }

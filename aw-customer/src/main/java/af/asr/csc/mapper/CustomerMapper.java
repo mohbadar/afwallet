@@ -1,11 +1,10 @@
 
 package af.asr.csc.mapper;
 
-import org.apache.fineract.cn.api.util.UserContextHolder;
-import af.asr.csc.domain.Customer;
+import af.asr.csc.domain.*;
 import af.asr.csc.model.CustomerEntity;
-import org.apache.fineract.cn.lang.DateConverter;
-import org.apache.fineract.cn.lang.DateOfBirth;
+import af.gov.anar.lang.validation.date.DateConverter;
+import af.gov.anar.lang.validation.date.DateOfBirth;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
@@ -41,7 +40,7 @@ public final class CustomerMapper {
       }
       customerEntity.setApplicationDate(DateConverter.dateFromIsoString(editedApplicationDate));
     }
-    customerEntity.setCreatedBy(UserContextHolder.checkedGetUser());
+//    customerEntity.setCreatedBy(UserContextHolder.checkedGetUser());
     customerEntity.setCreatedOn(LocalDateTime.now(Clock.systemUTC()));
     return customerEntity;
   }

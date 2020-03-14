@@ -4,7 +4,7 @@ package af.asr.csc.mapper;
 import af.asr.csc.domain.ExpirationDate;
 import af.asr.csc.domain.IdentificationCard;
 import af.asr.csc.model.IdentificationCardEntity;
-import org.apache.fineract.cn.lang.DateConverter;
+import af.gov.anar.lang.validation.date.DateConverter;
 import org.springframework.stereotype.Component;
 
 @Component

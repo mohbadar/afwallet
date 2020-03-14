@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import af.asr.csc.domain.ContactDetail;
 import lombok.*;
 import org.hibernate.envers.Audited;
 

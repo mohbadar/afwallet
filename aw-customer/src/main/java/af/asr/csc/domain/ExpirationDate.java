@@ -1,19 +1,11 @@
 
 package af.asr.csc.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class ExpirationDate {
 
   @NotNull
@@ -28,6 +20,38 @@ public class ExpirationDate {
   @Min(1L)
   @Max(31L)
   private Integer day;
+
+  public ExpirationDate() {
+    super();
+  }
+
+  public Integer getYear() {
+    return this.year;
+  }
+
+  public void setYear(final Integer year) {
+    this.year = year;
+  }
+
+  public Integer getMonth() {
+    return this.month;
+  }
+
+  public void setMonth(final Integer month) {
+    this.month = month;
+  }
+
+  public Integer getDay() {
+    return this.day;
+  }
+
+  public void setDay(final Integer day) {
+    this.day = day;
+  }
+
+  public LocalDate toLocalDate() {
+    return LocalDate.of(this.year, this.month, this.day);
+  }
 
   public static ExpirationDate fromLocalDate(LocalDate localDate) {
     ExpirationDate dateOfBirth = new ExpirationDate();

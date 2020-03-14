@@ -1,20 +1,13 @@
 
 package af.asr.csc.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 public final class TaskDefinition {
 
   public enum Type {
@@ -42,15 +35,62 @@ public final class TaskDefinition {
   private Boolean mandatory;
   private Boolean predefined;
 
+  public String getIdentifier() {
+    return identifier;
+  }
+
+  public void setIdentifier(final String identifier) {
+    this.identifier = identifier;
+  }
+
+  public String getType() {
+    return this.type.name();
+  }
+
+  public void setType(final String type) {
+    this.type = Type.valueOf(type);
+  }
+
   public String[] getCommands() {
     return this.commands.stream().map(Enum::name).toArray(size -> new String[size]);
   }
 
-  public void setCommands(final String... commandNames) throws IllegalArgumentException {
+  public void setCommands(final String... commandNames) {
     this.commands = new HashSet<>();
     for (String command : commandNames) {
-//     this.commands.add(Command.valueOf(command));
+      this.commands.add(Command.valueOf(command));
     }
   }
 
+  public String getName() {
+    return this.name;
+  }
+
+  public void setName(final String name) {
+    this.name = name;
+  }
+
+  public String getDescription() {
+    return this.description;
+  }
+
+  public void setDescription(final String description) {
+    this.description = description;
+  }
+
+  public Boolean getMandatory() {
+    return this.mandatory;
+  }
+
+  public void setMandatory(final Boolean mandatory) {
+    this.mandatory = mandatory;
+  }
+
+  public Boolean getPredefined() {
+    return this.predefined;
+  }
+
+  public void setPredefined(final Boolean predefined) {
+    this.predefined = predefined;
+  }
 }
