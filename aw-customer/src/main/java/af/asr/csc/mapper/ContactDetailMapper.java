@@ -1,7 +1,7 @@
 
 package af.asr.csc.mapper;
 
-import af.asr.csc.domain.ContactDetail;
+import af.asr.csc.domain.*;
 import af.asr.csc.model.ContactDetailEntity;
 import org.springframework.stereotype.Component;
 

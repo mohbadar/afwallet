@@ -1,7 +1,6 @@
 
 package af.asr.csc.mapper;
 
-import org.apache.fineract.cn.api.util.UserContextHolder;
 import af.asr.csc.domain.CustomerDocument;
 import af.asr.csc.model.CustomerEntity;
 import af.asr.csc.model.DocumentEntity;

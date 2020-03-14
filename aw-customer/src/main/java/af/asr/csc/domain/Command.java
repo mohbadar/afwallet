@@ -7,12 +7,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Command {
+public final class Command {
 
   public enum Action {
     ACTIVATE,
@@ -27,5 +26,11 @@ public class Command {
   private String comment;
   private String createdOn;
   private String createdBy;
+
+
+  public void setAction(final String action) {
+    this.action = Action.valueOf(action.toUpperCase());
+  }
+
 
 }

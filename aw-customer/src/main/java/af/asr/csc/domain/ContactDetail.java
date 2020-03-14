@@ -1,6 +1,7 @@
 
 package af.asr.csc.domain;
 
+import javafx.scene.image.PixelFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,4 +40,14 @@ public final class ContactDetail {
   private Integer preferenceLevel;
   private Boolean validated;
 
+
+  public void setType(String type)
+  {
+    this.type = Type.valueOf(type);
+  }
+
+  public void setGroup(String group)
+  {
+    this.group = Group.valueOf(group);
+  }
 }

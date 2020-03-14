@@ -1,6 +1,8 @@
 package af.asr.csc.model;
 
+import af.asr.csc.domain.ContactDetail;
 import af.asr.csc.model.CustomerEntity;
+import javafx.scene.image.PixelFormat;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
@@ -44,4 +46,14 @@ public class ContactDetailEntity {
     @Column(name = "validated")
     private Boolean valid;
 
+
+    public void setType(ContactDetail.Type type)
+    {
+        this.type = type.name();
+    }
+
+    public void setGroup(ContactDetail.Group group)
+    {
+        this.group = group.name();
+    }
 }
