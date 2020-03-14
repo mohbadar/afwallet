@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import af.asr.customer.customer.CustomerEntity;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 @Entity
