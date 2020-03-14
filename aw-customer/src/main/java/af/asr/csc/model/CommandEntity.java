@@ -15,6 +15,8 @@ import af.asr.csc.model.CustomerEntity;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "command")
 @Getter
@@ -38,9 +40,9 @@ public class CommandEntity {
     private String type;
     @Column(name = "a_comment")
     private String comment;
-//    @Column(name = "created_by")
-//    private String createdBy;
-//    @Column(name = "created_on")
-//    private LocalDateTime createdOn;
+    @Column(name = "created_by")
+    private String createdBy;
+    @Column(name = "created_on")
+    private LocalDateTime createdOn;
 
 }

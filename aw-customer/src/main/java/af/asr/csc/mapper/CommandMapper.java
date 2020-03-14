@@ -1,36 +1,25 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+
 package af.asr.csc.mapper;
 
-import org.apache.fineract.cn.api.util.UserContextHolder;
-import org.apache.fineract.cn.customer.api.v1.domain.Command;
-import org.apache.fineract.cn.customer.internal.repository.CommandEntity;
-import org.apache.fineract.cn.customer.internal.repository.CustomerEntity;
-import org.apache.fineract.cn.lang.DateConverter;
+import af.asr.csc.model.CommandEntity;
+import af.asr.csc.model.CustomerEntity;
+import af.asr.infrastructure.service.UserService;
+import af.gov.anar.lang.validation.date.DateConverter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
 
+@Component
 public final class CommandMapper {
 
-  private CommandMapper() {
-    super();
+
+  private static UserService userService;
+
+  @Autowired
+  private CommandMapper(UserService userService) {
+    this.userService = userService;
   }
 
   public static CommandEntity create(final CustomerEntity customer, final String action, final String comment) {
@@ -38,7 +27,7 @@ public final class CommandMapper {
     commandEntity.setCustomer(customer);
     commandEntity.setType(action);
     commandEntity.setComment(comment);
-    commandEntity.setCreatedBy(UserContextHolder.checkedGetUser());
+    commandEntity.setCreatedBy(userService.getPreferredUsername());
     commandEntity.setCreatedOn(LocalDateTime.now(Clock.systemUTC()));
     return commandEntity;
   }

@@ -1,39 +1,20 @@
 
 package af.asr.csc.domain;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.List;
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CustomerPage {
 
   private List<Customer> customers;
   private Integer totalPages;
   private Long totalElements;
 
-  public CustomerPage() {
-    super();
-  }
-
-  public List<Customer> getCustomers() {
-    return this.customers;
-  }
-
-  public void setCustomers(final List<Customer> customers) {
-    this.customers = customers;
-  }
-
-  public Integer getTotalPages() {
-    return this.totalPages;
-  }
-
-  public void setTotalPages(final Integer totalPages) {
-    this.totalPages = totalPages;
-  }
-
-  public Long getTotalElements() {
-    return this.totalElements;
-  }
-
-  public void setTotalElements(final Long totalElements) {
-    this.totalElements = totalElements;
-  }
 }
