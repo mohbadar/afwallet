@@ -1,4 +1,4 @@
-package af.asr.customer.identification_card;
+package af.asr.customer.identification_card.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
