@@ -1,7 +1,7 @@
 package af.asr.csc.service;
 
 import af.asr.csc.domain.TaskDefinition;
-import af.asr.csc.mapper.TaskDefinitionMapper;
+import af.asr.csc.mapper.*;
 import af.asr.csc.repository.CustomerRepository;
 import af.asr.csc.model.TaskDefinitionEntity;
 import af.asr.csc.repository.TaskDefinitionRepository;
@@ -35,7 +35,7 @@ public class TaskService {
         return this.taskDefinitionRepository.existsByIdentifier(identifier);
     }
 
-    public Optional<TaskDefinitionEntity> findByIdentifier(final String identifier) {
+    public Optional<TaskDefinition> findByIdentifier(final String identifier) {
         final TaskDefinitionEntity taskDefinitionEntity = this.taskDefinitionRepository.findByIdentifier(identifier);
         if (taskDefinitionEntity != null) {
             return Optional.of(TaskDefinitionMapper.map(taskDefinitionEntity));
