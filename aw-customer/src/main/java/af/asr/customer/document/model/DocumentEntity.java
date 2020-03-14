@@ -1,4 +1,4 @@
-package af.asr.customer.document;
+package af.asr.customer.document.model;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
