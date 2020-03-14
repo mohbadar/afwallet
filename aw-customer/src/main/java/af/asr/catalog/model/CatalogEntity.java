@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "nun_catalogs")
+@Table(name = "catalog")
 public class CatalogEntity {
 
   @Id

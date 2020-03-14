@@ -2,12 +2,12 @@
 package af.asr.catalog.model;
 
 
-import af.asr.csc.model.CustomerEntity;
+import af.asr.customer.model.CustomerEntity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "nun_field_values")
+@Table(name = "field_value")
 public class FieldValueEntity {
 
   @Id

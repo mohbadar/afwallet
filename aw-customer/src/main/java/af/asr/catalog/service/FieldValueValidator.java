@@ -8,7 +8,7 @@ import af.asr.catalog.model.FieldEntity;
 import af.asr.catalog.model.OptionEntity;
 import af.asr.catalog.repository.CatalogRepository;
 import af.asr.catalog.repository.FieldRepository;
-import af.asr.csc.util.ServiceConstants;
+import af.asr.customer.util.ServiceConstants;
 import af.gov.anar.lang.infrastructure.exception.service.ServiceException;
 import af.gov.anar.lang.validation.date.DateConverter;
 import org.slf4j.Logger;

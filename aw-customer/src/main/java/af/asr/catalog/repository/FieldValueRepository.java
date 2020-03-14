@@ -3,7 +3,7 @@ package af.asr.catalog.repository;
 
 import af.asr.catalog.model.FieldEntity;
 import af.asr.catalog.model.FieldValueEntity;
-import af.asr.csc.model.CustomerEntity;
+import af.asr.customer.model.CustomerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
