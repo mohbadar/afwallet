@@ -2,16 +2,15 @@
 package af.asr.csc.api;
 
 import af.asr.catalog.service.FieldValueValidator;
-import af.asr.csc.domain.Command;
-import af.asr.csc.domain.Customer;
-import af.asr.csc.domain.CustomerPage;
+import af.asr.csc.domain.*;
+import af.asr.csc.model.PortraitEntity;
 import af.asr.csc.service.CustomerService;
 import af.asr.csc.service.TaskService;
+import af.asr.infrastructure.service.UserService;
 import af.gov.anar.lang.infrastructure.exception.service.ServiceException;
+import af.gov.anar.lang.validation.constraints.ValidIdentifier;
 import af.gov.anar.lib.logger.appender.ConsoleAppender;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -23,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
-import java.io.Console;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -38,17 +37,19 @@ public class CustomerRestController {
   private final FieldValueValidator fieldValueValidator;
   private final TaskService taskService;
   private final Environment environment;
+  private final UserService userService;
 
   @Autowired
   public CustomerRestController(final CustomerService customerService,
                                 final FieldValueValidator fieldValueValidator,
                                 final TaskService taskService,
-                                final Environment environment) {
+                                final Environment environment, UserService userService) {
     super();
     this.customerService = customerService;
     this.fieldValueValidator = fieldValueValidator;
     this.taskService = taskService;
     this.environment = environment;
+    this.userService = userService;
   }
 
 //  @Permittable(value = AcceptedTokenType.SYSTEM)
@@ -163,29 +164,29 @@ public class CustomerRestController {
       switch (action) {
         case ACTIVATE:
           if (Customer.State.PENDING.name().equals(currentState)) {
-            this.commandGateway.process(new ActivateCustomerCommand(identifier, command.getComment()));
+            this.customerService.activateCustomer(identifier, command.getComment());
           }
           break;
         case LOCK:
           if (Customer.State.ACTIVE.name().equals(currentState)) {
-            this.commandGateway.process(new LockCustomerCommand(identifier, command.getComment()));
+            this.customerService.lockCustomer(identifier, command.getComment());
           }
           break;
         case UNLOCK:
           if (Customer.State.LOCKED.name().equals(currentState)) {
-            this.commandGateway.process(new UnlockCustomerCommand(identifier, command.getComment()));
+            this.customerService.unlockCustomer(identifier, command.getComment());
           }
           break;
         case CLOSE:
           if (Customer.State.ACTIVE.name().equals(currentState)
               || Customer.State.LOCKED.name().equals(currentState)
               || Customer.State.PENDING.name().equals(currentState)) {
-            this.commandGateway.process(new CloseCustomerCommand(identifier, command.getComment()));
+            this.customerService.closeCustomer(identifier, command.getComment());
           }
           break;
         case REOPEN:
           if (Customer.State.CLOSED.name().equals(currentState)) {
-            this.commandGateway.process(new ReopenCustomerCommand(identifier, command.getComment()));
+            this.customerService.reopenCustomer(identifier, command.getComment());
           }
           break;
         default:
@@ -197,7 +198,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/commands",
       method = RequestMethod.GET,
@@ -214,7 +215,7 @@ public class CustomerRestController {
     }
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/tasks/{taskIdentifier}",
       method = RequestMethod.POST,
@@ -227,7 +228,7 @@ public class CustomerRestController {
                                          @PathVariable("taskIdentifier") final String taskIdentifier) {
     if (this.customerService.customerExists(identifier)) {
       if (this.taskService.taskDefinitionExists(taskIdentifier)) {
-        this.commandGateway.process(new AddTaskDefinitionToCustomerCommand(identifier, taskIdentifier));
+        this.taskService.addTaskToCustomer(identifier, taskIdentifier);
       } else {
         throw ServiceException.notFound("Task definition {0} not found.", taskIdentifier);
       }
@@ -237,7 +238,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/tasks/{taskIdentifier}",
       method = RequestMethod.PUT,
@@ -262,12 +263,12 @@ public class CustomerRestController {
             }
             break;
           case FOUR_EYES:
-            if (customer.getCreatedBy().equals(UserContextHolder.checkedGetUser())) {
+            if (customer.getCreatedBy().equals(userService.getPreferredUsername())) {
               throw ServiceException.conflict("Signing user must be different than creator.");
             }
             break;
         }
-        this.commandGateway.process(new ExecuteTaskForCustomerCommand(identifier, taskIdentifier));
+        this.taskService.executeTaskForCustomer(identifier, taskIdentifier);
       } else {
         throw ServiceException.notFound("Task definition {0} not found.", taskIdentifier);
       }
@@ -277,7 +278,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/tasks",
       method = RequestMethod.GET,
@@ -295,7 +296,7 @@ public class CustomerRestController {
     }
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/address",
       method = RequestMethod.PUT,
@@ -307,14 +308,14 @@ public class CustomerRestController {
   ResponseEntity<Void> putAddress(@PathVariable("identifier") final String identifier,
                                   @RequestBody @Valid final Address address) {
     if (this.customerService.customerExists(identifier)) {
-      this.commandGateway.process(new UpdateAddressCommand(identifier, address));
+      this.customerService.updateAddress(identifier, address);
     } else {
       throw ServiceException.notFound("Customer {0} not found.", identifier);
     }
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/contact",
       method = RequestMethod.PUT,
@@ -326,14 +327,14 @@ public class CustomerRestController {
   ResponseEntity<Void> putContactDetails(@PathVariable("identifier") final String identifier,
                                          @RequestBody final List<ContactDetail> contactDetails) {
     if (this.customerService.customerExists(identifier)) {
-      this.commandGateway.process(new UpdateContactDetailsCommand(identifier, contactDetails));
+      this.customerService.updateContactDetails(identifier, contactDetails);
     } else {
       throw ServiceException.notFound("Customer {0} not found.", identifier);
     }
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications",
           method = RequestMethod.GET,
@@ -346,7 +347,7 @@ public class CustomerRestController {
     return ResponseEntity.ok(this.customerService.fetchIdentificationCardsByCustomer(identifier).collect(Collectors.toList()));
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}",
           method = RequestMethod.GET,
@@ -367,7 +368,7 @@ public class CustomerRestController {
     }
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications",
           method = RequestMethod.POST,
@@ -383,7 +384,7 @@ public class CustomerRestController {
         throw ServiceException.conflict("IdentificationCard {0} already exists.", identificationCard.getNumber());
       }
 
-      this.commandGateway.process(new CreateIdentificationCardCommand(identifier, identificationCard));
+      this.customerService.createIdentificationCard(identifier, identificationCard);
     } else {
       throw ServiceException.notFound("Customer {0} not found.", identifier);
     }
@@ -391,7 +392,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
       value = "/customers/{identifier}/identifications/{number}",
       method = RequestMethod.PUT,
@@ -410,12 +411,12 @@ public class CustomerRestController {
       throw ServiceException.badRequest("Number in path is different from number in request body");
     }
 
-    this.commandGateway.process(new UpdateIdentificationCardCommand(identifier, identificationCard.getNumber(), identificationCard));
+    this.customerService.updateIdentificationCard(identifier, identificationCard.getNumber(), identificationCard);
 
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}",
           method = RequestMethod.DELETE,
@@ -425,15 +426,15 @@ public class CustomerRestController {
   public
   @ResponseBody
   ResponseEntity<Void> deleteIdentificationCard(@PathVariable("identifier") final String identifier,
-                                                @PathVariable("number") final String number) {
+                                                @PathVariable("number") final String number) throws IOException {
     this.throwIfCustomerNotExists(identifier);
 
-    this.commandGateway.process(new DeleteIdentificationCardCommand(number));
+    this.customerService.deleteIdentificationCard(number);
 
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}/scans",
           method = RequestMethod.GET,
@@ -452,7 +453,7 @@ public class CustomerRestController {
     return ResponseEntity.ok(identificationCardScans);
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}/scans/{scanIdentifier}",
           method = RequestMethod.GET,
@@ -474,7 +475,7 @@ public class CustomerRestController {
             .orElseThrow(() -> ServiceException.notFound("Identification card scan {0} not found.", number));
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}/scans/{scanIdentifier}/image",
           method = RequestMethod.GET,
@@ -496,7 +497,7 @@ public class CustomerRestController {
             .orElseThrow(() -> ServiceException.notFound("Identification card scan {0} not found.", number));
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}/scans",
           produces = MediaType.APPLICATION_JSON_VALUE,
@@ -522,12 +523,12 @@ public class CustomerRestController {
     scan.setIdentifier(scanIdentifier);
     scan.setDescription(description);
 
-    this.commandGateway.process(new CreateIdentificationCardScanCommand(number, scan, image));
+    this.customerService.createIdentificationCardScan(number, scan, image);
 
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}/scans/{scanIdentifier}",
           method = RequestMethod.DELETE,
@@ -542,12 +543,12 @@ public class CustomerRestController {
     throwIfCustomerNotExists(identifier);
     throwIfIdentificationCardNotExists(number);
 
-    this.commandGateway.process(new DeleteIdentificationCardScanCommand(number, scanIdentifier));
+    this.customerService.deleteIdentificationCardScan(number, scanIdentifier);
 
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
   @RequestMapping(
       value = "/customers/{identifier}/portrait",
       method = RequestMethod.GET,
@@ -564,7 +565,7 @@ public class CustomerRestController {
             .body(portrait.getImage());
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
   @RequestMapping(
       value = "/customers/{identifier}/portrait",
       method = RequestMethod.POST,
@@ -573,7 +574,7 @@ public class CustomerRestController {
   )
   public @ResponseBody
   ResponseEntity<Void> postPortrait(@PathVariable("identifier") final String identifier,
-                                    @RequestBody final MultipartFile portrait) {
+                                    @RequestBody final MultipartFile portrait) throws IOException {
     if(portrait == null) {
       throw ServiceException.badRequest("Portrait not found");
     }
@@ -583,17 +584,17 @@ public class CustomerRestController {
     this.throwIfInvalidContentType(portrait.getContentType());
 
     try {
-      this.commandGateway.process(new DeletePortraitCommand(identifier), String.class).get();
+      this.customerService.deletePortrait(identifier);
     } catch (Throwable e) {
-      logger.warn("Could not delete portrait: {0}", e.getMessage());
+//      logger.warn("Could not delete portrait: {0}", e.getMessage());
     }
 
-    this.commandGateway.process(new CreatePortraitCommand(identifier, portrait));
+    this.customerService.createPortrait(identifier, portrait);
 
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
   @RequestMapping(
       value = "/customers/{identifier}/portrait",
       method = RequestMethod.DELETE,
@@ -601,13 +602,13 @@ public class CustomerRestController {
       consumes = MediaType.ALL_VALUE
   )
   public @ResponseBody
-  ResponseEntity<Void> deletePortrait(@PathVariable("identifier") final String identifier) {
-    this.commandGateway.process(new DeletePortraitCommand(identifier));
+  ResponseEntity<Void> deletePortrait(@PathVariable("identifier") final String identifier) throws IOException {
+    this.customerService.deletePortrait(identifier);
 
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
   @RequestMapping(
       value = "/tasks",
       method = RequestMethod.POST,
@@ -620,12 +621,12 @@ public class CustomerRestController {
     if (this.taskService.taskDefinitionExists(taskDefinition.getIdentifier())) {
       throw ServiceException.conflict("Task definition {0} already exists.", taskDefinition.getIdentifier());
     } else {
-      this.commandGateway.process(new CreateTaskDefinitionCommand(taskDefinition));
+      this.taskService.createTaskDefinition(taskDefinition);
     }
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
   @RequestMapping(
       value = "/tasks",
       method = RequestMethod.GET,
@@ -638,7 +639,7 @@ public class CustomerRestController {
     return ResponseEntity.ok(this.taskService.fetchAll());
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
   @RequestMapping(
       value = "/tasks/{identifier}",
       method = RequestMethod.GET,
@@ -656,7 +657,7 @@ public class CustomerRestController {
     }
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
   @RequestMapping(
       value = "/tasks/{identifier}",
       method = RequestMethod.PUT,
@@ -667,14 +668,14 @@ public class CustomerRestController {
   @ResponseBody
   ResponseEntity<Void> updateTask(@PathVariable("identifier") final String identifier, @RequestBody final TaskDefinition taskDefinition) {
     if (this.taskService.taskDefinitionExists(identifier)) {
-      this.commandGateway.process(new UpdateTaskDefinitionCommand(identifier, taskDefinition));
+      this.taskService.updateTaskDefinition(identifier, taskDefinition);
     } else {
       throw ServiceException.notFound("Task {0} not found.", identifier);
     }
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/actions",
       method = RequestMethod.GET,

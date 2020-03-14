@@ -8,6 +8,7 @@ import af.asr.catalog.model.FieldValueEntity;
 import af.asr.catalog.repository.CatalogRepository;
 import af.asr.catalog.repository.FieldRepository;
 import af.asr.catalog.repository.FieldValueRepository;
+import af.asr.csc.api.ScanEvent;
 import af.asr.csc.domain.*;
 import af.asr.csc.mapper.CommandMapper;
 import af.asr.csc.mapper.ContactDetailMapper;
@@ -23,6 +24,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -371,10 +373,10 @@ public class CustomerService {
 
   @Transactional
 
-  public String activateCustomer(final String identifier, String comment) {
+  public String activateCustomer(final String identifier, final String comment) {
     final CustomerEntity customerEntity = findCustomerEntityOrThrow(identifier);
 
-    if (this.taskService.(customerEntity, Command.Action.ACTIVATE.name())) {
+    if (this.taskService.openTasksForCustomerExist(customerEntity, Command.Action.ACTIVATE.name())) {
       throw ServiceException.conflict("Open Tasks for customer {0} exists.", identifier);
     }
 
@@ -388,106 +390,97 @@ public class CustomerService {
     final CustomerEntity savedCustomerEntity = this.customerRepository.save(customerEntity);
 
     this.commandRepository.save(
-            CommandMapper.create(savedCustomerEntity, Command.Action.ACTIVATE.name(), activateCustomerCommand.comment())
-    );
+            CommandMapper.create(savedCustomerEntity, Command.Action.ACTIVATE.name(), comment)    );
 
-    return activateCustomerCommand.identifier();
+    return identifier;
   }
 
   @Transactional
-  @CommandHandler
-  @EventEmitter(selectorName = CustomerEventConstants.SELECTOR_NAME, selectorValue = CustomerEventConstants.LOCK_CUSTOMER)
-  public String lockCustomer(final LockCustomerCommand lockCustomerCommand) {
-    final CustomerEntity customerEntity = findCustomerEntityOrThrow(lockCustomerCommand.identifier());
+  public String lockCustomer(final String identifier, final String comment) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(identifier);
 
     customerEntity.setCurrentState(Customer.State.LOCKED.name());
-    customerEntity.setLastModifiedBy(UserContextHolder.checkedGetUser());
+    customerEntity.setLastModifiedBy(userService.getPreferredUsername());
     customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
 
     final CustomerEntity savedCustomerEntity = this.customerRepository.save(customerEntity);
 
     this.commandRepository.save(
-            CommandMapper.create(savedCustomerEntity, Command.Action.LOCK.name(), lockCustomerCommand.comment())
+            CommandMapper.create(savedCustomerEntity, Command.Action.LOCK.name(), comment)
     );
 
-    this.taskAggregate.onCustomerCommand(savedCustomerEntity, Command.Action.UNLOCK);
+    this.taskService.onCustomerCommand(savedCustomerEntity, Command.Action.UNLOCK);
 
-    return lockCustomerCommand.identifier();
+    return identifier;
   }
 
   @Transactional
-  @CommandHandler
-  @EventEmitter(selectorName = CustomerEventConstants.SELECTOR_NAME, selectorValue = CustomerEventConstants.UNLOCK_CUSTOMER)
-  public String unlockCustomer(final UnlockCustomerCommand unlockCustomerCommand) {
-    final CustomerEntity customerEntity = findCustomerEntityOrThrow(unlockCustomerCommand.identifier());
+  public String unlockCustomer(final String identifier, final String comment) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(identifier);
 
-    if (this.taskAggregate.openTasksForCustomerExist(customerEntity, Command.Action.UNLOCK.name())) {
-      throw ServiceException.conflict("Open Tasks for customer {0} exists.", unlockCustomerCommand.identifier());
+    if (this.taskService.openTasksForCustomerExist(customerEntity, Command.Action.UNLOCK.name())) {
+      throw ServiceException.conflict("Open Tasks for customer {0} exists.", identifier);
     }
 
     customerEntity.setCurrentState(Customer.State.ACTIVE.name());
-    customerEntity.setLastModifiedBy(UserContextHolder.checkedGetUser());
+    customerEntity.setLastModifiedBy(userService.getPreferredUsername());
     customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
 
     final CustomerEntity savedCustomerEntity = this.customerRepository.save(customerEntity);
 
     this.commandRepository.save(
-            CommandMapper.create(savedCustomerEntity, Command.Action.UNLOCK.name(), unlockCustomerCommand.comment())
+            CommandMapper.create(savedCustomerEntity, Command.Action.UNLOCK.name(), comment)
     );
 
-    return unlockCustomerCommand.identifier();
+    return identifier;
   }
 
   @Transactional
-  @CommandHandler
-  @EventEmitter(selectorName = CustomerEventConstants.SELECTOR_NAME, selectorValue = CustomerEventConstants.CLOSE_CUSTOMER)
-  public String closeCustomer(final CloseCustomerCommand closeCustomerCommand) {
-    final CustomerEntity customerEntity = findCustomerEntityOrThrow(closeCustomerCommand.identifier());
+  public String closeCustomer(final String identifier, final String comment) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(identifier);
 
     customerEntity.setCurrentState(Customer.State.CLOSED.name());
-    customerEntity.setLastModifiedBy(UserContextHolder.checkedGetUser());
+    customerEntity.setLastModifiedBy(userService.getPreferredUsername());
     customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
 
     final CustomerEntity savedCustomerEntity = this.customerRepository.save(customerEntity);
 
     this.commandRepository.save(
-            CommandMapper.create(savedCustomerEntity, Command.Action.CLOSE.name(), closeCustomerCommand.comment())
+            CommandMapper.create(savedCustomerEntity, Command.Action.CLOSE.name(), comment)
     );
 
-    this.taskAggregate.onCustomerCommand(savedCustomerEntity, Command.Action.REOPEN);
+    this.taskService.onCustomerCommand(savedCustomerEntity, Command.Action.REOPEN);
 
-    return closeCustomerCommand.identifier();
+    return identifier;
   }
 
   @Transactional
-  @CommandHandler
-  @EventEmitter(selectorName = CustomerEventConstants.SELECTOR_NAME, selectorValue = CustomerEventConstants.REOPEN_CUSTOMER)
-  public String reopenCustomer(final ReopenCustomerCommand reopenCustomerCommand) {
-    final CustomerEntity customerEntity = findCustomerEntityOrThrow(reopenCustomerCommand.identifier());
+  public String reopenCustomer(final String identifier, final String comment) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(identifier);
 
-    if (this.taskAggregate.openTasksForCustomerExist(customerEntity, Command.Action.REOPEN.name())) {
-      throw ServiceException.conflict("Open Tasks for customer {0} exists.", reopenCustomerCommand.identifier());
+    if (this.taskService.openTasksForCustomerExist(customerEntity, Command.Action.REOPEN.name())) {
+      throw ServiceException.conflict("Open Tasks for customer {0} exists.", identifier);
     }
 
     customerEntity.setCurrentState(Customer.State.ACTIVE.name());
-    customerEntity.setLastModifiedBy(UserContextHolder.checkedGetUser());
+    customerEntity.setLastModifiedBy(userService.getPreferredUsername());
     customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
 
     final CustomerEntity savedCustomerEntity = this.customerRepository.save(customerEntity);
 
     this.commandRepository.save(
-            CommandMapper.create(savedCustomerEntity, Command.Action.REOPEN.name(), reopenCustomerCommand.comment())
+            CommandMapper.create(savedCustomerEntity, Command.Action.REOPEN.name(), comment)
     );
 
-    return reopenCustomerCommand.identifier();
+    return identifier;
   }
 
 
   @Transactional
-  public String createIdentificationCard(final CreateIdentificationCardCommand createIdentificationCardCommand) {
-    final CustomerEntity customerEntity = findCustomerEntityOrThrow(createIdentificationCardCommand.identifier());
+  public String createIdentificationCard(final String identifier, IdentificationCard identificationCard) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(identifier);
 
-    final IdentificationCardEntity identificationCardEntity = IdentificationCardMapper.map(createIdentificationCardCommand.identificationCard());
+    final IdentificationCardEntity identificationCardEntity = IdentificationCardMapper.map(identificationCard);
 
     identificationCardEntity.setCustomer(customerEntity);
     identificationCardEntity.setCreatedBy(userService.getPreferredUsername());
@@ -504,10 +497,10 @@ public class CustomerService {
   }
 
   @Transactional
-  public String updateIdentificationCard(final UpdateIdentificationCardCommand updateIdentificationCardCommand) {
-    final Optional<IdentificationCardEntity> optionalIdentificationCardEntity = this.identificationCardRepository.findByNumber(updateIdentificationCardCommand.number());
+  public String updateIdentificationCard(final String identifier, String number, IdentificationCard identificationCard1) {
+    final Optional<IdentificationCardEntity> optionalIdentificationCardEntity = this.identificationCardRepository.findByNumber(number);
 
-    final IdentificationCardEntity identificationCard = IdentificationCardMapper.map(updateIdentificationCardCommand.identificationCard());
+    final IdentificationCardEntity identificationCard = IdentificationCardMapper.map(identificationCard1);
 
     optionalIdentificationCardEntity.ifPresent(identificationCardEntity -> {
       identificationCardEntity.setIssuer(identificationCard.getIssuer());
@@ -526,18 +519,18 @@ public class CustomerService {
       this.customerRepository.save(customerEntity);
     });
 
-    return updateIdentificationCardCommand.number();
+    return number;
   }
 
   @Transactional
-   public String deleteIdentificationCard(final DeleteIdentificationCardCommand deleteIdentificationCardCommand) throws IOException {
-    final Optional<IdentificationCardEntity> optionalIdentificationCardEntity = this.identificationCardRepository.findByNumber(deleteIdentificationCardCommand.number());
+   public String deleteIdentificationCard(final String  number) throws IOException {
+    final Optional<IdentificationCardEntity> optionalIdentificationCardEntity = this.identificationCardRepository.findByNumber(number);
 
     optionalIdentificationCardEntity.ifPresent(identificationCardEntity -> {
 
       final List<IdentificationCardScanEntity> cardScanEntities = this.identificationCardScanRepository.findByIdentificationCard(identificationCardEntity);
 
-      this.identificationCardScanRepository.delete(cardScanEntities);
+      this.identificationCardScanRepository.deleteAll(cardScanEntities);
 
       this.identificationCardRepository.delete(identificationCardEntity);
 
@@ -548,7 +541,7 @@ public class CustomerService {
 
       this.customerRepository.save(customerEntity);
     });
-
+    return number;
   }
   @Transactional
   public String updateAddress(final String identifier, Address address) {
@@ -568,6 +561,90 @@ public class CustomerService {
     return identifier;
   }
 
+
+  @Transactional
+  public ScanEvent createIdentificationCardScan(final String number, IdentificationCardScan scan, MultipartFile imageMultipartFile) throws Exception {
+    final Optional<IdentificationCardEntity> identificationCardEntity = this.identificationCardRepository.findByNumber(number);
+
+    final IdentificationCardEntity cardEntity = identificationCardEntity.orElseThrow(() -> ServiceException.notFound("Identification card {0} not found.", number));
+
+    final IdentificationCardScanEntity identificationCardScanEntity = IdentificationCardScanMapper.map(scan);
+
+    final MultipartFile image = imageMultipartFile;
+
+    final LocalDateTime now = LocalDateTime.now(Clock.systemUTC());
+
+    identificationCardScanEntity.setImage(image.getBytes());
+    identificationCardScanEntity.setContentType(image.getContentType());
+    identificationCardScanEntity.setSize(image.getSize());
+    identificationCardScanEntity.setIdentificationCard(cardEntity);
+    identificationCardScanEntity.setCreatedBy(userService.getPreferredUsername());
+    identificationCardScanEntity.setCreatedOn(now);
+
+    identificationCardScanRepository.save(identificationCardScanEntity);
+
+    cardEntity.setLastModifiedBy(userService.getPreferredUsername());
+    cardEntity.setLastModifiedOn(now);
+
+    identificationCardRepository.save(cardEntity);
+
+    return new ScanEvent(number, scan.getIdentifier());
+  }
+
+  @Transactional
+  public ScanEvent deleteIdentificationCardScan(final String identifier, final String number) {
+    final Optional<IdentificationCardEntity> cardEntity = this.identificationCardRepository.findByNumber(number);
+    final Optional<IdentificationCardScanEntity> scanEntity = cardEntity
+            .flatMap(entity -> this.identificationCardScanRepository.findByIdentifierAndIdentificationCard(identifier, entity));
+
+    scanEntity.ifPresent(identificationCardScanEntity -> {
+
+      this.identificationCardScanRepository.delete(identificationCardScanEntity);
+
+      final IdentificationCardEntity identificationCard = identificationCardScanEntity.getIdentificationCard();
+
+      identificationCard.setLastModifiedBy(userService.getPreferredUsername());
+      identificationCard.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+      this.identificationCardRepository.save(identificationCard);
+    });
+
+    return new ScanEvent(number, identifier);
+  }
+
+  @Transactional
+  public String createPortrait(final String identifier, MultipartFile multipartFile) throws IOException {
+    if(multipartFile == null) {
+      return null;
+    }
+
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(identifier);
+
+    final PortraitEntity portraitEntity = PortraitMapper.map(multipartFile);
+    portraitEntity.setCustomer(customerEntity);
+    this.portraitRepository.save(portraitEntity);
+
+    customerEntity.setLastModifiedBy(userService.getPreferredUsername());
+    customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    this.customerRepository.save(customerEntity);
+
+    return identifier;
+  }
+
+  @Transactional
+  public String deletePortrait(final String identifier) throws IOException {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(identifier);
+
+    this.portraitRepository.deleteByCustomer(customerEntity);
+
+    customerEntity.setLastModifiedBy(userService.getPreferredUsername());
+    customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    this.customerRepository.save(customerEntity);
+
+    return identifier;
+  }
 
   private void setCustomValues(final Customer customer, final CustomerEntity savedCustomerEntity) {
 
@@ -609,5 +686,7 @@ public class CustomerService {
     return this.customerRepository.findByIdentifier(identifier)
             .orElseThrow(() -> ServiceException.notFound("Customer ''{0}'' not found", identifier));
   }
+
+
 
 }
