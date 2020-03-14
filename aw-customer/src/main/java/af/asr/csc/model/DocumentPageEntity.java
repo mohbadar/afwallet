@@ -1,10 +1,21 @@
 package af.asr.csc.model;
 
+import lombok.*;
+import org.hibernate.envers.Audited;
+
 import javax.persistence.*;
 
 
 @Entity
-@Table(name = "maat_document_pages")
+@Table(name = "document_page")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@EqualsAndHashCode
+@ToString
+@Audited
 public class DocumentPageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

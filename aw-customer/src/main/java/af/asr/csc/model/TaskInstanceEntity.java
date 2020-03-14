@@ -1,5 +1,8 @@
 package af.asr.csc.model;
 
+import lombok.*;
+import org.hibernate.envers.Audited;
+
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +16,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "task_instance")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@EqualsAndHashCode
+@ToString
+@Audited
 public class TaskInstanceEntity {
 
     @Id

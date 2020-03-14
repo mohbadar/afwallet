@@ -1,6 +1,8 @@
 package af.asr.csc.model;
 
 import af.asr.csc.model.CustomerEntity;
+import lombok.*;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +17,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "portrait")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@EqualsAndHashCode
+@ToString
+@Audited
 public class PortraitEntity {
 
     @Id

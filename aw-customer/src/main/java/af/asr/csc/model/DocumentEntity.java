@@ -12,9 +12,19 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import af.asr.csc.model.CustomerEntity;
+import lombok.*;
+import org.hibernate.envers.Audited;
 
 @Entity
-@Table(name = "documents")
+@Table(name = "document")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@EqualsAndHashCode
+@ToString
+@Audited
 public class DocumentEntity {
 
     @Id
