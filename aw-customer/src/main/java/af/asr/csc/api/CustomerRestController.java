@@ -2,7 +2,9 @@
 package af.asr.csc.api;
 
 import af.asr.catalog.service.FieldValueValidator;
+import af.asr.csc.domain.Command;
 import af.asr.csc.domain.Customer;
+import af.asr.csc.domain.CustomerPage;
 import af.asr.csc.service.CustomerService;
 import af.asr.csc.service.TaskService;
 import af.gov.anar.lang.infrastructure.exception.service.ServiceException;
@@ -79,12 +81,11 @@ public class CustomerRestController {
       this.fieldValueValidator.validateValues(customer.getCustomValues());
     }
 
-    this.customerService.
-    this.commandGateway.process(new CreateCustomerCommand(customer));
+    this.customerService.createCustomer(customer);
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers",
       method = RequestMethod.GET,
@@ -104,7 +105,7 @@ public class CustomerRestController {
         this.createPageRequest(pageIndex, size, sortColumn, sortDirection)));
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}",
       method = RequestMethod.GET,
@@ -122,7 +123,7 @@ public class CustomerRestController {
     }
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}",
       method = RequestMethod.PUT,
@@ -137,14 +138,13 @@ public class CustomerRestController {
       if (customer.getCustomValues() != null) {
         this.fieldValueValidator.validateValues(customer.getCustomValues());
       }
-      this.commandGateway.process(new UpdateCustomerCommand(customer));
+      this.customerService.updateCustomer(customer);
     } else {
       throw ServiceException.notFound("Customer {0} not found.", identifier);
     }
     return ResponseEntity.accepted().build();
   }
 
-  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/commands",
       method = RequestMethod.POST,

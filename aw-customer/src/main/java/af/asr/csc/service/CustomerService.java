@@ -16,6 +16,7 @@ import af.asr.csc.mapper.IdentificationCardMapper;
 import af.asr.csc.model.*;
 import af.asr.csc.repository.*;
 import af.asr.csc.mapper.*;
+import af.asr.infrastructure.service.UserService;
 import af.gov.anar.lang.infrastructure.exception.service.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +24,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+import java.sql.Date;
+import java.time.Clock;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,6 +51,8 @@ public class CustomerService {
   private final AddressRepository addressRepository;
   private final FieldRepository fieldRepository;
   private final CatalogRepository catalogRepository;
+  private final UserService userService;
+  private final TaskService taskService;
 
   @Autowired
   public CustomerService(final CustomerRepository customerRepository,
@@ -58,7 +66,7 @@ public class CustomerService {
                          final TaskInstanceRepository taskInstanceRepository,
                          final AddressRepository addressRepository,
                          final FieldRepository fieldRepository,
-                         final CatalogRepository catalogRepository) {
+                         final CatalogRepository catalogRepository, UserService userService, TaskService taskService) {
     super();
     this.customerRepository = customerRepository;
     this.identificationCardRepository = identificationCardRepository;
@@ -72,6 +80,8 @@ public class CustomerService {
     this.addressRepository = addressRepository;
     this.fieldRepository = fieldRepository;
     this.catalogRepository = catalogRepository;
+    this.userService = userService;
+    this.taskService = taskService;
   }
 
   public Boolean customerExists(final String identifier) {
@@ -271,16 +281,6 @@ public class CustomerService {
             contactDetailEntities.add(ContactDetailMapper.map(contactDetail));
         }
         this.contactDetailRepository.saveAll(contactDetailEntities);
-//      this.contactDetailRepository.save(
-//              customer.getContactDetails()
-//                      .stream()
-//                      .map(contact -> {
-//                        final ContactDetailEntity contactDetailEntity = ContactDetailMapper.map(contact);
-//                        contactDetailEntity.setCustomer(savedCustomerEntity);
-//                        return contactDetailEntity;
-//                      })
-//                      .collect(Collectors.toList())
-//      );
     }
 
     if (customer.getCustomValues() != null) {
@@ -288,6 +288,284 @@ public class CustomerService {
     }
 
     return customer.getIdentifier();
+  }
+
+
+  @Transactional
+   public String updateCustomer(final Customer customer) {
+
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(customer.getIdentifier());
+
+    customerEntity.setGivenName(customer.getGivenName());
+    customerEntity.setMiddleName(customer.getMiddleName());
+    customerEntity.setSurname(customer.getSurname());
+    customerEntity.setAccountBeneficiary(customer.getAccountBeneficiary());
+    customerEntity.setReferenceCustomer(customer.getReferenceCustomer());
+    customerEntity.setAssignedOffice(customer.getAssignedOffice());
+    customerEntity.setAssignedEmployee(customer.getAssignedEmployee());
+
+    if (customer.getDateOfBirth() != null ) {
+      final LocalDate newDateOfBirth = customer.getDateOfBirth().toLocalDate();
+      if (customerEntity.getDateOfBirth() == null) {
+        customerEntity.setDateOfBirth(Date.valueOf(newDateOfBirth));
+      } else {
+        final LocalDate dateOfBirth = customerEntity.getDateOfBirth().toLocalDate();
+        if (!dateOfBirth.isEqual(newDateOfBirth)) {
+          customerEntity.setDateOfBirth(Date.valueOf(newDateOfBirth));
+        }
+      }
+    } else {
+      customerEntity.setDateOfBirth(null);
+    }
+
+    if (customer.getCustomValues() != null) {
+      this.fieldValueRepository.deleteByCustomer(customerEntity);
+      this.fieldValueRepository.flush();
+      this.setCustomValues(customer, customerEntity);
+    }
+
+    if (customer.getAddress() != null) {
+      this.updateAddress(customer.getIdentifier(), customer.getAddress());
+    }
+
+    this.updateContactDetails(customer.getIdentifier(), customer.getContactDetails());
+
+    customerEntity.setLastModifiedBy(userService.getPreferredUsername());
+    customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    this.customerRepository.save(customerEntity);
+
+    return customer.getIdentifier();
+  }
+
+  @Transactional
+  public String updateContactDetails(final String identifier, List<ContactDetail> contactDetails) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(identifier);
+    customerEntity.setLastModifiedBy(userService.getPreferredUsername());
+    customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    final List<ContactDetailEntity> oldContactDetails = this.contactDetailRepository.findByCustomer(customerEntity);
+    this.contactDetailRepository.deleteAll(oldContactDetails);
+
+    if (contactDetails != null) {
+//      this.contactDetailRepository.save(
+//              contactDetails
+//                      .stream()
+//                      .map(contact -> {
+//                        final ContactDetailEntity newContactDetail = ContactDetailMapper.map(contact);
+//                        newContactDetail.setCustomer(customerEntity);
+//                        return newContactDetail;
+//                      })
+//                      .collect(Collectors.toList())
+//      );
+      List<ContactDetailEntity> contactDetailEntities = new ArrayList<>();
+      for (ContactDetail contactDetail: contactDetails)
+      {
+        contactDetailEntities.add(ContactDetailMapper.map(contactDetail));
+      }
+      this.contactDetailRepository.saveAll(contactDetailEntities);
+    }
+
+    return identifier;
+  }
+
+  @Transactional
+
+  public String activateCustomer(final String identifier, String comment) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(identifier);
+
+    if (this.taskService.(customerEntity, Command.Action.ACTIVATE.name())) {
+      throw ServiceException.conflict("Open Tasks for customer {0} exists.", identifier);
+    }
+
+    customerEntity.setCurrentState(Customer.State.ACTIVE.name());
+    if (customerEntity.getApplicationDate() == null) {
+      customerEntity.setApplicationDate(LocalDate.now(Clock.systemUTC()));
+    }
+    customerEntity.setLastModifiedBy(userService.getPreferredUsername());
+    customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    final CustomerEntity savedCustomerEntity = this.customerRepository.save(customerEntity);
+
+    this.commandRepository.save(
+            CommandMapper.create(savedCustomerEntity, Command.Action.ACTIVATE.name(), activateCustomerCommand.comment())
+    );
+
+    return activateCustomerCommand.identifier();
+  }
+
+  @Transactional
+  @CommandHandler
+  @EventEmitter(selectorName = CustomerEventConstants.SELECTOR_NAME, selectorValue = CustomerEventConstants.LOCK_CUSTOMER)
+  public String lockCustomer(final LockCustomerCommand lockCustomerCommand) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(lockCustomerCommand.identifier());
+
+    customerEntity.setCurrentState(Customer.State.LOCKED.name());
+    customerEntity.setLastModifiedBy(UserContextHolder.checkedGetUser());
+    customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    final CustomerEntity savedCustomerEntity = this.customerRepository.save(customerEntity);
+
+    this.commandRepository.save(
+            CommandMapper.create(savedCustomerEntity, Command.Action.LOCK.name(), lockCustomerCommand.comment())
+    );
+
+    this.taskAggregate.onCustomerCommand(savedCustomerEntity, Command.Action.UNLOCK);
+
+    return lockCustomerCommand.identifier();
+  }
+
+  @Transactional
+  @CommandHandler
+  @EventEmitter(selectorName = CustomerEventConstants.SELECTOR_NAME, selectorValue = CustomerEventConstants.UNLOCK_CUSTOMER)
+  public String unlockCustomer(final UnlockCustomerCommand unlockCustomerCommand) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(unlockCustomerCommand.identifier());
+
+    if (this.taskAggregate.openTasksForCustomerExist(customerEntity, Command.Action.UNLOCK.name())) {
+      throw ServiceException.conflict("Open Tasks for customer {0} exists.", unlockCustomerCommand.identifier());
+    }
+
+    customerEntity.setCurrentState(Customer.State.ACTIVE.name());
+    customerEntity.setLastModifiedBy(UserContextHolder.checkedGetUser());
+    customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    final CustomerEntity savedCustomerEntity = this.customerRepository.save(customerEntity);
+
+    this.commandRepository.save(
+            CommandMapper.create(savedCustomerEntity, Command.Action.UNLOCK.name(), unlockCustomerCommand.comment())
+    );
+
+    return unlockCustomerCommand.identifier();
+  }
+
+  @Transactional
+  @CommandHandler
+  @EventEmitter(selectorName = CustomerEventConstants.SELECTOR_NAME, selectorValue = CustomerEventConstants.CLOSE_CUSTOMER)
+  public String closeCustomer(final CloseCustomerCommand closeCustomerCommand) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(closeCustomerCommand.identifier());
+
+    customerEntity.setCurrentState(Customer.State.CLOSED.name());
+    customerEntity.setLastModifiedBy(UserContextHolder.checkedGetUser());
+    customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    final CustomerEntity savedCustomerEntity = this.customerRepository.save(customerEntity);
+
+    this.commandRepository.save(
+            CommandMapper.create(savedCustomerEntity, Command.Action.CLOSE.name(), closeCustomerCommand.comment())
+    );
+
+    this.taskAggregate.onCustomerCommand(savedCustomerEntity, Command.Action.REOPEN);
+
+    return closeCustomerCommand.identifier();
+  }
+
+  @Transactional
+  @CommandHandler
+  @EventEmitter(selectorName = CustomerEventConstants.SELECTOR_NAME, selectorValue = CustomerEventConstants.REOPEN_CUSTOMER)
+  public String reopenCustomer(final ReopenCustomerCommand reopenCustomerCommand) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(reopenCustomerCommand.identifier());
+
+    if (this.taskAggregate.openTasksForCustomerExist(customerEntity, Command.Action.REOPEN.name())) {
+      throw ServiceException.conflict("Open Tasks for customer {0} exists.", reopenCustomerCommand.identifier());
+    }
+
+    customerEntity.setCurrentState(Customer.State.ACTIVE.name());
+    customerEntity.setLastModifiedBy(UserContextHolder.checkedGetUser());
+    customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    final CustomerEntity savedCustomerEntity = this.customerRepository.save(customerEntity);
+
+    this.commandRepository.save(
+            CommandMapper.create(savedCustomerEntity, Command.Action.REOPEN.name(), reopenCustomerCommand.comment())
+    );
+
+    return reopenCustomerCommand.identifier();
+  }
+
+
+  @Transactional
+  public String createIdentificationCard(final CreateIdentificationCardCommand createIdentificationCardCommand) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(createIdentificationCardCommand.identifier());
+
+    final IdentificationCardEntity identificationCardEntity = IdentificationCardMapper.map(createIdentificationCardCommand.identificationCard());
+
+    identificationCardEntity.setCustomer(customerEntity);
+    identificationCardEntity.setCreatedBy(userService.getPreferredUsername());
+    identificationCardEntity.setCreatedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    this.identificationCardRepository.save(identificationCardEntity);
+
+    customerEntity.setLastModifiedBy(userService.getPreferredUsername());
+    customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    this.customerRepository.save(customerEntity);
+
+    return identificationCardEntity.getNumber();
+  }
+
+  @Transactional
+  public String updateIdentificationCard(final UpdateIdentificationCardCommand updateIdentificationCardCommand) {
+    final Optional<IdentificationCardEntity> optionalIdentificationCardEntity = this.identificationCardRepository.findByNumber(updateIdentificationCardCommand.number());
+
+    final IdentificationCardEntity identificationCard = IdentificationCardMapper.map(updateIdentificationCardCommand.identificationCard());
+
+    optionalIdentificationCardEntity.ifPresent(identificationCardEntity -> {
+      identificationCardEntity.setIssuer(identificationCard.getIssuer());
+      identificationCardEntity.setType(identificationCard.getType());
+      identificationCardEntity.setExpirationDate(identificationCard.getExpirationDate());
+      identificationCardEntity.setLastModifiedBy(userService.getPreferredUsername());
+      identificationCardEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+      this.identificationCardRepository.save(identificationCardEntity);
+
+      final CustomerEntity customerEntity = identificationCardEntity.getCustomer();
+
+      customerEntity.setLastModifiedBy(userService.getPreferredUsername());
+      customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+      this.customerRepository.save(customerEntity);
+    });
+
+    return updateIdentificationCardCommand.number();
+  }
+
+  @Transactional
+   public String deleteIdentificationCard(final DeleteIdentificationCardCommand deleteIdentificationCardCommand) throws IOException {
+    final Optional<IdentificationCardEntity> optionalIdentificationCardEntity = this.identificationCardRepository.findByNumber(deleteIdentificationCardCommand.number());
+
+    optionalIdentificationCardEntity.ifPresent(identificationCardEntity -> {
+
+      final List<IdentificationCardScanEntity> cardScanEntities = this.identificationCardScanRepository.findByIdentificationCard(identificationCardEntity);
+
+      this.identificationCardScanRepository.delete(cardScanEntities);
+
+      this.identificationCardRepository.delete(identificationCardEntity);
+
+      final CustomerEntity customerEntity = identificationCardEntity.getCustomer();
+
+      customerEntity.setLastModifiedBy(userService.getPreferredUsername());
+      customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+      this.customerRepository.save(customerEntity);
+    });
+
+  }
+  @Transactional
+  public String updateAddress(final String identifier, Address address) {
+    final CustomerEntity customerEntity = findCustomerEntityOrThrow(identifier);
+    customerEntity.setLastModifiedBy(userService.getPreferredUsername());
+    customerEntity.setLastModifiedOn(LocalDateTime.now(Clock.systemUTC()));
+
+    final AddressEntity oldAddressEntity = customerEntity.getAddress();
+
+    final AddressEntity newAddressEntity = this.addressRepository.save(AddressMapper.map(address));
+
+    customerEntity.setAddress(newAddressEntity);
+    this.customerRepository.save(customerEntity);
+
+    this.addressRepository.delete(oldAddressEntity);
+
+    return identifier;
   }
 
 
