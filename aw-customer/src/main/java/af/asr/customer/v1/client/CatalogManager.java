@@ -1,13 +1,29 @@
-package af.asr.catalog;
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+package af.asr.customer.v1.client;
 
-
-import af.asr.catalog.domain.Catalog;
-import af.asr.catalog.domain.Field;
-import af.asr.catalog.exception.*;
-import af.gov.anar.api.annotation.ThrowsException;
-import af.gov.anar.api.annotation.ThrowsExceptions;
-import org.springframework.cloud.openfeign.FeignAutoConfiguration;
-import org.springframework.cloud.openfeign.FeignClient;
+import org.apache.fineract.cn.api.annotation.ThrowsException;
+import org.apache.fineract.cn.api.annotation.ThrowsExceptions;
+import org.apache.fineract.cn.api.util.CustomFeignClientsConfiguration;
+import org.apache.fineract.cn.customer.catalog.api.v1.domain.Catalog;
+import org.apache.fineract.cn.customer.catalog.api.v1.domain.Field;
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +34,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @SuppressWarnings("unused")
-@FeignClient(name="customer-v1", path="/customer/v1", configuration= FeignAutoConfiguration.class)
+@FeignClient(name="customer-v1", path="/customer/v1", configuration=CustomFeignClientsConfiguration.class)
 public interface CatalogManager {
 
   @RequestMapping(
