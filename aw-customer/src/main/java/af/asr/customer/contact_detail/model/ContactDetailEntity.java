@@ -1,4 +1,4 @@
-package af.asr.customer.contact_detail;
+package af.asr.customer.contact_detail.model;
 
 import af.asr.customer.customer.model.CustomerEntity;
 
