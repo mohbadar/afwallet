@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.lang.reflect.Type;
 
-@Component
+//@Component
 public class CustomEncoder implements Encoder {
 
   private final Encoder defaultEncoder;
