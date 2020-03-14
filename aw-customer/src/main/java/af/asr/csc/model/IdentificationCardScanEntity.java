@@ -1,7 +1,9 @@
 package af.asr.csc.model;
 
+import af.asr.infrastructure.revision.AuditEnabledEntity;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;
@@ -25,7 +27,7 @@ import javax.persistence.Table;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class IdentificationCardScanEntity {
+public class IdentificationCardScanEntity extends AuditEnabledEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,6 +46,7 @@ public class IdentificationCardScanEntity {
     private String contentType;
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "identification_card_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private IdentificationCardEntity identificationCard;
     @Column(name = "created_by")
     private String createdBy;

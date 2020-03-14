@@ -1,7 +1,9 @@
 package af.asr.csc.model;
 
+import af.asr.infrastructure.revision.AuditEnabledEntity;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
@@ -16,7 +18,7 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class DocumentPageEntity {
+public class DocumentPageEntity extends AuditEnabledEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -24,6 +26,7 @@ public class DocumentPageEntity {
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "document_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private DocumentEntity document;
 
     @Column(name = "page_number")

@@ -12,8 +12,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import af.asr.csc.model.CustomerEntity;
+import af.asr.infrastructure.revision.AuditEnabledEntity;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import java.time.LocalDateTime;
 
@@ -27,7 +29,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class CommandEntity {
+public class CommandEntity extends AuditEnabledEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +37,7 @@ public class CommandEntity {
     private Long id;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "customer_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private CustomerEntity customer;
     @Column(name = "a_type")
     private String type;

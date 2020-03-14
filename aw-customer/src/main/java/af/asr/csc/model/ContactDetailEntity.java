@@ -2,6 +2,7 @@ package af.asr.csc.model;
 
 import af.asr.csc.domain.ContactDetail;
 import af.asr.csc.model.CustomerEntity;
+import af.asr.infrastructure.revision.AuditEnabledEntity;
 import javafx.scene.image.PixelFormat;
 import lombok.*;
 import org.hibernate.envers.Audited;
@@ -26,7 +27,7 @@ import javax.persistence.Table;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class ContactDetailEntity {
+public class ContactDetailEntity extends AuditEnabledEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,14 +47,4 @@ public class ContactDetailEntity {
     @Column(name = "validated")
     private Boolean valid;
 
-
-//    public void setType(ContactDetail.Type type)
-//    {
-//        this.type = type.name();
-//    }
-//
-//    public void setGroup(ContactDetail.Group group)
-//    {
-//        this.group = group.name();
-//    }
 }

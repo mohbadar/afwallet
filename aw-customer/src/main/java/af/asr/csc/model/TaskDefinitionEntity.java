@@ -1,5 +1,6 @@
 package af.asr.csc.model;
 
+import af.asr.infrastructure.revision.AuditEnabledEntity;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
@@ -11,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "maat_task_definitions")
+@Table(name = "task_definition")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,7 +21,7 @@ import javax.persistence.Table;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class TaskDefinitionEntity {
+public class TaskDefinitionEntity extends AuditEnabledEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

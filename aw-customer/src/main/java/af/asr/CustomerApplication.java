@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableApplicationName
-@ComponentScan(basePackages = {"af.*"})
+@ComponentScan(basePackages = {"af.*", "af.asr.*"})
 @EnableJpaRepositories(basePackages = {"af.*"})
 @EntityScan(basePackages = {"af.*"})
 @EnableSwagger2

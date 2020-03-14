@@ -12,8 +12,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import af.asr.csc.model.CustomerEntity;
+import af.asr.infrastructure.revision.AuditEnabledEntity;
 import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 @Entity
 @Table(name = "document")
@@ -25,7 +27,7 @@ import org.hibernate.envers.Audited;
 @EqualsAndHashCode
 @ToString
 @Audited
-public class DocumentEntity {
+public class DocumentEntity extends AuditEnabledEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +36,7 @@ public class DocumentEntity {
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private CustomerEntity customer;
 
     @Column(name = "identifier", nullable = false)
