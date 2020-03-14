@@ -1,4 +1,4 @@
-package af.asr.customer.command;
+package af.asr.customer.command.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
