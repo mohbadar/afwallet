@@ -2,8 +2,11 @@
 package af.asr.csc.service;
 
 import af.asr.catalog.domain.Value;
+import af.asr.catalog.model.CatalogEntity;
 import af.asr.catalog.model.FieldEntity;
 import af.asr.catalog.model.FieldValueEntity;
+import af.asr.catalog.repository.CatalogRepository;
+import af.asr.catalog.repository.FieldRepository;
 import af.asr.catalog.repository.FieldValueRepository;
 import af.asr.csc.domain.*;
 import af.asr.csc.mapper.CommandMapper;
@@ -13,10 +16,12 @@ import af.asr.csc.mapper.IdentificationCardMapper;
 import af.asr.csc.model.*;
 import af.asr.csc.repository.*;
 import af.asr.csc.mapper.*;
+import af.gov.anar.lang.infrastructure.exception.service.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,6 +42,9 @@ public class CustomerService {
   private final CommandRepository commandRepository;
   private final TaskDefinitionRepository taskDefinitionRepository;
   private final TaskInstanceRepository taskInstanceRepository;
+  private final AddressRepository addressRepository;
+  private final FieldRepository fieldRepository;
+  private final CatalogRepository catalogRepository;
 
   @Autowired
   public CustomerService(final CustomerRepository customerRepository,
@@ -47,7 +55,10 @@ public class CustomerService {
                          final FieldValueRepository fieldValueRepository,
                          final CommandRepository commandRepository,
                          final TaskDefinitionRepository taskDefinitionRepository,
-                         final TaskInstanceRepository taskInstanceRepository) {
+                         final TaskInstanceRepository taskInstanceRepository,
+                         final AddressRepository addressRepository,
+                         final FieldRepository fieldRepository,
+                         final CatalogRepository catalogRepository) {
     super();
     this.customerRepository = customerRepository;
     this.identificationCardRepository = identificationCardRepository;
@@ -58,6 +69,9 @@ public class CustomerService {
     this.commandRepository = commandRepository;
     this.taskDefinitionRepository = taskDefinitionRepository;
     this.taskInstanceRepository = taskInstanceRepository;
+    this.addressRepository = addressRepository;
+    this.fieldRepository = fieldRepository;
+    this.catalogRepository = catalogRepository;
   }
 
   public Boolean customerExists(final String identifier) {
@@ -236,4 +250,86 @@ public class CustomerService {
 
     return processStep;
   }
+
+
+  @Transactional
+  public String createCustomer(final Customer customer) {
+
+    List<ContactDetailEntity> contactDetailEntities = new ArrayList<>();
+
+    final AddressEntity savedAddress = this.addressRepository.save(AddressMapper.map(customer.getAddress()));
+
+    final CustomerEntity customerEntity = CustomerMapper.map(customer);
+    customerEntity.setCurrentState(Customer.State.PENDING.name());
+    customerEntity.setAddress(savedAddress);
+    final CustomerEntity savedCustomerEntity = this.customerRepository.save(customerEntity);
+
+    if (customer.getContactDetails() != null) {
+
+        for (ContactDetail contactDetail: customer.getContactDetails())
+        {
+            contactDetailEntities.add(ContactDetailMapper.map(contactDetail));
+        }
+        this.contactDetailRepository.saveAll(contactDetailEntities);
+//      this.contactDetailRepository.save(
+//              customer.getContactDetails()
+//                      .stream()
+//                      .map(contact -> {
+//                        final ContactDetailEntity contactDetailEntity = ContactDetailMapper.map(contact);
+//                        contactDetailEntity.setCustomer(savedCustomerEntity);
+//                        return contactDetailEntity;
+//                      })
+//                      .collect(Collectors.toList())
+//      );
+    }
+
+    if (customer.getCustomValues() != null) {
+      this.setCustomValues(customer, savedCustomerEntity);
+    }
+
+    return customer.getIdentifier();
+  }
+
+
+  private void setCustomValues(final Customer customer, final CustomerEntity savedCustomerEntity) {
+
+    List<FieldValueEntity> fieldValueEntities = new ArrayList<>();
+    for (Value value : customer.getCustomValues())
+    {
+      final Optional<CatalogEntity> catalogEntity = this.catalogRepository.findByIdentifier(value.getCatalogIdentifier());
+      final Optional<FieldEntity> fieldEntity = this.fieldRepository.findByCatalogAndIdentifier(catalogEntity.get(),value.getFieldIdentifier());
+      final FieldValueEntity fieldValueEntity = FieldValueMapper.map(value);
+      fieldValueEntity.setCustomer(savedCustomerEntity);
+      fieldValueEntity.setField(
+              fieldEntity.orElseThrow(() -> ServiceException.notFound("Field {0} not found.", value.getFieldIdentifier())));
+      fieldValueEntities.add(fieldValueEntity);
+
+    }
+
+    this.fieldValueRepository.saveAll(fieldValueEntities);
+//    this.fieldValueRepository.save(
+//            customer.getCustomValues()
+//                    .stream()
+//                    .map(value -> {
+//                      final Optional<CatalogEntity> catalog =
+//                              this.catalogRepository.findByIdentifier(value.getCatalogIdentifier());
+//                      final Optional<FieldEntity> field =
+//                              this.fieldRepository.findByCatalogAndIdentifier(
+//                                      catalog.orElseThrow(() -> ServiceException.notFound("Catalog {0} not found.", value.getCatalogIdentifier())),
+//                                      value.getFieldIdentifier());
+//                      final FieldValueEntity fieldValueEntity = FieldValueMapper.map(value);
+//                      fieldValueEntity.setCustomer(savedCustomerEntity);
+//                      fieldValueEntity.setField(
+//                              field.orElseThrow(() -> ServiceException.notFound("Field {0} not found.", value.getFieldIdentifier())));
+//                      return fieldValueEntity;
+//                    })
+//                    .collect(Collectors.toList())
+//    );
+  }
+
+  private CustomerEntity findCustomerEntityOrThrow(String identifier) {
+    return this.customerRepository.findByIdentifier(identifier)
+            .orElseThrow(() -> ServiceException.notFound("Customer ''{0}'' not found", identifier));
+  }
+
 }
