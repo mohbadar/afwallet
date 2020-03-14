@@ -47,13 +47,13 @@ public class ContactDetailEntity {
     private Boolean valid;
 
 
-    public void setType(ContactDetail.Type type)
-    {
-        this.type = type.name();
-    }
-
-    public void setGroup(ContactDetail.Group group)
-    {
-        this.group = group.name();
-    }
+//    public void setType(ContactDetail.Type type)
+//    {
+//        this.type = type.name();
+//    }
+//
+//    public void setGroup(ContactDetail.Group group)
+//    {
+//        this.group = group.name();
+//    }
 }
