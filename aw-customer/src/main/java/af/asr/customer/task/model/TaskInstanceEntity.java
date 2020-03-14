@@ -1,8 +1,7 @@
-package af.asr.customer.task;
+package af.asr.customer.task.model;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;

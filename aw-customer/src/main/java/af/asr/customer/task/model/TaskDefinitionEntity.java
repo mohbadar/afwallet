@@ -1,4 +1,4 @@
-package af.asr.customer.task;
+package af.asr.customer.task.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
