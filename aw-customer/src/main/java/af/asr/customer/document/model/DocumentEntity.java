@@ -1,9 +1,7 @@
 package af.asr.customer.document.model;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import af.asr.customer.customer.CustomerEntity;
+import af.asr.customer.customer.model.CustomerEntity;
 
 @Entity
 @Table(name = "documents")

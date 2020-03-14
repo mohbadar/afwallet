@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import af.asr.customer.customer.CustomerEntity;
+import af.asr.customer.customer.model.CustomerEntity;
 
 @Entity
 @Table(name = "task_instance")

@@ -1,6 +1,6 @@
 package af.asr.customer.identification_card.model;
 
-import af.asr.customer.customer.CustomerEntity;
+import af.asr.customer.customer.model.CustomerEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

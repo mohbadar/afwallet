@@ -1,6 +1,6 @@
 package af.asr.customer.task.repository;
 
-import af.asr.customer.customer.CustomerEntity;
+import af.asr.customer.customer.model.CustomerEntity;
 import af.asr.customer.task.model.TaskDefinitionEntity;
 import af.asr.customer.task.model.TaskInstanceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

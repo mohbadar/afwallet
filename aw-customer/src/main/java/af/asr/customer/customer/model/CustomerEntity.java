@@ -1,4 +1,4 @@
-package af.asr.customer.customer;
+package af.asr.customer.customer.model;
 
 import java.sql.Date;
 import java.time.LocalDate;

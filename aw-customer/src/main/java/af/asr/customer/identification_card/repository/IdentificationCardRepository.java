@@ -1,5 +1,5 @@
 package af.asr.customer.identification_card.repository;
-import af.asr.customer.customer.CustomerEntity;
+import af.asr.customer.customer.model.CustomerEntity;
 import af.asr.customer.identification_card.model.IdentificationCardEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

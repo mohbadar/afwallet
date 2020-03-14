@@ -3,7 +3,6 @@ package af.asr.customer.identification_card.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import af.asr.customer.customer.CustomerEntity;
+import af.asr.customer.customer.model.CustomerEntity;
 
 @Entity
 @Table(name = "maat_identification_cards")
