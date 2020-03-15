@@ -50,7 +50,11 @@
 			<artifactId>aw-lib-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>af.gov.anar</groupId>
+			<artifactId>aw-customer</artifactId>>
+			<version>${project.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
 			<artifactId>aw-lib-metrics</artifactId>
