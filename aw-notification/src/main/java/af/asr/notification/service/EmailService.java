@@ -129,7 +129,7 @@ public class EmailService {
 
 
 	@Transactional
-	public String CreateEmailConfiguration(final EmailConfiguration emailConfiguration) {
+	public String createEmailConfiguration(final EmailConfiguration emailConfiguration) {
 		final EmailGatewayConfigurationEntity entity = EmailConfigurationMapper.map(emailConfiguration);
 		this.emailGatewayConfigurationRepository.save(entity);
 

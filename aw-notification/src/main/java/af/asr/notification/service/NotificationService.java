@@ -5,7 +5,7 @@ package af.asr.notification.service;
 import af.asr.customer.domain.Customer;
 import af.asr.notification.ServiceConstants;
 import af.asr.notification.domain.Template;
-import af.asr.notification.service.externalServiceClients.CustomerService;
+import af.asr.notification.service.externalServiceClients.ExternalCustomerService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,19 +21,19 @@ public class NotificationService {
 	private final EmailService emailService;
 	private final TemplateService templateService;
 	
-	private final CustomerService customerService;
+	private final ExternalCustomerService customerService;
 	private final Logger logger;
 	
 	@Autowired
 	
-	public NotificationService(final CustomerService customerService,
+	public NotificationService(final ExternalCustomerService externalCustomerService,
 	                           final SMSService smsService,
 	                           final EmailService emailService,
 	                           final TemplateService templateService,
 	                           @Qualifier(ServiceConstants.LOGGER_NAME) final Logger logger
 	) {
 		super();
-		this.customerService = customerService;
+		this.customerService = externalCustomerService;
 		this.smsService = smsService;
 		this.emailService = emailService;
 		this.templateService = templateService;

@@ -13,14 +13,14 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CustomerService {
+public class ExternalCustomerService {
 	
 	private final Logger logger;
 	private final CustomerManager customerManager;
 	
 	@Autowired
-	public CustomerService(@Qualifier(ServiceConstants.LOGGER_NAME) final Logger logger,
-	                       final CustomerManager customerManager) {
+	public ExternalCustomerService(@Qualifier(ServiceConstants.LOGGER_NAME) final Logger logger,
+								   final CustomerManager customerManager) {
 		super();
 		this.logger = logger;
 		this.customerManager = customerManager;
