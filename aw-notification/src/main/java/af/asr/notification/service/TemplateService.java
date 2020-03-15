@@ -42,7 +42,7 @@ public class TemplateService {
 	}
 
 	@Transactional
-	public String process(final Template template) {
+	public String createTemplate(final Template template) {
 		final TemplateEntity entity = TemplateMapper.map(template);
 		this.templateRepository.save(entity);
 		return template.getTemplateIdentifier();
