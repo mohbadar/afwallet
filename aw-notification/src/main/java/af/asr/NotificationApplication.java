@@ -34,20 +34,4 @@ public class NotificationApplication {
 		SpringApplication.run(NotificationApplication.class, args);
 	}
 
-//	@Bean
-//	public GsonDecoder gsonDecoder()
-//	{
-//		return new GsonDecoder();
-//	}
-//
-//	@Bean
-//	public GsonEncoder gsonEncoder(){
-//		return new GsonEncoder(springFormEncoder());
-//	}
-//
-//	@Bean
-//	public SpringFormEncoder springFormEncoder()
-//	{
-//		return new SpringFormEncoder();
-//	}
 }
