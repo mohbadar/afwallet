@@ -1,13 +1,13 @@
 
 package af.asr.customer.service;
 
-import af.asr.catalog.domain.Value;
-import af.asr.catalog.model.CatalogEntity;
-import af.asr.catalog.model.FieldEntity;
-import af.asr.catalog.model.FieldValueEntity;
-import af.asr.catalog.repository.CatalogRepository;
-import af.asr.catalog.repository.FieldRepository;
-import af.asr.catalog.repository.FieldValueRepository;
+import af.asr.customer.catalog.domain.Value;
+import af.asr.customer.catalog.model.CatalogEntity;
+import af.asr.customer.catalog.model.FieldEntity;
+import af.asr.customer.catalog.model.FieldValueEntity;
+import af.asr.customer.catalog.repository.CatalogRepository;
+import af.asr.customer.catalog.repository.FieldRepository;
+import af.asr.customer.catalog.repository.FieldValueRepository;
 import af.asr.customer.domain.*;
 import af.asr.customer.events.ScanEvent;
 import af.asr.customer.mapper.CommandMapper;

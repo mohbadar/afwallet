@@ -1,7 +1,7 @@
 
 package af.asr.customer.domain;
 
-import af.asr.catalog.domain.Value;
+import af.asr.customer.catalog.domain.Value;
 import af.gov.anar.lang.validation.date.DateOfBirth;
 import org.hibernate.validator.constraints.NotBlank;
 

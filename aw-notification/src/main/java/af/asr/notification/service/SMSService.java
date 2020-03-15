@@ -103,7 +103,6 @@ public class SMSService {
 	public String createSmsConfiguration(final SMSConfiguration smsConfiguration) {
 		final SMSGatewayConfigurationEntity entity = SMSConfigurationMapper.map(smsConfiguration);
 		this.smsGatewayConfigurationRepository.save(entity);
-
 		return smsConfiguration.getIdentifier();
 	}
 

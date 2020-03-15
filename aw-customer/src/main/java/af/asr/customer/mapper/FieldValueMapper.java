@@ -1,8 +1,8 @@
 
 package af.asr.customer.mapper;
 
-import af.asr.catalog.domain.Value;
-import af.asr.catalog.model.FieldValueEntity;
+import af.asr.customer.catalog.domain.Value;
+import af.asr.customer.catalog.model.FieldValueEntity;
 import org.springframework.stereotype.Component;
 
 @Component

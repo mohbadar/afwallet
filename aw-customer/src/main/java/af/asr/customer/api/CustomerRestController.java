@@ -1,7 +1,7 @@
 
 package af.asr.customer.api;
 
-import af.asr.catalog.service.FieldValueValidator;
+import af.asr.customer.catalog.service.FieldValueValidator;
 import af.asr.customer.domain.*;
 import af.asr.customer.model.PortraitEntity;
 import af.asr.customer.service.CustomerService;

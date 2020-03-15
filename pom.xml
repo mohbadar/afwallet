@@ -70,6 +70,7 @@
 		<module>aw-notification</module>
 		<module>aw-settlement</module>
 		<module>aw-customer</module>
+		<module>aw-portfolio</module>
 	</modules>
 
 </project>
