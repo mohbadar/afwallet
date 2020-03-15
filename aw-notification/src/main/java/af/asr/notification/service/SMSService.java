@@ -5,6 +5,7 @@ package af.asr.notification.service;
 import af.asr.notification.ServiceConstants;
 import af.asr.notification.domain.SMSConfiguration;
 import af.asr.notification.mapper.SMSConfigurationMapper;
+import af.asr.notification.model.SMSGatewayConfigurationEntity;
 import af.asr.notification.repository.SMSGatewayConfigurationRepository;
 import com.twilio.Twilio;
 import com.twilio.exception.ApiException;
@@ -95,5 +96,29 @@ public class SMSService {
 		}
 
 		return message.hashCode();
+	}
+
+
+	@Transactional
+	public String createSmsConfiguration(final SMSConfiguration smsConfiguration) {
+		final SMSGatewayConfigurationEntity entity = SMSConfigurationMapper.map(smsConfiguration);
+		this.smsGatewayConfigurationRepository.save(entity);
+
+		return smsConfiguration.getIdentifier();
+	}
+
+	@Transactional
+	public String updateSmsConfiguration(final SMSConfiguration smsConfiguration) {
+		final SMSGatewayConfigurationEntity newEntity = SMSConfigurationMapper.map(smsConfiguration);
+		this.smsGatewayConfigurationRepository.deleteSMSGatewayConfigurationEntityByIdentifier(newEntity.getIdentifier());
+		this.smsGatewayConfigurationRepository.save(newEntity);
+
+		return newEntity.getIdentifier();
+	}
+
+	@Transactional
+	public String process(final String identifier) {
+		smsGatewayConfigurationRepository.deleteSMSGatewayConfigurationEntityByIdentifier(identifier);
+		return identifier;
 	}
 }
