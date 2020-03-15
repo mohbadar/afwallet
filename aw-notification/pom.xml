@@ -33,6 +33,14 @@
 			<version>1.4.7.RELEASE</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.8</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
 			<artifactId>aw-lib-api</artifactId>
