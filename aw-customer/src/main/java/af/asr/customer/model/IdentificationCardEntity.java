@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "identification_card")
+@Table(name = "identification_card", schema = "customer")
 @Getter
 @Setter
 @AllArgsConstructor

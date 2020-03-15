@@ -20,7 +20,7 @@ import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
 
 @Entity
-@Table(name = "maat_customers")
+@Table(name = "maat_customers", schema = "customer")
 @Getter
 @Setter
 @AllArgsConstructor

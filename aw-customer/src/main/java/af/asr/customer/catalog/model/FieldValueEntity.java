@@ -7,7 +7,7 @@ import af.asr.customer.model.CustomerEntity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "field_value")
+@Table(name = "field_value",schema = "catalog")
 public class FieldValueEntity {
 
   @Id

@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "field")
+@Table(name = "field",schema = "catalog")
 public class FieldEntity {
 
   @Id

@@ -19,7 +19,7 @@ import org.hibernate.envers.RelationTargetAuditMode;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "command")
+@Table(name = "command",schema = "customer")
 @Getter
 @Setter
 @AllArgsConstructor

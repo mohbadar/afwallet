@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "task_instance")
+@Table(name = "task_instance", schema = "customer")
 @Getter
 @Setter
 @AllArgsConstructor

@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "task_definition")
+@Table(name = "task_definition", schema = "customer")
 @Getter
 @Setter
 @AllArgsConstructor

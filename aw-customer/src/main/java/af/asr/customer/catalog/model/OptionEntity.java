@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "option")
+@Table(name = "option",schema = "catalog")
 public class OptionEntity {
 
   @Id
