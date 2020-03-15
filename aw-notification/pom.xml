@@ -50,11 +50,29 @@
 			<artifactId>aw-lib-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>af.gov.anar</groupId>
-			<artifactId>aw-customer</artifactId>>
+			<artifactId>aw-customer</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.twilio.sdk/twilio -->
+		<dependency>
+			<groupId>com.twilio.sdk</groupId>
+			<artifactId>twilio</artifactId>
+			<version>7.17.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>af.gov.anar.lib</groupId>
+			<artifactId>aw-lib-kafka</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
 			<artifactId>aw-lib-metrics</artifactId>

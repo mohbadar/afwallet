@@ -4,6 +4,8 @@ package af.asr.notification.service;
 
 import af.asr.notification.ServiceConstants;
 import af.asr.notification.domain.EmailConfiguration;
+import af.asr.notification.mapper.EmailConfigurationMapper;
+import af.asr.notification.model.EmailGatewayConfigurationEntity;
 import af.asr.notification.repository.EmailGatewayConfigurationRepository;
 import af.asr.notification.util.MailBuilder;
 import org.slf4j.Logger;
@@ -15,6 +17,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -121,5 +124,30 @@ public class EmailService {
 			logger.error("Failed to send Formatted email{}", e.getMessage());
 		}
 		return null;
+	}
+
+
+
+	@Transactional
+	public String CreateEmailConfiguration(final EmailConfiguration emailConfiguration) {
+		final EmailGatewayConfigurationEntity entity = EmailConfigurationMapper.map(emailConfiguration);
+		this.emailGatewayConfigurationRepository.save(entity);
+
+		return emailConfiguration.getIdentifier();
+	}
+
+	@Transactional
+	public String updateEmailConfiguration(final EmailConfiguration emailConfiguration) {
+		final EmailGatewayConfigurationEntity newEntity = EmailConfigurationMapper.map(emailConfiguration);
+		this.emailGatewayConfigurationRepository.deleteEmailGatewayConfigurationEntityByIdentifier(newEntity.getIdentifier());
+		this.emailGatewayConfigurationRepository.save(newEntity);
+
+		return emailConfiguration.getIdentifier();
+	}
+
+	@Transactional
+	public String deleteEmailConfiguration(final String identifier) {
+		this.emailGatewayConfigurationRepository.deleteEmailGatewayConfigurationEntityByIdentifier(identifier);
+		return identifier;
 	}
 }

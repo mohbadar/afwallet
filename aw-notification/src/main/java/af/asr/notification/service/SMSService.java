@@ -1,38 +1,16 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+
 package af.asr.notification.service;
 
 
+import af.asr.notification.ServiceConstants;
+import af.asr.notification.domain.SMSConfiguration;
+import af.asr.notification.mapper.SMSConfigurationMapper;
+import af.asr.notification.repository.SMSGatewayConfigurationRepository;
 import com.twilio.Twilio;
 import com.twilio.exception.ApiException;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.rest.api.v2010.account.MessageCreator;
 import com.twilio.type.PhoneNumber;
-import org.apache.fineract.cn.command.annotation.Aggregate;
-import org.apache.fineract.cn.command.annotation.CommandHandler;
-import org.apache.fineract.cn.command.annotation.CommandLogLevel;
-import org.apache.fineract.cn.command.annotation.EventEmitter;
-import org.apache.fineract.cn.notification.api.v1.domain.SMSConfiguration;
-import org.apache.fineract.cn.notification.api.v1.events.NotificationEventConstants;
-import org.apache.fineract.cn.notification.service.ServiceConstants;
-import org.apache.fineract.cn.notification.service.internal.mapper.SMSConfigurationMapper;
-import org.apache.fineract.cn.notification.service.internal.repository.SMSGatewayConfigurationRepository;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,7 +21,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Aggregate
 public class SMSService {
 	
 	static boolean isConfigured;
@@ -102,10 +79,7 @@ public class SMSService {
 	public List<SMSConfiguration> findAllSMSConfigurationEntities() {
 		return SMSConfigurationMapper.map(this.smsGatewayConfigurationRepository.findAll());
 	}
-	
-	@CommandHandler(logStart = CommandLogLevel.INFO, logFinish = CommandLogLevel.INFO)
 	@Transactional
-	@EventEmitter(selectorName = NotificationEventConstants.SELECTOR_NAME, selectorValue = NotificationEventConstants.SEND_SMS_NOTIFICATION)
 	public int sendSMS(String receiver, String template) {
 		Twilio.init(this.accountSid, this.authToken);
 		MessageCreator messageCreator = Message.creator(this.accountSid,
