@@ -47,4 +47,21 @@ public class TemplateService {
 		this.templateRepository.save(entity);
 		return template.getTemplateIdentifier();
 	}
+
+	@Transactional
+	public String updateTemplate(final Template template)
+	{
+		final TemplateEntity templateEntity =TemplateMapper.map(template);
+		this.templateRepository.delete(templateEntity);
+		return this.templateRepository.save(templateEntity).getTemplateIdentifier();
+	}
+
+
+	@Transactional
+	public String delteTemplate(final String templateIdentifier)
+	{
+		final  TemplateEntity templateEntity = this.templateRepository.findByTemplateIdentifier(templateIdentifier).get();
+		this.templateRepository.delete(templateEntity);
+		return templateIdentifier;
+	}
 }

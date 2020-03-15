@@ -1,32 +1,9 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 package af.asr.notification.api;
 
-import org.apache.fineract.cn.anubis.annotation.AcceptedTokenType;
-import org.apache.fineract.cn.anubis.annotation.Permittable;
-import org.apache.fineract.cn.command.gateway.CommandGateway;
-import org.apache.fineract.cn.lang.ServiceException;
-import org.apache.fineract.cn.notification.api.v1.PermittableGroupIds;
-import org.apache.fineract.cn.notification.api.v1.domain.Template;
-import org.apache.fineract.cn.notification.service.ServiceConstants;
-import org.apache.fineract.cn.notification.service.internal.command.CreateTemplateCommand;
-import org.apache.fineract.cn.notification.service.internal.service.TemplateService;
+import af.asr.notification.ServiceConstants;
+import af.asr.notification.domain.Template;
+import af.asr.notification.service.TemplateService;
+import af.gov.anar.lang.infrastructure.exception.service.ServiceException;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,20 +20,17 @@ import javax.validation.Valid;
 public class TemplateRestController {
 	
 	private final Logger logger;
-	private final CommandGateway commandGateway;
 	private final TemplateService templateService;
 	
 	@Autowired
 	public TemplateRestController(@Qualifier(ServiceConstants.LOGGER_NAME) final Logger logger,
-	                              final CommandGateway commandGateway,
 	                              final TemplateService templateService) {
 		super();
 		this.logger = logger;
-		this.commandGateway = commandGateway;
 		this.templateService = templateService;
 	}
 	
-	@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(
 			value = "/{identifier}",
 			method = RequestMethod.GET,
@@ -71,7 +45,7 @@ public class TemplateRestController {
 				.orElseThrow(() -> ServiceException.notFound("Template with identifier " + identifier + " doesn't exist."));
 	}
 	
-	@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(
 			method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -84,11 +58,11 @@ public class TemplateRestController {
 			throw ServiceException.conflict("Template {0} already exists.", template.getTemplateIdentifier());
 		}
 		
-		this.commandGateway.process(new CreateTemplateCommand(template));
+		this.templateService.createTemplate(template);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
-	@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(
 			method = RequestMethod.PUT,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -97,11 +71,11 @@ public class TemplateRestController {
 	public
 	@ResponseBody
     ResponseEntity<Void> updateTemplate(@RequestBody @Valid final Template template) {
-		this.commandGateway.process(template);
+		this.templateService.updateTemplate(template);
 		return ResponseEntity.accepted().build();
 	}
 	
-	@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(value = "/{identifier}",
 			method = RequestMethod.DELETE,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -110,7 +84,7 @@ public class TemplateRestController {
 	public
 	@ResponseBody
     ResponseEntity<Void> deleteTemplate(@PathVariable @Valid final String identifier) {
-		this.commandGateway.process(identifier);
+		this.templateService.deleteTemplate(identifier);
 		return ResponseEntity.ok().build();
 	}
 }

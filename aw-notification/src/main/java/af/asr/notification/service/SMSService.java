@@ -117,7 +117,7 @@ public class SMSService {
 	}
 
 	@Transactional
-	public String process(final String identifier) {
+	public String deleteSmsConfiguration(final String identifier) {
 		smsGatewayConfigurationRepository.deleteSMSGatewayConfigurationEntityByIdentifier(identifier);
 		return identifier;
 	}
