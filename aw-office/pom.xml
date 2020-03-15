@@ -33,6 +33,14 @@
 			<version>1.4.7.RELEASE</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-eureka -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+			<version>1.4.7.RELEASE</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
 			<artifactId>aw-lib-api</artifactId>
