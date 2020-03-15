@@ -1,10 +1,10 @@
 
 package af.asr.office.manager;
 
-import af.asr.office.client.AlreadyExistsException;
-import af.asr.office.client.BadRequestException;
-import af.asr.office.client.ChildrenExistException;
-import af.asr.office.client.NotFoundException;
+import af.asr.office.exception.AlreadyExistsException;
+import af.asr.office.exception.BadRequestException;
+import af.asr.office.exception.ChildrenExistException;
+import af.asr.office.exception.NotFoundException;
 import af.asr.office.domain.*;
 import af.gov.anar.api.annotation.ThrowsException;
 import af.gov.anar.api.annotation.ThrowsExceptions;
