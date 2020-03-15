@@ -40,7 +40,7 @@ public class NotificationService {
 		this.logger = logger;
 	}
 	
-	public Optional<Customer> findCustomer(final String customerIdentifier, String tenant) {
+	public Optional<Customer> findCustomer(final String customerIdentifier) {
 		return customerService.findCustomer(customerIdentifier);
 	}
 	

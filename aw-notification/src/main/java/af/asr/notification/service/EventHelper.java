@@ -1,13 +1,18 @@
 
 package af.asr.notification.service;
 
+import af.gov.anar.lib.kafka.producer.AnarKafkaProducer;
 import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @SuppressWarnings("WeakerAccess")
 @Component
 public class EventHelper {
+
+	@Autowired
+	private AnarKafkaProducer<Object> anarKafkaProducer;
 //	private final Gson gson;
 //	private final JmsTemplate jmsTemplate;
 	
@@ -17,18 +22,6 @@ public class EventHelper {
 //	}
 	
 	public void sendEvent(final String eventName, final Object payload) {
-//		this.jmsTemplate.convertAndSend(
-//				this.gson.toJson(payload),
-//				message -> {
-//					message.setStringProperty(
-//							TenantHeaderFilter.TENANT_HEADER,
-//							tenantIdentifier);
-//					message.setStringProperty(
-//							NotificationEventConstants.SELECTOR_NAME,
-//							eventName
-//					);
-//					return message;
-//				}
-//		);
+		this.anarKafkaProducer.produce(eventName, payload);
 	}
 }
