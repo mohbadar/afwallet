@@ -4,7 +4,7 @@ package af.asr.office.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "horus_contact_details", schema = "office")
+@Table(name = "office_contact_details", schema = "office")
 public class ContactDetailEntity {
 
   @Id

@@ -4,7 +4,7 @@ package af.asr.office.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "horus_external_references", schema = "office")
+@Table(name = "office_external_references", schema = "office")
 public class ExternalReferenceEntity {
 
   @Id
