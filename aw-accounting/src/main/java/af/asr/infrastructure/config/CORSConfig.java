@@ -23,9 +23,9 @@ public class CORSConfig{
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(corsService.getAllowedOrigins());
-        config.setAllowedMethods(corsService.getAllowedMethods());
-        config.setAllowedHeaders(corsService.getAllowedHeaders());
+//        config.setAllowedOrigins(corsService.getAllowedOrigins());
+//        config.setAllowedMethods(corsService.getAllowedMethods());
+//        config.setAllowedHeaders(corsService.getAllowedHeaders());
         source.registerCorsConfiguration("/**", config);
         FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);

@@ -65,7 +65,7 @@ public class AuditManagerSerivceImpl extends BaseService implements AuditManager
         String hostName = hostService.SERVICE_HOST;
 
         try {
-        // Getting Host IP Address and Name
+        // Getting Host IP AddressEntity and Name
          hostIP = hostService.getDefaultIP();
          hostName = hostService.getDefaultHostName();
 
