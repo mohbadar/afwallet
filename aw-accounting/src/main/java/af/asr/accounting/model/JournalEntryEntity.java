@@ -4,6 +4,7 @@ package af.asr.accounting.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
@@ -31,11 +32,13 @@ public class JournalEntryEntity {
   @Column(name = "note")
   private String note;
 //  @Frozen
-  @Column(name = "debtors")
-  private Set<DebtorType> debtors;
+//  @Column(name = "debtors")
+  @OneToMany
+  private Set<DebtorType> debtors= new HashSet<>();
 //  @Frozen
-  @Column(name = "creditors")
-  private Set<CreditorType> creditors;
+//  @Column(name = "creditors")
+  @OneToMany
+  private Set<CreditorType> creditors = new HashSet<>();
   @Column(name = "state")
   private String state;
   @Column(name = "message")

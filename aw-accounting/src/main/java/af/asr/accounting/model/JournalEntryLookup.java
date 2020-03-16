@@ -3,15 +3,17 @@ package af.asr.accounting.model;
 
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @Entity
 @Table(name = "acc_journal_entry_lookup", schema = "accounting")
 public class JournalEntryLookup {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
 
   @Column(name = "transaction_identifier")
   private String transactionIdentifier;

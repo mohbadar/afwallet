@@ -1,21 +1,4 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+
 package af.asr.accounting.service;
 
 import af.asr.accounting.domain.*;
@@ -53,11 +36,12 @@ public class AccountService {
   private final LedgerRepository ledgerRepository;
   private final JournalEntryRepository journalEntryRepository;
   private final UserService userService;
-  private final JournalEntryService journalEntryService;
+
   @Autowired
   public AccountService(final AccountRepository accountRepository,
                         final AccountEntryRepository accountEntryRepository,
-                        final CommandRepository commandRepository, Logger logger, LedgerRepository ledgerRepository, JournalEntryRepository journalEntryRepository, UserService userService, JournalEntryService journalEntryService) {
+                        final CommandRepository commandRepository, Logger logger, LedgerRepository ledgerRepository,
+                        JournalEntryRepository journalEntryRepository, UserService userService) {
     super();
     this.accountRepository = accountRepository;
     this.accountEntryRepository = accountEntryRepository;
@@ -66,7 +50,6 @@ public class AccountService {
     this.ledgerRepository = ledgerRepository;
     this.journalEntryRepository = journalEntryRepository;
     this.userService = userService;
-    this.journalEntryService = journalEntryService;
   }
 
   public Optional<Account> findAccount(final String identifier) {
@@ -461,7 +444,7 @@ public class AccountService {
                 this.accountEntryRepository.save(accountEntryEntity);
                 this.adjustLedgerTotals(savedAccountEntity.getLedger().getIdentifier(), amount);
               });
-      this.journalEntryService.releaseJournalEntry(transactionIdentifier);
+      this.releaseJournalEntry(transactionIdentifier);
       return transactionIdentifier;
     } else {
       return null;
@@ -487,6 +470,17 @@ public class AccountService {
     final LedgerEntity savedLedger = this.ledgerRepository.save(ledger);
     if (savedLedger.getParentLedger() != null) {
       this.adjustLedgerTotals(savedLedger.getParentLedger().getIdentifier(), amount);
+    }
+  }
+
+
+  @Transactional
+  public void releaseJournalEntry(final String transactionIdentifier) {
+    final Optional<JournalEntryEntity> optionalJournalEntry = this.journalEntryRepository.findByTransactionIdentifier(transactionIdentifier);
+    if (optionalJournalEntry.isPresent()) {
+      final JournalEntryEntity journalEntryEntity = optionalJournalEntry.get();
+      journalEntryEntity.setState(JournalEntry.State.PROCESSED.name());
+      this.journalEntryRepository.save(journalEntryEntity);
     }
   }
 }

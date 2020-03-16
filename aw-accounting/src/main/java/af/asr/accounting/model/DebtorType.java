@@ -2,6 +2,7 @@
 package af.asr.accounting.model;
 
 
+
 import javax.persistence.*;
 
 @SuppressWarnings({"unused"})
