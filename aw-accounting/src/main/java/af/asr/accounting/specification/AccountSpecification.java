@@ -1,6 +1,7 @@
 
 package af.asr.accounting.specification;
 
+import af.asr.accounting.domain.Account;
 import af.asr.accounting.model.AccountEntity;
 
 import org.springframework.data.jpa.domain.Specification;

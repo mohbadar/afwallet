@@ -2,7 +2,6 @@
 package af.asr.accounting.specification;
 
 import af.asr.accounting.model.LedgerEntity;
-import org.apache.fineract.cn.accounting.service.internal.repository.LedgerEntity;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.Predicate;
