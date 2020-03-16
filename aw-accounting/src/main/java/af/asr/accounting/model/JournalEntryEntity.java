@@ -1,21 +1,25 @@
 
 package af.asr.accounting.model;
 
-import com.datastax.driver.mapping.annotations.*;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
-@Table(name = "acc_journal_entries", schema = "accounting")
+@Entity
+@Table(name = "acc_credit_type", schema = "accounting")
 public class JournalEntryEntity {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
+
   @SuppressWarnings("DefaultAnnotationParam")
-  @PartitionKey(value = 0)
   @Column(name = "date_bucket")
   private String dateBucket;
   @SuppressWarnings("DefaultAnnotationParam")
-  @ClusteringColumn(value = 0)
   @Column(name = "transaction_identifier")
   private String transactionIdentifier;
   @Column(name = "transaction_date")
@@ -26,10 +30,10 @@ public class JournalEntryEntity {
   private String clerk;
   @Column(name = "note")
   private String note;
-  @Frozen
+//  @Frozen
   @Column(name = "debtors")
   private Set<DebtorType> debtors;
-  @Frozen
+//  @Frozen
   @Column(name = "creditors")
   private Set<CreditorType> creditors;
   @Column(name = "state")

@@ -18,11 +18,11 @@
  */
 package af.asr.accounting.service;
 
-import org.apache.fineract.cn.accounting.api.v1.domain.TransactionType;
-import org.apache.fineract.cn.accounting.api.v1.domain.TransactionTypePage;
-import org.apache.fineract.cn.accounting.service.internal.mapper.TransactionTypeMapper;
-import org.apache.fineract.cn.accounting.service.internal.repository.TransactionTypeEntity;
-import org.apache.fineract.cn.accounting.service.internal.repository.TransactionTypeRepository;
+import af.asr.accounting.domain.*;
+import af.asr.accounting.domain.financial.statement.*;
+import af.asr.accounting.mapper.*;
+import af.asr.accounting.model.*;
+import af.asr.accounting.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

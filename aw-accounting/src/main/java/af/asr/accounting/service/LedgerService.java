@@ -18,17 +18,14 @@
  */
 package af.asr.accounting.service;
 
-import org.apache.fineract.cn.accounting.api.v1.domain.Account;
-import org.apache.fineract.cn.accounting.api.v1.domain.AccountPage;
-import org.apache.fineract.cn.accounting.api.v1.domain.Ledger;
-import org.apache.fineract.cn.accounting.api.v1.domain.LedgerPage;
-import org.apache.fineract.cn.accounting.service.internal.mapper.AccountMapper;
-import org.apache.fineract.cn.accounting.service.internal.mapper.LedgerMapper;
-import org.apache.fineract.cn.accounting.service.internal.repository.AccountEntity;
-import org.apache.fineract.cn.accounting.service.internal.repository.AccountRepository;
-import org.apache.fineract.cn.accounting.service.internal.repository.LedgerEntity;
-import org.apache.fineract.cn.accounting.service.internal.repository.LedgerRepository;
-import org.apache.fineract.cn.accounting.service.internal.repository.specification.LedgerSpecification;
+import af.asr.accounting.repository.AccountRepository;
+import af.asr.accounting.repository.LedgerRepository;
+import af.asr.accounting.domain.*;
+import af.asr.accounting.domain.financial.statement.*;
+import af.asr.accounting.mapper.*;
+import af.asr.accounting.model.*;
+import af.asr.accounting.repository.*;
+import af.asr.accounting.specification.LedgerSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

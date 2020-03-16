@@ -18,11 +18,11 @@
  */
 package af.asr.accounting.service;
 
-import org.apache.fineract.cn.accounting.api.v1.domain.AccountType;
-import org.apache.fineract.cn.accounting.api.v1.domain.financial.statement.TrialBalance;
-import org.apache.fineract.cn.accounting.api.v1.domain.financial.statement.TrialBalanceEntry;
-import org.apache.fineract.cn.accounting.service.internal.mapper.LedgerMapper;
-import org.apache.fineract.cn.accounting.service.internal.repository.LedgerRepository;
+import af.asr.accounting.domain.*;
+import af.asr.accounting.domain.financial.statement.*;
+import af.asr.accounting.mapper.*;
+import af.asr.accounting.model.*;
+import af.asr.accounting.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

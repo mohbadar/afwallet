@@ -1,7 +1,8 @@
 
 package af.asr.accounting.model;
 
-import org.apache.fineract.cn.postgresql.util.LocalDateTimeConverter;
+
+import af.asr.infrastructure.converter.LocalDateTimeConverter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

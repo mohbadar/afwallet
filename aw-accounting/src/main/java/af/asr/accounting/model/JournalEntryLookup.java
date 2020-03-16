@@ -1,15 +1,18 @@
 
 package af.asr.accounting.model;
 
-import com.datastax.driver.mapping.annotations.Column;
-import com.datastax.driver.mapping.annotations.PartitionKey;
-import com.datastax.driver.mapping.annotations.Table;
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
+@Entity
 @Table(name = "acc_journal_entry_lookup", schema = "accounting")
 public class JournalEntryLookup {
 
-  @PartitionKey
+
   @Column(name = "transaction_identifier")
   private String transactionIdentifier;
   @Column(name = "date_bucket")

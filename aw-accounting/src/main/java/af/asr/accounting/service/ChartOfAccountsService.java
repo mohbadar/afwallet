@@ -18,11 +18,10 @@
  */
 package af.asr.accounting.service;
 
-import org.apache.fineract.cn.accounting.api.v1.domain.ChartOfAccountEntry;
-import org.apache.fineract.cn.accounting.service.internal.repository.AccountEntity;
-import org.apache.fineract.cn.accounting.service.internal.repository.AccountRepository;
-import org.apache.fineract.cn.accounting.service.internal.repository.LedgerEntity;
-import org.apache.fineract.cn.accounting.service.internal.repository.LedgerRepository;
+import af.asr.accounting.domain.*;
+import af.asr.accounting.mapper.*;
+import af.asr.accounting.model.*;
+import af.asr.accounting.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -18,11 +18,13 @@
  */
 package af.asr.accounting.service;
 
-import org.apache.fineract.cn.accounting.api.v1.domain.JournalEntry;
-import org.apache.fineract.cn.accounting.service.ServiceConstants;
-import org.apache.fineract.cn.accounting.service.internal.mapper.JournalEntryMapper;
-import org.apache.fineract.cn.accounting.service.internal.repository.*;
-import org.apache.fineract.cn.lang.DateRange;
+import af.asr.accounting.ServiceConstants;
+import af.asr.accounting.domain.*;
+import af.asr.accounting.domain.financial.statement.*;
+import af.asr.accounting.mapper.*;
+import af.asr.accounting.model.*;
+import af.asr.accounting.repository.*;
+import af.gov.anar.lang.validation.date.DateRange;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -50,8 +52,8 @@ public class JournalEntryService {
   }
 
   public List<JournalEntry> fetchJournalEntries(final DateRange range, final String accountNumber, final BigDecimal amount) {
-    final List<JournalEntryEntity> journalEntryEntities =
-        this.journalEntryRepository.fetchJournalEntries(range);
+    final List<JournalEntryEntity> journalEntryEntities = this.journalEntryRepository.findAll();
+//        this.journalEntryRepository.fetchJournalEntries(range);
 
     if (journalEntryEntities != null) {
 
@@ -96,7 +98,7 @@ public class JournalEntryService {
   }
 
   public Optional<JournalEntry> findJournalEntry(final String transactionIdentifier) {
-    final Optional<JournalEntryEntity> optionalJournalEntryEntity = this.journalEntryRepository.findJournalEntry(transactionIdentifier);
+    final Optional<JournalEntryEntity> optionalJournalEntryEntity = this.journalEntryRepository.findByTransactionIdentifier(transactionIdentifier);
 
     return optionalJournalEntryEntity.map(JournalEntryMapper::map);
   }

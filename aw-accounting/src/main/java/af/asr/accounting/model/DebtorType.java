@@ -1,16 +1,22 @@
 
 package af.asr.accounting.model;
 
-import com.datastax.driver.mapping.annotations.Field;
-import com.datastax.driver.mapping.annotations.UDT;
+
+import javax.persistence.*;
 
 @SuppressWarnings({"unused"})
-@UDT(name = "acc_debtor", schema = "accounting")
+@Entity
+@Table(name = "acc_credit_type", schema = "accounting")
 public class DebtorType {
 
-  @Field(name = "account_number")
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
+
+  @Column(name = "account_number")
   private String accountNumber;
-  @Field(name = "amount")
+  @Column(name = "amount")
   private Double amount;
 
   public DebtorType() {
