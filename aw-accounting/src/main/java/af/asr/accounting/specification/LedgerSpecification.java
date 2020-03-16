@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package af.asr.accounting.repository.specification;
+package af.asr.accounting.specification;
 
 import org.apache.fineract.cn.accounting.service.internal.repository.LedgerEntity;
 import org.springframework.data.jpa.domain.Specification;

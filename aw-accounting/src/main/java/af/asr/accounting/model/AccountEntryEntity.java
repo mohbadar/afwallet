@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package af.asr.accounting.repository;
+package af.asr.accounting.model;
 
-import org.apache.fineract.cn.postgresql.util.LocalDateTimeConverter;
+import af.asr.infrastructure.converter.LocalDateTimeConverter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

@@ -18,6 +18,8 @@
  */
 package af.asr.accounting.repository;
 
+import af.asr.accounting.model.AccountEntity;
+import af.asr.accounting.model.AccountEntryEntity;
 import org.apache.fineract.cn.postgresql.util.LocalDateTimeConverter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

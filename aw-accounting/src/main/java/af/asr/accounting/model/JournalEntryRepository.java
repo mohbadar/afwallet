@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package af.asr.accounting.repository;
+package af.asr.accounting.model;
 
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Session;

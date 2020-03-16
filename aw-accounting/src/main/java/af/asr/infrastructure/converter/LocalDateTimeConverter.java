@@ -16,37 +16,37 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package af.asr.accounting.repository;
+package af.asr.infrastructure.converter;
 
-import com.datastax.driver.mapping.annotations.Field;
-import com.datastax.driver.mapping.annotations.UDT;
 
-@SuppressWarnings({"unused"})
-@UDT(name = "thoth_creditor")
-public class CreditorType {
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import org.apache.fineract.cn.lang.DateConverter;
 
-  @Field(name = "account_number")
-  private String accountNumber;
-  @Field(name = "amount")
-  private Double amount;
+@Converter
+public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime, Timestamp> {
 
-  public CreditorType() {
+  public LocalDateTimeConverter() {
     super();
   }
 
-  public String getAccountNumber() {
-    return this.accountNumber;
+  @Override
+  public Timestamp convertToDatabaseColumn(final LocalDateTime attribute) {
+    if (attribute == null) {
+      return null;
+    } else {
+      return new Timestamp(DateConverter.toEpochMillis(attribute));
+    }
   }
 
-  public void setAccountNumber(final String accountNumber) {
-    this.accountNumber = accountNumber;
-  }
-
-  public Double getAmount() {
-    return this.amount;
-  }
-
-  public void setAmount(final Double amount) {
-    this.amount = amount;
+  @Override
+  public LocalDateTime convertToEntityAttribute(final Timestamp dbData) {
+    if (dbData == null) {
+      return null;
+    } else {
+      return DateConverter.fromEpochMillis(dbData.getTime());
+    }
   }
 }

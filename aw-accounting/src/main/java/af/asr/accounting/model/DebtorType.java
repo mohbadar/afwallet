@@ -16,22 +16,37 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package af.asr.accounting.repository;
+package af.asr.accounting.model;
 
-import af.asr.accounting.model.TransactionTypeEntity;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.datastax.driver.mapping.annotations.Field;
+import com.datastax.driver.mapping.annotations.UDT;
 
-import java.util.Optional;
+@SuppressWarnings({"unused"})
+@UDT(name = "thoth_debtor")
+public class DebtorType {
 
-@Repository
-public interface TransactionTypeRepository extends JpaRepository<TransactionTypeEntity, Long> {
+  @Field(name = "account_number")
+  private String accountNumber;
+  @Field(name = "amount")
+  private Double amount;
 
-  Page<TransactionTypeEntity> findByIdentifierContainingOrNameContaining(final String identifier,
-                                                                         final String name,
-                                                                         final Pageable pageable);
+  public DebtorType() {
+    super();
+  }
 
-  Optional<TransactionTypeEntity> findByIdentifier(final String identifier);
+  public String getAccountNumber() {
+    return this.accountNumber;
+  }
+
+  public void setAccountNumber(final String accountNumber) {
+    this.accountNumber = accountNumber;
+  }
+
+  public Double getAmount() {
+    return this.amount;
+  }
+
+  public void setAmount(final Double amount) {
+    this.amount = amount;
+  }
 }

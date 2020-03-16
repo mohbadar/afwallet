@@ -16,21 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package af.asr.accounting.repository;
+package af.asr.accounting.model;
 
 import com.datastax.driver.mapping.annotations.Field;
 import com.datastax.driver.mapping.annotations.UDT;
 
 @SuppressWarnings({"unused"})
-@UDT(name = "thoth_debtor")
-public class DebtorType {
+@UDT(name = "thoth_creditor")
+public class CreditorType {
 
   @Field(name = "account_number")
   private String accountNumber;
   @Field(name = "amount")
   private Double amount;
 
-  public DebtorType() {
+  public CreditorType() {
     super();
   }
 
