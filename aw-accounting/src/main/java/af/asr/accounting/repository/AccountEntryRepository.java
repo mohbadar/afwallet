@@ -3,7 +3,7 @@ package af.asr.accounting.repository;
 
 import af.asr.accounting.model.AccountEntity;
 import af.asr.accounting.model.AccountEntryEntity;
-import org.apache.fineract.cn.postgresql.util.LocalDateTimeConverter;
+import af.asr.infrastructure.converter.LocalDateTimeConverter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
