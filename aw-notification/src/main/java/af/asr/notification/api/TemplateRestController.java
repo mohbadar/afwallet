@@ -30,7 +30,7 @@ public class TemplateRestController {
 		this.templateService = templateService;
 	}
 	
-	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(
 			value = "/{identifier}",
 			method = RequestMethod.GET,
@@ -45,7 +45,7 @@ public class TemplateRestController {
 				.orElseThrow(() -> ServiceException.notFound("Template with identifier " + identifier + " doesn't exist."));
 	}
 	
-	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(
 			method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -62,7 +62,7 @@ public class TemplateRestController {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
-	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(
 			method = RequestMethod.PUT,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -75,7 +75,7 @@ public class TemplateRestController {
 		return ResponseEntity.accepted().build();
 	}
 	
-	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(value = "/{identifier}",
 			method = RequestMethod.DELETE,
 			consumes = MediaType.APPLICATION_JSON_VALUE,

@@ -52,7 +52,7 @@ public class CustomerRestController {
     this.userService = userService;
   }
 
-//  @Permittable(value = AcceptedTokenType.SYSTEM)
+//  //@Permittable(value = AcceptedTokenType.SYSTEM)
   @RequestMapping(
       value = "/initialize",
       method = RequestMethod.POST,
@@ -64,7 +64,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers",
       method = RequestMethod.POST,
@@ -86,7 +86,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers",
       method = RequestMethod.GET,
@@ -106,7 +106,7 @@ public class CustomerRestController {
         this.createPageRequest(pageIndex, size, sortColumn, sortDirection)));
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}",
       method = RequestMethod.GET,
@@ -124,7 +124,7 @@ public class CustomerRestController {
     }
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}",
       method = RequestMethod.PUT,
@@ -198,7 +198,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/commands",
       method = RequestMethod.GET,
@@ -215,7 +215,7 @@ public class CustomerRestController {
     }
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/tasks/{taskIdentifier}",
       method = RequestMethod.POST,
@@ -238,7 +238,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/tasks/{taskIdentifier}",
       method = RequestMethod.PUT,
@@ -278,7 +278,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/tasks",
       method = RequestMethod.GET,
@@ -296,7 +296,7 @@ public class CustomerRestController {
     }
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/address",
       method = RequestMethod.PUT,
@@ -315,7 +315,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/contact",
       method = RequestMethod.PUT,
@@ -334,7 +334,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications",
           method = RequestMethod.GET,
@@ -347,7 +347,7 @@ public class CustomerRestController {
     return ResponseEntity.ok(this.customerService.fetchIdentificationCardsByCustomer(identifier).collect(Collectors.toList()));
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}",
           method = RequestMethod.GET,
@@ -368,7 +368,7 @@ public class CustomerRestController {
     }
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications",
           method = RequestMethod.POST,
@@ -392,7 +392,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
       value = "/customers/{identifier}/identifications/{number}",
       method = RequestMethod.PUT,
@@ -416,7 +416,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}",
           method = RequestMethod.DELETE,
@@ -434,7 +434,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}/scans",
           method = RequestMethod.GET,
@@ -453,7 +453,7 @@ public class CustomerRestController {
     return ResponseEntity.ok(identificationCardScans);
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}/scans/{scanIdentifier}",
           method = RequestMethod.GET,
@@ -475,7 +475,7 @@ public class CustomerRestController {
             .orElseThrow(() -> ServiceException.notFound("Identification card scan {0} not found.", number));
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}/scans/{scanIdentifier}/image",
           method = RequestMethod.GET,
@@ -497,7 +497,7 @@ public class CustomerRestController {
             .orElseThrow(() -> ServiceException.notFound("Identification card scan {0} not found.", number));
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}/scans",
           produces = MediaType.APPLICATION_JSON_VALUE,
@@ -528,7 +528,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.IDENTIFICATIONS)
   @RequestMapping(
           value = "/customers/{identifier}/identifications/{number}/scans/{scanIdentifier}",
           method = RequestMethod.DELETE,
@@ -548,7 +548,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
   @RequestMapping(
       value = "/customers/{identifier}/portrait",
       method = RequestMethod.GET,
@@ -565,7 +565,7 @@ public class CustomerRestController {
             .body(portrait.getImage());
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
   @RequestMapping(
       value = "/customers/{identifier}/portrait",
       method = RequestMethod.POST,
@@ -594,7 +594,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.PORTRAIT)
   @RequestMapping(
       value = "/customers/{identifier}/portrait",
       method = RequestMethod.DELETE,
@@ -608,7 +608,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
   @RequestMapping(
       value = "/tasks",
       method = RequestMethod.POST,
@@ -626,7 +626,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
   @RequestMapping(
       value = "/tasks",
       method = RequestMethod.GET,
@@ -639,7 +639,7 @@ public class CustomerRestController {
     return ResponseEntity.ok(this.taskService.fetchAll());
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
   @RequestMapping(
       value = "/tasks/{identifier}",
       method = RequestMethod.GET,
@@ -657,7 +657,7 @@ public class CustomerRestController {
     }
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.TASK)
   @RequestMapping(
       value = "/tasks/{identifier}",
       method = RequestMethod.PUT,
@@ -675,7 +675,7 @@ public class CustomerRestController {
     return ResponseEntity.accepted().build();
   }
 
-//  @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
+//  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CUSTOMER)
   @RequestMapping(
       value = "/customers/{identifier}/actions",
       method = RequestMethod.GET,

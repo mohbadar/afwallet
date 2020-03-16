@@ -1,4 +1,4 @@
- // @Permittable
+ // //@Permittable
 package af.asr.customer.events;
 
 import java.util.Objects;

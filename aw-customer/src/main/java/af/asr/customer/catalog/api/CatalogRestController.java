@@ -31,7 +31,7 @@ public class CatalogRestController {
     this.catalogService = catalogService;
   }
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
   @RequestMapping(
       path = "",
       method = RequestMethod.POST,
@@ -48,7 +48,7 @@ public class CatalogRestController {
     return ResponseEntity.accepted().build();
   }
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
   @RequestMapping(
       path = "",
       method = RequestMethod.GET,
@@ -61,7 +61,7 @@ public class CatalogRestController {
     return ResponseEntity.ok(this.catalogService.fetchAllCatalogs());
   }
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
   @RequestMapping(
       path = "/{identifier}",
       method = RequestMethod.GET,
@@ -77,7 +77,7 @@ public class CatalogRestController {
     );
   }
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
   @RequestMapping(
       path = "/{identifier}",
       method = RequestMethod.DELETE,
@@ -96,7 +96,7 @@ public class CatalogRestController {
     return ResponseEntity.accepted().build();
   }
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
   @RequestMapping(
       path = "/{catalogIdentifier}/fields/{fieldIdentifier}",
       method = RequestMethod.PUT,
@@ -117,7 +117,7 @@ public class CatalogRestController {
     return ResponseEntity.accepted().build();
   }
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.CATALOG)
   @RequestMapping(
       path = "/{catalogIdentifier}/fields/{fieldIdentifier}",
       method = RequestMethod.DELETE,

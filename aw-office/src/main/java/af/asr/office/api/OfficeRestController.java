@@ -32,7 +32,7 @@ public class OfficeRestController {
     this.employeeService = employeeService;
   }
 
-  //@Permittable(value = AcceptedTokenType.SYSTEM)
+  ////@Permittable(value = AcceptedTokenType.SYSTEM)
   @RequestMapping(
       value = "/initialize",
       method = RequestMethod.POST,
@@ -46,7 +46,7 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
   @RequestMapping(
       value = "/offices",
       method = RequestMethod.POST,
@@ -67,7 +67,7 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
   @RequestMapping(
       value = "/offices",
       method = RequestMethod.GET,
@@ -84,7 +84,7 @@ public class OfficeRestController {
     return ResponseEntity.ok(this.officeService.fetchOffices(term, this.createPageRequest(pageIndex, size, sortColumn, sortDirection)));
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
   @RequestMapping(
       value = "/offices/{identifier}",
       method = RequestMethod.GET,
@@ -102,7 +102,7 @@ public class OfficeRestController {
     }
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
   @RequestMapping(
       value = "/offices/{identifier}",
       method = RequestMethod.PUT,
@@ -125,7 +125,7 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
   @RequestMapping(
       value = "/offices/{identifier}",
       method = RequestMethod.POST,
@@ -152,7 +152,7 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
   @RequestMapping(
       value = "/offices/{identifier}/branches",
       method = RequestMethod.GET,
@@ -172,7 +172,7 @@ public class OfficeRestController {
     return ResponseEntity.ok(this.officeService.fetchBranches(identifier, this.createPageRequest(pageIndex, size, sortColumn, sortDirection)));
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
   @RequestMapping(
       value = "/offices/{identifier}",
       method = RequestMethod.DELETE,
@@ -204,7 +204,7 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
   @RequestMapping(
       value = "/offices/{identifier}/address",
       method = RequestMethod.PUT,
@@ -223,7 +223,7 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
   @RequestMapping(
       value = "/offices/{identifier}/address",
       method = RequestMethod.GET,
@@ -241,7 +241,7 @@ public class OfficeRestController {
     }
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
   @RequestMapping(
       value = "/offices/{identifier}/address",
       method = RequestMethod.DELETE,
@@ -259,7 +259,7 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
   @RequestMapping(
       value = "/employees",
       method = RequestMethod.POST,
@@ -281,7 +281,7 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
   @RequestMapping(
       value = "/employees",
       method = RequestMethod.GET,
@@ -302,8 +302,8 @@ public class OfficeRestController {
     return ResponseEntity.ok(this.employeeService.findEmployees(term, officeIdentifier, this.createPageRequest(pageIndex, size, sortColumn, sortDirection)));
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT, permittedEndpoint = "/employees/{useridentifier}")
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT, permittedEndpoint = "/employees/{useridentifier}")
   @RequestMapping(
       value = "/employees/{useridentifier}",
       method = RequestMethod.GET,
@@ -321,8 +321,8 @@ public class OfficeRestController {
     }
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT, permittedEndpoint = "/employees/{useridentifier}")
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT, permittedEndpoint = "/employees/{useridentifier}")
   @RequestMapping(
       value = "/employees/{useridentifier}",
       method = RequestMethod.PUT,
@@ -350,7 +350,7 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
   @RequestMapping(
       value = "/employees/{useridentifier}",
       method = RequestMethod.DELETE,
@@ -366,8 +366,8 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT, permittedEndpoint = "/employees/{useridentifier}/contacts")
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT, permittedEndpoint = "/employees/{useridentifier}/contacts")
   @RequestMapping(
       value = "/employees/{useridentifier}/contacts",
       method = RequestMethod.PUT,
@@ -387,8 +387,8 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT, permittedEndpoint = "/employees/{useridentifier}/contacts")
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT, permittedEndpoint = "/employees/{useridentifier}/contacts")
   @RequestMapping(
       value = "/employees/{useridentifier}/contacts",
       method = RequestMethod.GET,
@@ -404,8 +404,8 @@ public class OfficeRestController {
     return ResponseEntity.ok(this.employeeService.findContactDetailsByEmployee(identifier));
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT, permittedEndpoint = "/employees/{useridentifier}/contacts")
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.EMPLOYEE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT, permittedEndpoint = "/employees/{useridentifier}/contacts")
   @RequestMapping(
       value = "/employees/{useridentifier}/contacts",
       method = RequestMethod.DELETE,
@@ -424,7 +424,7 @@ public class OfficeRestController {
     return ResponseEntity.accepted().build();
   }
 
-  //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
+  ////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.OFFICE_MANAGEMENT)
   @RequestMapping(
       value = "/offices/{identifier}/references",
       method = RequestMethod.PUT,

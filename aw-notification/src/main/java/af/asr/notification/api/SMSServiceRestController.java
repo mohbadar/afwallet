@@ -32,7 +32,7 @@ public class SMSServiceRestController {
 		this.smsService = smsService;
 	}
 	
-	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(
 			method = RequestMethod.GET,
 			consumes = MediaType.ALL_VALUE,
@@ -44,7 +44,7 @@ public class SMSServiceRestController {
 		return this.smsService.findAllSMSConfigurationEntities();
 	}
 	
-	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(
 			value = "/{identifier}",
 			method = RequestMethod.GET,
@@ -59,7 +59,7 @@ public class SMSServiceRestController {
 				.orElseThrow(() -> ServiceException.notFound("SMS Gateway Configuration with identifier " + identifier + " doesn't exist."));
 	}
 	
-	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(
 			method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -76,7 +76,7 @@ public class SMSServiceRestController {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
-	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(
 			method = RequestMethod.PUT,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -89,7 +89,7 @@ public class SMSServiceRestController {
 		return ResponseEntity.accepted().build();
 	}
 	
-	//@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
+	////@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.SELF_MANAGEMENT)
 	@RequestMapping(value = "/{identifier}",
 			method = RequestMethod.DELETE,
 			consumes = MediaType.APPLICATION_JSON_VALUE,

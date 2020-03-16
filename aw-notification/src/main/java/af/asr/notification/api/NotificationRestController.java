@@ -29,7 +29,7 @@ public class NotificationRestController {
 		this.notificationService = notificationService;
 	}
 	
-	//@Permittable(value = AcceptedTokenType.SYSTEM)
+	////@Permittable(value = AcceptedTokenType.SYSTEM)
 	@RequestMapping(
 			value = "/initialize",
 			method = RequestMethod.POST,

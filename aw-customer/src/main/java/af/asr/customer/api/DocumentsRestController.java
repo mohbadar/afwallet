@@ -1,4 +1,4 @@
- // @Permittable
+ // //@Permittable
 package af.asr.customer.api;
 
 
@@ -34,7 +34,7 @@ public class DocumentsRestController {
     this.documentService = documentService;
   }
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
   @RequestMapping(
       method = RequestMethod.GET,
       produces = MediaType.APPLICATION_JSON_VALUE,
@@ -48,7 +48,7 @@ public class DocumentsRestController {
   }
 
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
   @RequestMapping(
       value = "/{documentidentifier}",
       method = RequestMethod.GET,
@@ -65,7 +65,7 @@ public class DocumentsRestController {
   }
 
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
   @RequestMapping(
       value = "/{documentidentifier}",
       method = RequestMethod.POST,
@@ -88,7 +88,7 @@ public class DocumentsRestController {
   }
 
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
   @RequestMapping(
       value = "/{documentidentifier}",
       method = RequestMethod.PUT,
@@ -114,7 +114,7 @@ public class DocumentsRestController {
   }
 
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
   @RequestMapping(
       value = "/{documentidentifier}",
       method = RequestMethod.DELETE,
@@ -136,7 +136,7 @@ public class DocumentsRestController {
   }
 
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
   @RequestMapping(
       value = "/{documentidentifier}/completed",
       method = RequestMethod.POST,
@@ -162,7 +162,7 @@ public class DocumentsRestController {
   }
 
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
   @RequestMapping(
       value = "/{documentidentifier}/pages",
       method = RequestMethod.GET,
@@ -179,7 +179,7 @@ public class DocumentsRestController {
   }
 
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
   @RequestMapping(
       value = "/{documentidentifier}/pages/{pagenumber}",
       method = RequestMethod.GET,
@@ -202,7 +202,7 @@ public class DocumentsRestController {
   }
 
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
   @RequestMapping(
       value = "/{documentidentifier}/pages/{pagenumber}",
       method = RequestMethod.POST,
@@ -228,7 +228,7 @@ public class DocumentsRestController {
     return ResponseEntity.accepted().build();
   }
 
-   // @Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
+   // //@Permittable(value = AcceptedTokenType.TENANT, groupId = PermittableGroupIds.DOCUMENTS)
   @RequestMapping(
       value = "/{documentidentifier}/pages/{pagenumber}",
       method = RequestMethod.DELETE,
