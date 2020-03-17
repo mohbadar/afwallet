@@ -73,6 +73,7 @@
 		<module>aw-portfolio</module>
 		<module>aw-office</module>
 		<module>aw-payroll</module>
+		<module>aw-reporting</module>
 	</modules>
 
 </project>
