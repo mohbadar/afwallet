@@ -31,7 +31,7 @@ The response will be numeric string of desire size with centerId, dongleId, five
 
 #### Usage
 
-```java
+```
 @Autowired
 RidGenerator <String> ridGeneratorImpl;
 
