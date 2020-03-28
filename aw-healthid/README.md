@@ -20,3 +20,20 @@ healthid.rid.timestamp-length=14
 healthid.rid.sequence-length=5
 
 ```
+
+1.CenterId of the registration center as string of size metion in property.
+
+2.machine id of the device as string of size metion in property.
+
+For example: centerId="32345" and machineId="56789".
+
+The response will be numeric string of desire size with centerId, dongleId, five digit sequence generated numbers and timestamp in format "yyyymmddhhmmss" of 14 digits.
+
+#### Usage
+
+```java
+@Autowired
+RidGenerator <String> ridGeneratorImpl;
+
+String rid = ridGeneratorImpl.generateId("34532","67897");
+```
