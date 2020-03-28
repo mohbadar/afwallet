@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProvinceRepository extends CrudRepository<Province, Long> , RevisionRepository<Province, Long, Integer> {
 
-    Province findByProvinceName(String name);
+    Province findByDesc(String name);
     Province findByProvinceCode(String provinceCode);
     Iterable<Province>  findByDeleted(boolean deleted);
     Iterable<Province>  findByDeletedBy(String deletedBy);

@@ -3,11 +3,14 @@ package af.gov.anar.corona.patient.model;
 import af.gov.anar.corona.infrastructure.base.BaseEntity;
 import af.gov.anar.corona.patient.enumeration.Certainty;
 import af.gov.anar.corona.patient.enumeration.ConditionClinicalStatus;
+import af.gov.anar.corona.patient.enumeration.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -52,11 +55,19 @@ public class Patient extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     private ConditionClinicalStatus conditionClinicalStatus;
 
-    @OneToMany(targetEntity = PatientAddress.class, fetch = FetchType.EAGER)
+    @Enumerated(value = EnumType.STRING)
+    private Gender gender;
+
+    @OneToMany(targetEntity = PatientAddress.class)
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private List<PatientAddress> patientAddresses;
 
-    @OneToMany(targetEntity = PatientContact.class, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = PatientContact.class)
     @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private List<PatientContact> patientContacts;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "patient_nationality", joinColumns = @JoinColumn(name = "nationalty_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "patient_id", referencedColumnName = "id"))
+    @JsonIgnore
+    private Collection<Nationality> mapLayers;
 }

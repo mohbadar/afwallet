@@ -153,7 +153,7 @@ public class DistrictController extends ResponseHandler {
             @ThrowsException(status = HttpStatus.UNAUTHORIZED, exception = UnAuthorizedException.class),
             @ThrowsException(status = HttpStatus.INTERNAL_SERVER_ERROR, exception = InternalServerProblemException.class)
     })
-    @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<Void> delete(@PathVariable(name = "id", required = true) Long id)
     {
         service.delete(id);

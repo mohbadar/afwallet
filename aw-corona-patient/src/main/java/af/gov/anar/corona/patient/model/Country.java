@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @AllArgsConstructor
@@ -14,7 +15,7 @@ import javax.persistence.Entity;
 @Builder
 @ToString
 @EqualsAndHashCode
-//@Table(schema = Schema.ADMINISTRATION, name = "country")
+@Table( name = "country")
 public class Country extends BaseEntity {
 
     @Column

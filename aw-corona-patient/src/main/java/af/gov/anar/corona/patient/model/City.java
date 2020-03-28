@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Builder
 @ToString
 @EqualsAndHashCode
-//@Table(schema = Schema.ADMINISTRATION, name = "city")
+@Table(name = "city")
 public class City extends BaseEntity {
 
     @Column

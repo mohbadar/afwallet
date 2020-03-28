@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @AllArgsConstructor
@@ -14,7 +15,8 @@ import javax.persistence.Entity;
 @Builder
 @ToString
 @EqualsAndHashCode
-public class Nationalty extends BaseEntity {
+@Table(name = "nationality")
+public class Nationality extends BaseEntity {
 
     @Column
     private String desc;
@@ -24,4 +26,9 @@ public class Nationalty extends BaseEntity {
 
     @Column
     private String descS;
+
+    public Nationality(String desc)
+    {
+        this.desc = desc;
+    }
 }
