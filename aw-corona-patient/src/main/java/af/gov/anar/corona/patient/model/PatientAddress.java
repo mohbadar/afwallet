@@ -37,4 +37,11 @@ public class PatientAddress extends BaseEntity {
     @Column
     private String description;
 
+
+    private String address1;
+
+    private String address2;
+
+    private String address3;
+
 }

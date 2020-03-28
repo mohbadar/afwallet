@@ -43,6 +43,8 @@ public class Patient extends BaseEntity {
 
     private long dob;
 
+    private String job;
+
 
     @Enumerated(value = EnumType.STRING)
     private Certainty certainty;
