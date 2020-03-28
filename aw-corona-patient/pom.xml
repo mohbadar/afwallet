@@ -27,17 +27,39 @@
 	<dependencies>
 
 
-		<dependency>
-			<groupId>af.gov.anar.lib</groupId>
-			<artifactId>aw-lib-mail</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+
+
+		<!--		<dependency>-->
+		<!--			<groupId>af.gov.anar.lib</groupId>-->
+		<!--			<artifactId>aw-lib-mail</artifactId>-->
+		<!--			<version>${project.version}</version>-->
+		<!--		</dependency>-->
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
 			<artifactId>aw-lib-kafka</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.twilio.sdk/twilio -->
+		<dependency>
+			<groupId>com.twilio.sdk</groupId>
+			<artifactId>twilio</artifactId>
+			<version>7.17.1</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>af.gov.anar.lib</groupId>
@@ -119,14 +141,14 @@
 		</dependency>
 
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-validation</artifactId>-->
-<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-security</artifactId>-->
+		<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-validation</artifactId>-->
+		<!--		</dependency>-->
 
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
@@ -236,6 +258,7 @@
 			<artifactId>TSS.Java</artifactId>
 			<version>${tss.version}</version>
 		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
