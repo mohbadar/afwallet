@@ -25,6 +25,13 @@
 			<artifactId>aw-lib-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>af.gov.anar.lib</groupId>
+			<artifactId>aw-lib-math</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>

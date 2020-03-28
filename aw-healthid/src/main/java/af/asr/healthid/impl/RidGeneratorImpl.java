@@ -4,6 +4,16 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
+import af.asr.healthid.constant.RidGeneratorExceptionConstant;
+import af.asr.healthid.constant.RidGeneratorPropertyConstant;
+import af.asr.healthid.entity.Rid;
+import af.asr.healthid.exception.EmptyInputException;
+import af.asr.healthid.exception.InputLengthException;
+import af.asr.healthid.exception.NullValueException;
+import af.asr.healthid.exception.RidException;
+import af.asr.healthid.repository.RidRepository;
+import af.gov.anar.lib.math.MathUtility;
+import org.apache.commons.math3.util.MathUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
@@ -106,7 +116,7 @@ public class RidGeneratorImpl implements RidGenerator<String> {
 	private String sequenceNumberGenerator(int sequenceLength) {
 		int sequenceId = 0;
 		Rid entity = null;
-		int sequenceEndvalue = MathUtils.getPow(10, sequenceLength) - 1;
+		int sequenceEndvalue = MathUtility.getPow(10, sequenceLength) - 1;
 		String sequenceFormat = "%0" + sequenceLength + "d";
 
 		if (sequenceLength <= 0) {
@@ -116,7 +126,7 @@ public class RidGeneratorImpl implements RidGenerator<String> {
 
 		try {
 			entity = ridRepository.findLastRid();
-		} catch (DataAccessException | DataAccessLayerException e) {
+		} catch (DataAccessException e) {
 			throw new RidException(RidGeneratorExceptionConstant.RID_FETCH_EXCEPTION.getErrorCode(),
 					RidGeneratorExceptionConstant.RID_FETCH_EXCEPTION.errorMessage, e);
 		}
@@ -139,7 +149,7 @@ public class RidGeneratorImpl implements RidGenerator<String> {
 					ridRepository.updateRid(sequenceId, entity.getCurrentSequenceNo());
 				}
 			}
-		} catch (DataAccessException | DataAccessLayerException e) {
+		} catch (DataAccessException  e) {
 			throw new RidException(RidGeneratorExceptionConstant.RID_UPDATE_EXCEPTION.getErrorCode(),
 					RidGeneratorExceptionConstant.RID_UPDATE_EXCEPTION.errorMessage, e);
 		}
