@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.infrastructure.service;
+package af.gov.anar.ebreshna.infrastructure.base;
 
 
 import af.gov.anar.ebreshna.infrastructure.revision.AuditEnabledEntity;

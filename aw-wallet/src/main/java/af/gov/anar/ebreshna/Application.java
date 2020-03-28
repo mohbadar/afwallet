@@ -1,10 +1,8 @@
 package af.gov.anar.ebreshna;
 
-import af.gov.anar.ebreshna.infrastructure.service.UserService;
 import af.gov.anar.lang.applicationname.EnableApplicationName;
 import lombok.extern.slf4j.Slf4j;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;

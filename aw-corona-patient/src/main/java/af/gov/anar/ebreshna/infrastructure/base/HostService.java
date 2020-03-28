@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.infrastructure.service;
+package af.gov.anar.ebreshna.infrastructure.base;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

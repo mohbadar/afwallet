@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.infrastructure.service;
+package af.gov.anar.ebreshna.infrastructure.base;
 
 
 import af.gov.anar.ebreshna.infrastructure.constant.ApplicationGenericConstants;
@@ -122,7 +122,7 @@ public class BaseService<T extends BaseEntity ,S extends BaseRepository>{
     /**
      * Instance of LOGGER
      */
-    private static final Logger LOGGER = LoggerFactory.getLogger(BaseService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(af.gov.anar.ebreshna.infrastructure.base.BaseService.class);
 
     /**
      * serviceDelegateUtil which processes the HTTPRequestDTO requests

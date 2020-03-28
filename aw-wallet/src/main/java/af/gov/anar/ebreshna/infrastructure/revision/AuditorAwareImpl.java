@@ -1,6 +1,6 @@
 package af.gov.anar.ebreshna.infrastructure.revision;
 
-import af.gov.anar.ebreshna.infrastructure.service.UserService;
+import af.gov.anar.ebreshna.infrastructure.base.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;

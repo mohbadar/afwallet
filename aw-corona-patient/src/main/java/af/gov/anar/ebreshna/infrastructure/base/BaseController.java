@@ -1,4 +1,4 @@
-package af.gov.anar.ebreshna.infrastructure.service;
+package af.gov.anar.ebreshna.infrastructure.base;
 
 import af.gov.anar.api.annotation.ThrowsException;
 import af.gov.anar.api.annotation.ThrowsExceptions;
