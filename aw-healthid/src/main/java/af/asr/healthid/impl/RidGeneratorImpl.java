@@ -1,4 +1,4 @@
-package io.mosip.kernel.idgenerator.rid.impl;
+package af.asr.healthid.impl;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -8,18 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
-
-import io.mosip.kernel.core.dataaccess.exception.DataAccessLayerException;
-import io.mosip.kernel.core.idgenerator.spi.RidGenerator;
-import io.mosip.kernel.core.util.MathUtils;
-import io.mosip.kernel.idgenerator.rid.constant.RidGeneratorExceptionConstant;
-import io.mosip.kernel.idgenerator.rid.constant.RidGeneratorPropertyConstant;
-import io.mosip.kernel.idgenerator.rid.entity.Rid;
-import io.mosip.kernel.idgenerator.rid.exception.EmptyInputException;
-import io.mosip.kernel.idgenerator.rid.exception.InputLengthException;
-import io.mosip.kernel.idgenerator.rid.exception.NullValueException;
-import io.mosip.kernel.idgenerator.rid.exception.RidException;
-import io.mosip.kernel.idgenerator.rid.repository.RidRepository;
 
 /**
  * This class generate 28 digits registration id.

@@ -1,5 +1,4 @@
-package io.mosip.kernel.idgenerator.rid.entity;
-
+package af.asr.healthid.entity;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;

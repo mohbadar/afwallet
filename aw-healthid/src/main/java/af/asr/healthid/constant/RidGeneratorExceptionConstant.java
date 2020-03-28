@@ -1,4 +1,4 @@
-package io.mosip.kernel.idgenerator.rid.constant;
+package af.asr.healthid.constant;
 
 /**
  * This enum provide all the exception constants for rid generator.

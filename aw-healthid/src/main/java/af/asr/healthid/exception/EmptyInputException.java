@@ -1,5 +1,7 @@
-package io.mosip.kernel.idgenerator.rid.exception;
+package af.asr.healthid.exception;
 
+
+import af.gov.anar.lang.infrastructure.exception.common.BaseUncheckedException;
 
 /**
  * Exception class for empty inputs.

@@ -1,18 +1,18 @@
-package io.mosip.kernel.idgenerator.rid.repository;
+package af.asr.healthid.repository;
 
+import af.asr.healthid.entity.Rid;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.mosip.kernel.core.dataaccess.spi.repository.BaseRepository;
-import io.mosip.kernel.idgenerator.rid.entity.Rid;
 
 /**
  * Rid Generator repository.
  */
 @Repository
-public interface RidRepository extends BaseRepository<Rid, Integer> {
+public interface RidRepository extends JpaRepository<Rid, Integer> {
 	/**
 	 * Method to fetch last updated sequence no.
 	 * 
