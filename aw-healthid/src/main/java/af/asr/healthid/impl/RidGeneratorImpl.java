@@ -26,19 +26,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class RidGeneratorImpl implements RidGenerator<String> {
 
-	@Value("${mosip.kernel.registrationcenterid.length:-1}")
+	@Value("${healthid.registrationcenterid.length:-1}")
 	private int centerIdLength;
 
-	@Value("${mosip.kernel.machineid.length:-1}")
+	@Value("${healthid.machineid.length:-1}")
 	private int machineIdLength;
 
-	@Value("${mosip.kernel.rid.sequence-length:-1}")
+	@Value("${healthid.rid.sequence-length:-1}")
 	private int sequenceLength;
 
-	@Value("${mosip.kernel.rid.timestamp-length:-1}")
+	@Value("${healthid.rid.timestamp-length:-1}")
 	private int timeStampLength;
 
-	@Value("${mosip.kernel.rid.sequence-initial-value:1}")
+	@Value("${healthid.rid.sequence-initial-value:1}")
 	private int sequenceInitialValue;
 
 	@Autowired

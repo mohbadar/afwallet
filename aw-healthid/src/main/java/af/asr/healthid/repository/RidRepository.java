@@ -18,7 +18,7 @@ public interface RidRepository extends JpaRepository<Rid, Integer> {
 	 * 
 	 * @return the entity.
 	 */
-	@Query(value = "select r.curr_seq_no, r.cr_by, r.cr_dtimes, r.upd_by, r.upd_dtimes FROM rid_seq r ", nativeQuery = true)
+	@Query(value = "select r.curr_seq_no, r.cr_by, r.cr_dtimes, r.upd_by, r.upd_dtimes FROM healthid_seq r ", nativeQuery = true)
 	Rid findLastRid();
 
 	/**

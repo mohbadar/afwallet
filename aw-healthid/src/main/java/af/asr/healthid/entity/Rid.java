@@ -12,7 +12,7 @@ import lombok.Data;
  * The entity for rid generator.
  */
 @Entity
-@Table(name = "rid_seq")
+@Table(name = "healthid_seq")
 @Data
 public class Rid {
 
