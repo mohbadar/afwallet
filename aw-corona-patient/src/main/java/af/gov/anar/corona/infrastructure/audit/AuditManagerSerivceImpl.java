@@ -1,6 +1,6 @@
 package af.gov.anar.corona.infrastructure.audit;
 
-import af.gov.anar.corona.infrastructure.service.UserService;
+import af.gov.anar.corona.infrastructure.base.UserService;
 import af.gov.anar.lang.infrastructure.exception.common.ExceptionUtils;
 import af.gov.anar.lib.audit.builder.AuditRequestBuilder;
 import af.gov.anar.lib.audit.data.AuditRequestDto;
@@ -9,7 +9,7 @@ import af.gov.anar.lib.logger.Logger;
 import af.gov.anar.corona.infrastructure.constant.ApplicationGenericConstants;
 import af.gov.anar.corona.infrastructure.enumeration.AuditEvent;
 import af.gov.anar.corona.infrastructure.enumeration.Components;
-import af.gov.anar.corona.infrastructure.service.HostService;
+import af.gov.anar.corona.infrastructure.base.HostService;
 import af.gov.anar.corona.infrastructure.util.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

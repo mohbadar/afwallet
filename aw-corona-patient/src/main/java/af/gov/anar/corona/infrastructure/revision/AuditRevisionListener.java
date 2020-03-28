@@ -1,6 +1,6 @@
 package af.gov.anar.corona.infrastructure.revision;
 
-import af.gov.anar.corona.infrastructure.service.UserService;
+import af.gov.anar.corona.infrastructure.base.UserService;
 import org.hibernate.envers.RevisionListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
