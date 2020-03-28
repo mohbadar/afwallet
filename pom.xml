@@ -10,7 +10,9 @@
 
 
 	<modules>
+		<module>aw-corona-patient</module>
 		<module>aw-accounting</module>
+		<module>aw-healthid</module>
 		<module>aw-connect</module>
 		<module>aw-keycloack</module>
 		<module>aw-lib-activemq</module>
