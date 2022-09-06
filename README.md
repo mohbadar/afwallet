@@ -1,11 +1,11 @@
-### Parent of Afghan Wallet Platform 
+### Software Development Framework for AfWallet Platform 
 
 #### Setup Guide
 
 ##### With .sh Script
 ```aidl
 
-git clone https://github.com/mohbadar/afghan-wallet.git
+git clone https://github.com/mohbadar/afwallet.git
 
 bash setup.sh
 ```
@@ -13,7 +13,7 @@ bash setup.sh
 ##### With Python Script
 
 ```python
-git clone https://github.com/mohbadar/afghan-wallet.git
+git clone https://github.com/mohbadar/afwallet.git
 
 
 pip install -r requirements.txt
